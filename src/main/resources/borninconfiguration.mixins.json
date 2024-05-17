@@ -43,11 +43,11 @@
     "spawning.ZombieClownSpawning",
     "spawning.ZombieFishermanSpawning",
     "spawning.ZombieLumberjackSpawning",
-    "spawning.Maggots.BarrelZombie_Maggot",
-    "spawning.Maggots.DoorKnight_Maggot",
-    "spawning.Maggots.ZombieClown_Maggot",
-    "spawning.Nightstalker.NightStalkerTimerConfig",
-    "spawning.Nightstalker.NightStalkerWarningConfig"
+    "spawning.maggot.BarrelZombieMaggot",
+    "spawning.maggot.DoorKnightMaggot",
+    "spawning.maggot.ZombieClownMaggot",
+    "spawning.nightstalker.NightStalkerTimerConfig",
+    "spawning.nightstalker.NightStalkerWarningConfig"
   ],
   "client": [
   ],

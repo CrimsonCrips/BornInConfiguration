@@ -1,4 +1,4 @@
-package com.crimsoncrips.borninconfiguration.mixins.spawning.Maggots;
+package com.crimsoncrips.borninconfiguration.mixins.spawning.maggot;
 
 
 import com.crimsoncrips.borninconfiguration.config.BIConfig;
@@ -26,7 +26,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DoorKnightDeathTimeIsReachedProcedure.class)
 
-public class DoorKnight_Maggot {
+public class DoorKnightMaggot {
 
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(LevelAccessor world, double x, double y, double z, CallbackInfo ci) {

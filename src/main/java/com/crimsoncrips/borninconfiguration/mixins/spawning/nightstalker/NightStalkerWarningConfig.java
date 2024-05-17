@@ -1,4 +1,4 @@
-package com.crimsoncrips.borninconfiguration.mixins.spawning.Nightstalker;
+package com.crimsoncrips.borninconfiguration.mixins.spawning.nightstalker;
 
 
 import com.crimsoncrips.borninconfiguration.config.BIConfig;
