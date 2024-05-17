@@ -24,7 +24,7 @@ public class RottenConsumption {
     private static void injected(Event event, Entity entity, ItemStack itemstack, CallbackInfo ci) {
         ci.cancel(); // prevent the original method from running
 
-        if (BIConfig.ROTTEN_CONSUMPTION_ENABLED) // don't run if the feature is disabled
+        if (!BIConfig.ROTTEN_CONSUMPTION_ENABLED) // don't run if the feature is disabled
             return;
         if (itemstack.getItem() != Items.ROTTEN_FLESH)
             return;
