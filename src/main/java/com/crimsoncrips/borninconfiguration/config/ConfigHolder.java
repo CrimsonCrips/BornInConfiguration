@@ -10,10 +10,8 @@ public final class ConfigHolder {
     public static final ForgeConfigSpec BORNCONFIG_SPEC;
 
     static {
-        {
-            final Pair<BornInChaosConfig, ForgeConfigSpec> interact = new ForgeConfigSpec.Builder().configure(BornInChaosConfig::new);
-            BORNCONFIG = interact.getLeft();
-            BORNCONFIG_SPEC = interact.getRight();
-        }
+        final Pair<BornInChaosConfig, ForgeConfigSpec> interact = new ForgeConfigSpec.Builder().configure(BornInChaosConfig::new);
+        BORNCONFIG = interact.getLeft();
+        BORNCONFIG_SPEC = interact.getRight();
     }
 }
