@@ -37,6 +37,8 @@ public class SoulStratisfaction {
 
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel(); // prevent the original method from running
+
         if (entity != null) {
             if (BIConfig.SOUL_STRATIFICATION_EFFECT_ENABLED) {
                 LivingEntity _livEnt;
