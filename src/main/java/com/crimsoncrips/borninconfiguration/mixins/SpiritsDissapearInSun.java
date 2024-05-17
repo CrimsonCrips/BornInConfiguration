@@ -23,6 +23,8 @@ public class SpiritsDissapearInSun {
 
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
+        ci.cancel(); // prevent the original method from running
+
         if (entity != null) {
             if (BIConfig.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED && world.canSeeSkyFromBelowWater(BlockPos.containing(x, y + 1.0, z)) && world instanceof Level) {
                 Level _lvl2 = (Level)world;
@@ -37,7 +39,6 @@ public class SpiritsDissapearInSun {
                     }
                 }
             }
-
         }
     }
 
