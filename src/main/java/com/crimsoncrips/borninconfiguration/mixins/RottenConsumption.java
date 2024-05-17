@@ -22,15 +22,17 @@ public class RottenConsumption {
 
     @Inject(method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/item/ItemStack;)V", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(Event event, Entity entity, ItemStack itemstack, CallbackInfo ci) {
-        ci.cancel();
-        if (entity != null && BIConfig.ROTTEN_CONSUMPTION_ENABLED) {
-            if (itemstack.copy().getItem() == Items.ROTTEN_FLESH && entity instanceof LivingEntity) {
-                LivingEntity _entity = (LivingEntity)entity;
-                if (!_entity.level().isClientSide()) {
-                    _entity.addEffect(new MobEffectInstance((MobEffect) BornInChaosV1ModMobEffects.ROTTEN_SMELL.get(), 2400, 0));
-                }
-            }
+        ci.cancel(); // prevent the original method from running
 
-        }
+        if (BIConfig.ROTTEN_CONSUMPTION_ENABLED) // don't run if the feature is disabled
+            return;
+        if (itemstack.getItem() != Items.ROTTEN_FLESH)
+            return;
+        if (!(entity instanceof LivingEntity livingEntity))
+            return;
+        if (livingEntity.level().isClientSide()) // only run on the server
+            return;
+
+        livingEntity.addEffect(new MobEffectInstance(BornInChaosV1ModMobEffects.ROTTEN_SMELL.get(), 2400, 0));
     }
 }
