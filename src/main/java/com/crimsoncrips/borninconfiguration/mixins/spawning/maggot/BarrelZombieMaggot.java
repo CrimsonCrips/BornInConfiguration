@@ -30,6 +30,7 @@ public class BarrelZombieMaggot {
 
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(LevelAccessor world, double x, double y, double z, CallbackInfo ci) {
+        ci.cancel();
         if (BIConfig.MAGGOTS_APPEARANCE_ENABLED && Math.random() < 0.3) {
             if (!world.isClientSide()) {
                 Level _level;
