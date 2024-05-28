@@ -303,12 +303,11 @@ public class BornInChaosConfig {
         builder.push("Born In Configuration");
 
         builder.push("General");
-        this.ROTTEN_CONSUMPTION_ENABLED = buildBoolean(builder, "ROTTEN_CONSUMPTION_ENABLED", " ", true, "Whether Rotten Flesh afflicts you with Rotten Stink");
-        this.SOUL_STRATIFICATION_EFFECT_ENABLED = buildBoolean(builder, "SOUL_STRATIFICATION_EFFECT_ENABLED", " ", true, "Whether soul stratisfaction is enabled");
-        this.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED = buildBoolean(builder, "SPIRIT_DISSAPPEAR_IN_SUN_ENABLED", " ", true, "Whether spirits disappear in the sun is enabled");
+        this.ROTTEN_CONSUMPTION_ENABLED = buildBoolean(builder, "ROTTEN_CONSUMPTION_ENABLED", ".", true, "Whether Rotten Flesh afflicts you with Rotten Stink");
+        this.SOUL_STRATIFICATION_EFFECT_ENABLED = buildBoolean(builder, "SOUL_STRATIFICATION_EFFECT_ENABLED", ".", true, "Whether soul stratisfaction is enabled");
+        this.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED = buildBoolean(builder, "SPIRIT_DISSAPPEAR_IN_SUN_ENABLED", ".", true, "Whether spirits disappear in the sun is enabled");
+        builder.pop(2);
 
-
-        builder.pop();
         builder.push("Mobs");
 
 
@@ -323,7 +322,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Decaying Zombie");
-        this.DECAYING_ZOMBIE_SPAWNING_ENABLED = buildBoolean(builder, "DECAYING_ZOMBIE_SPAWNING_ENABLED", " ", true, ".");
+        this.DECAYING_ZOMBIE_SPAWNING_ENABLED = buildBoolean(builder, "DECAYING_ZOMBIE_SPAWNING_ENABLED", ".", true, ".");
         this.DECAYING_ZOMBIE_SPEED = buildDouble(builder, "DECAYING_ZOMBIE_SPEED", ".", 0.2,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DECAYING_ZOMBIE_HEALTH = buildDouble(builder, "DECAYING_ZOMBIE_HEALTH", ".", 30.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DECAYING_ZOMBIE_ARMOR = buildDouble(builder, "DECAYING_ZOMBIE_ARMOR", ".", 0.5,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -333,7 +332,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Baby Skeleton");
-        this.BABY_SKELETON_SPAWNING_ENABLED = buildBoolean(builder, "BABY_SKELETON_SPAWNING_ENABLED", " ", true, ".");
+        this.BABY_SKELETON_SPAWNING_ENABLED = buildBoolean(builder, "BABY_SKELETON_SPAWNING_ENABLED", ".", true, ".");
         this.BABY_SKELETON_SPEED = buildDouble(builder, "BABY_SKELETON_SPEED", ".", 0.3,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BABY_SKELETON_HEALTH = buildDouble(builder, "BABY_SKELETON_HEALTH", ".", 10.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BABY_SKELETON_ARMOR = buildDouble(builder, "BABY_SKELETON_ARMOR", ".", 1.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -343,7 +342,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Zombie Barrel");
-        this.ZOMBIE_BARREL_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_BARREL_SPAWNING_ENABLED", " ", true, ".");
+        this.ZOMBIE_BARREL_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_BARREL_SPAWNING_ENABLED", ".", true, ".");
         this.ZOMBIE_BARREL_SPEED = buildDouble(builder, "ZOMBIE_BARREL_SPEED", ".", 0.2,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_BARREL_HEALTH = buildDouble(builder, "ZOMBIE_BARREL_HEALTH", ".", 30.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_BARREL_ARMOR = buildDouble(builder, "ZOMBIE_BARREL_ARMOR", ".", 6.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -354,7 +353,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Phantom Creeper");
-        this.PHANTOM_CREEPER_SPAWNING_ENABLED = buildBoolean(builder, "PHANTOM_CREEPER_SPAWNING_ENABLED", " ", true, ".");
+        this.PHANTOM_CREEPER_SPAWNING_ENABLED = buildBoolean(builder, "PHANTOM_CREEPER_SPAWNING_ENABLED", ".", true, ".");
         this.PHANTOM_CREEPER_SPEED = buildDouble(builder, "PHANTOM_CREEPER_SPEED", ".", 0.25,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.PHANTOM_CREEPER_HEALTH = buildDouble(builder, "PHANTOM_CREEPER_HEALTH", ".", 20.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.PHANTOM_CREEPER_ARMOR = buildDouble(builder, "PHANTOM_CREEPER_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -364,7 +363,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Door Knight");
-        this.DOOR_KNIGHT_SPAWNING_ENABLED = buildBoolean(builder, "DOOR_KNIGHT_SPAWNING_ENABLED", " ", true, ".");
+        this.DOOR_KNIGHT_SPAWNING_ENABLED = buildBoolean(builder, "DOOR_KNIGHT_SPAWNING_ENABLED", ".", true, ".");
         this.DOOR_KNIGHT_SPEED = buildDouble(builder, "DOOR_KNIGHT_SPEED", ".", 0.21,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DOOR_KNIGHT_HEALTH = buildDouble(builder, "DOOR_KNIGHT_HEALTH", ".", 30.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DOOR_KNIGHT_ARMOR = buildDouble(builder, "DOOR_KNIGHT_ARMOR", ".", 7.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -375,7 +374,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Restless Spirit");
-        this.RESTLESS_SPIRIT_SPAWNING_ENABLED = buildBoolean(builder, "RESTLESS_SPIRIT_SPAWNING_ENABLED", " ", true, ".");
+        this.RESTLESS_SPIRIT_SPAWNING_ENABLED = buildBoolean(builder, "RESTLESS_SPIRIT_SPAWNING_ENABLED", ".", true, ".");
         this.RESTLESS_SPIRIT_SPEED = buildDouble(builder, "RESTLESS_SPIRIT_SPEED", ".", 0.4,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.RESTLESS_SPIRIT_HEALTH = buildDouble(builder, "RESTLESS_SPIRIT_HEALTH", ".", 24.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.RESTLESS_SPIRIT_ARMOR = buildDouble(builder, "RESTLESS_SPIRIT_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -387,7 +386,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Skeleton Thrasher");
-        this.SKELETON_THRASHER_SPAWNING_ENABLED = buildBoolean(builder, "SKELETON_THRASHER_SPAWNING_ENABLED", " ", true, ".");
+        this.SKELETON_THRASHER_SPAWNING_ENABLED = buildBoolean(builder, "SKELETON_THRASHER_SPAWNING_ENABLED", ".", true, ".");
         this.SKELETON_THRASHER_SPEED = buildDouble(builder, "SKELETON_THRASHER_SPEED", ".", 0.21,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.SKELETON_THRASHER_HEALTH = buildDouble(builder, "SKELETON_THRASHER_HEALTH", ".", 50.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.SKELETON_THRASHER_ARMOR = buildDouble(builder, "SKELETON_THRASHER_ARMOR", ".", 7.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -397,7 +396,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Firelight");
-        this.FIRELIGHT_SPAWNING_ENABLED = buildBoolean(builder, "FIRELIGHT_SPAWNING_ENABLED", " ", true, ".");
+        this.FIRELIGHT_SPAWNING_ENABLED = buildBoolean(builder, "FIRELIGHT_SPAWNING_ENABLED", ".", true, ".");
         this.FIRELIGHT_SPEED = buildDouble(builder, "FIRELIGHT_SPEED", ".", 0.3,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.FIRELIGHT_HEALTH = buildDouble(builder, "FIRELIGHT_HEALTH", ".", 15.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.FIRELIGHT_ARMOR = buildDouble(builder, "FIRELIGHT_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -407,7 +406,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Bones Caller");
-        this.BONES_CALLER_SPAWNING_ENABLED = buildBoolean(builder, "BONES_CALLER_SPAWNING_ENABLED", " ", true, ".");
+        this.BONES_CALLER_SPAWNING_ENABLED = buildBoolean(builder, "BONES_CALLER_SPAWNING_ENABLED", ".", true, ".");
         this.BONES_CALLER_SPEED = buildDouble(builder, "BONES_CALLER_SPEED", ".", 0.2,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BONES_CALLER_HEALTH = buildDouble(builder, "BONES_CALLER_HEALTH", ".", 25.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BONES_CALLER_ARMOR = buildDouble(builder, "BONES_CALLER_ARMOR", ".", 1.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -418,7 +417,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Bone Imp");
-        this.BONE_IMP_SPAWNING_ENABLED = buildBoolean(builder, "BONE_IMP_SPAWNING_ENABLED", " ", true, ".");
+        this.BONE_IMP_SPAWNING_ENABLED = buildBoolean(builder, "BONE_IMP_SPAWNING_ENABLED", ".", true, ".");
         this.BONE_IMP_SPEED = buildDouble(builder, "BONE_IMP_SPEED", ".", 0.3,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BONE_IMP_HEALTH = buildDouble(builder, "BONE_IMP_HEALTH", ".", 20.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BONE_IMP_ARMOR = buildDouble(builder, "BONE_IMP_ARMOR", ".", 3.5,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -429,7 +428,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Dark Vortex");
-        this.DARK_VORTEX_SPAWNING_ENABLED = buildBoolean(builder, "DARK_VORTEX_SPAWNING_ENABLED", " ", true, ".");
+        this.DARK_VORTEX_SPAWNING_ENABLED = buildBoolean(builder, "DARK_VORTEX_SPAWNING_ENABLED", ".", true, ".");
         this.DARK_VORTEX_SPEED = buildDouble(builder, "DARK_VORTEX_SPEED", ".", 0.3,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DARK_VORTEX_HEALTH = buildDouble(builder, "DARK_VORTEX_HEALTH", ".", 35.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DARK_VORTEX_ARMOR = buildDouble(builder, "DARK_VORTEX_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -440,7 +439,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Dreadhound");
-        this.DREADHOUND_SPAWNING_ENABLED = buildBoolean(builder, "DREADHOUND_SPAWNING_ENABLED", " ", true, ".");
+        this.DREADHOUND_SPAWNING_ENABLED = buildBoolean(builder, "DREADHOUND_SPAWNING_ENABLED", ".", true, ".");
         this.DREADHOUND_SPEED = buildDouble(builder, "DREADHOUND_SPEED", ".", 0.34,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DREADHOUND_HEALTH = buildDouble(builder, "DREADHOUND_HEALTH", ".", 17.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DREADHOUND_ARMOR = buildDouble(builder, "DREADHOUND_ARMOR", ".", 0.5,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -451,7 +450,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Fallen Chaos Knight");
-        this.FALLEN_CHAOS_KNIGHT_SPAWNING_ENABLED = buildBoolean(builder, "FALLEN_CHAOS_KNIGHT_SPAWNING_ENABLED", " ", true, ".");
+        this.FALLEN_CHAOS_KNIGHT_SPAWNING_ENABLED = buildBoolean(builder, "FALLEN_CHAOS_KNIGHT_SPAWNING_ENABLED", ".", true, ".");
         this.FALLEN_CHAOS_KNIGHT_SPEED = buildDouble(builder, "FALLEN_CHAOS_KNIGHT_SPEED", ".", 0.32,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.FALLEN_CHAOS_KNIGHT_HEALTH = buildDouble(builder, "FALLEN_CHAOS_KNIGHT_HEALTH", ".", 40.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.FALLEN_CHAOS_KNIGHT_ARMOR = buildDouble(builder, "FALLEN_CHAOS_KNIGHT_ARMOR", ".", 20.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -462,7 +461,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Ser Pumpkinhead");
-        this.SER_PUMPKIN_HEAD_SPAWNING_ENABLED = buildBoolean(builder, "SER_PUMPKIN_HEAD_SPAWNING_ENABLED", " ", true, ".");
+        this.SER_PUMPKIN_HEAD_SPAWNING_ENABLED = buildBoolean(builder, "SER_PUMPKIN_HEAD_SPAWNING_ENABLED", ".", true, ".");
         this.SER_PUMPKIN_HEAD_SPEED = buildDouble(builder, "SER_PUMPKIN_HEAD_SPEED", ".", 0.36,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.SER_PUMPKIN_HEAD_HEALTH = buildDouble(builder, "SER_PUMPKIN_HEAD_HEALTH", ".", 160.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.SER_PUMPKIN_HEAD_ARMOR = buildDouble(builder, "SER_PUMPKIN_HEAD_ARMOR", ".", 9.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -482,7 +481,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Zombie Clown");
-        this.ZOMBIE_CLOWN_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_CLOWN_SPAWNING_ENABLED", " ", true, ".");
+        this.ZOMBIE_CLOWN_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_CLOWN_SPAWNING_ENABLED", ".", true, ".");
         this.ZOMBIE_CLOWN_SPEED = buildDouble(builder, "ZOMBIE_CLOWN_SPEED", ".", 0.21,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_CLOWN_HEALTH = buildDouble(builder, "ZOMBIE_CLOWN_HEALTH", ".", 35.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_CLOWN_ARMOR = buildDouble(builder, "ZOMBIE_CLOWN_ARMOR", ".", 4.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -493,7 +492,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Spirit Guide");
-        this.SPIRIT_GUIDE_SPAWNING_ENABLED = buildBoolean(builder, "SPIRIT_GUIDE_SPAWNING_ENABLED", " ", true, ".");
+        this.SPIRIT_GUIDE_SPAWNING_ENABLED = buildBoolean(builder, "SPIRIT_GUIDE_SPAWNING_ENABLED", ".", true, ".");
         this.SPIRIT_GUIDE_SPEED = buildDouble(builder, "SPIRIT_GUIDE_SPEED", ".", 0.22,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.SPIRIT_GUIDE_HEALTH = buildDouble(builder, "SPIRIT_GUIDE_HEALTH", ".", 32.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.SPIRIT_GUIDE_ARMOR = buildDouble(builder, "SPIRIT_GUIDE_ARMOR", ".", 2.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -504,7 +503,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Corpse Fly");
-        this.CORPSE_FLY_SPAWN_ENABLED = buildBoolean(builder, "CORPSE_FLY_SPAWN_ENABLED", " ", true, ".");
+        this.CORPSE_FLY_SPAWN_ENABLED = buildBoolean(builder, "CORPSE_FLY_SPAWN_ENABLED", ".", true, ".");
         this.CORPSE_FLY_SPEED = buildDouble(builder, "CORPSE_FLY_SPEED", ".", 0.29,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.CORPSE_FLY_HEALTH = buildDouble(builder, "CORPSE_FLY_HEALTH", ".", 10.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.CORPSE_FLY_ARMOR = buildDouble(builder, "CORPSE_FLY_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -515,7 +514,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Bloody Gadfly");
-        this.BLOODY_GADFLY_SPAWNING_ENABLED = buildBoolean(builder, "BLOODY_GADFLY_SPAWNING_ENABLED", " ", true, ".");
+        this.BLOODY_GADFLY_SPAWNING_ENABLED = buildBoolean(builder, "BLOODY_GADFLY_SPAWNING_ENABLED", ".", true, ".");
         this.BLOODY_GADFLY_SPEED = buildDouble(builder, "BLOODY_GADFLY_SPEED", ".", 0.28,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BLOODY_GADFLY_HEALTH = buildDouble(builder, "BLOODY_GADFLY_HEALTH", ".", 20.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.BLOODY_GADFLY_ARMOR = buildDouble(builder, "BLOODY_GADFLY_ARMOR", ".", 0.5,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -526,7 +525,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Corpse Fish");
-        this.CORPSE_FISH_SPAWNING_ENABLED = buildBoolean(builder, "CORPSE_FISH_SPAWNING_ENABLED", " ", true, ".");
+        this.CORPSE_FISH_SPAWNING_ENABLED = buildBoolean(builder, "CORPSE_FISH_SPAWNING_ENABLED", ".", true, ".");
         this.CORPSE_FISH_SPEED = buildDouble(builder, "CORPSE_FISH_SPEED", ".", 0.7,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.CORPSE_FISH_HEALTH = buildDouble(builder, "CORPSE_FISH_HEALTH", ".", 12.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.CORPSE_FISH_ARMOR = buildDouble(builder, "CORPSE_FISH_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -538,7 +537,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Zombie Fisherman");
-        this.ZOMBIE_FISHERMAN_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_FISHERMAN_SPAWNING_ENABLED", " ", true, ".");
+        this.ZOMBIE_FISHERMAN_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_FISHERMAN_SPAWNING_ENABLED", ".", true, ".");
         this.ZOMBIE_FISHERMAN_SPEED = buildDouble(builder, "ZOMBIE_FISHERMAN_SPEED", ".", 0.2,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_FISHERMAN_HEALTH = buildDouble(builder, "ZOMBIE_FISHERMAN_HEALTH", ".", 25.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_FISHERMAN_ARMOR = buildDouble(builder, "ZOMBIE_FISHERMAN_ARMOR", ".", 4.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -549,7 +548,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Thornshell");
-        this.THORNSHELL_SPAWNING_ENABLED = buildBoolean(builder, "THORNSHELL_SPAWNING_ENABLED", " ", true, ".");
+        this.THORNSHELL_SPAWNING_ENABLED = buildBoolean(builder, "THORNSHELL_SPAWNING_ENABLED", ".", true, ".");
         this.THORNSHELL_SPEED = buildDouble(builder, "THORNSHELL_SPEED", ".", 0.25,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.THORNSHELL_HEALTH = buildDouble(builder, "THORNSHELL_HEALTH", ".", 25.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.THORNSHELL_ARMOR = buildDouble(builder, "THORNSHELL_ARMOR", ".", 10.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -560,7 +559,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Glutton Fish");
-        this.GLUTTON_FISH_SPAWNING_ENABLED = buildBoolean(builder, "GLUTTON_FISH_SPAWNING_ENABLED", " ", true, ".");
+        this.GLUTTON_FISH_SPAWNING_ENABLED = buildBoolean(builder, "GLUTTON_FISH_SPAWNING_ENABLED", ".", true, ".");
         this.GLUTTON_FISH_SPEED = buildDouble(builder, "GLUTTON_FISH_SPEED", ".", 0.7,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.GLUTTON_FISH_HEALTH = buildDouble(builder, "GLUTTON_FISH_HEALTH", ".", 90.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.GLUTTON_FISH_ARMOR = buildDouble(builder, "GLUTTON_FISH_ARMOR", ".", 3.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -572,7 +571,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Zombie Bruiser");
-        this.ZOMBIE_BRUISER_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_BRUISER_SPAWNING_ENABLED", " ", true, ".");
+        this.ZOMBIE_BRUISER_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_BRUISER_SPAWNING_ENABLED", ".", true, ".");
         this.ZOMBIE_BRUISER_SPEED = buildDouble(builder, "ZOMBIE_BRUISER_SPEED", ".", 0.26,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_BRUISER_HEALTH = buildDouble(builder, "ZOMBIE_BRUISER_HEALTH", ".", 60.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_BRUISER_ARMOR = buildDouble(builder, "ZOMBIE_BRUISER_ARMOR", ".", 2.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -583,7 +582,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Zombie Lumberjack");
-        this.ZOMBIE_LUMBERJACK_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_LUMBERJACK_SPAWNING_ENABLED", " ", true, ".");
+        this.ZOMBIE_LUMBERJACK_SPAWNING_ENABLED = buildBoolean(builder, "ZOMBIE_LUMBERJACK_SPAWNING_ENABLED", ".", true, ".");
         this.ZOMBIE_LUMBERJACK_SPEED = buildDouble(builder, "ZOMBIE_LUMBERJACK_SPEED", ".", 0.2,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_LUMBERJACK_HEALTH = buildDouble(builder, "ZOMBIE_LUMBERJACK_HEALTH", ".", 25.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.ZOMBIE_LUMBERJACK_ARMOR = buildDouble(builder, "ZOMBIE_LUMBERJACK_ARMOR", ".", 4.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -594,8 +593,8 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Missioner");
-        this.DAYS_TILL_MISSIONER = buildInt(builder, "DAYS_TILL_MISSIONER", " ", 10, 1,999999,"Days till The Missioner spawns");
-        this.MISSIONER_SPAWNING_ENABLED = buildBoolean(builder, "MISSIONER_SPAWNING_ENABLED", " ", true, ".");
+        this.DAYS_TILL_MISSIONER = buildInt(builder, "DAYS_TILL_MISSIONER", ".", 10, 1,999999,"Days till The Missioner spawns");
+        this.MISSIONER_SPAWNING_ENABLED = buildBoolean(builder, "MISSIONER_SPAWNING_ENABLED", ".", true, ".");
         this.MISSIONER_SPEED = buildDouble(builder, "MISSIONER_SPEED", ".", 0.24,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.MISSIONER_HEALTH = buildDouble(builder, "MISSIONER_HEALTH", ".", 150.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.MISSIONER_ARMOR = buildDouble(builder, "MISSIONER_ARMOR", ".", 10.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -606,7 +605,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Decrepit Skeleton");
-        this.DECREPIT_SKELETON_SPAWNING_ENABLED = buildBoolean(builder, "DECREPIT_SKELETON_SPAWNING_ENABLED", " ", true, ".");
+        this.DECREPIT_SKELETON_SPAWNING_ENABLED = buildBoolean(builder, "DECREPIT_SKELETON_SPAWNING_ENABLED", ".", true, ".");
         this.DECREPIT_SKELETON_SPEED = buildDouble(builder, "DECREPIT_SKELETON_SPEED", ".", 0.23,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DECREPIT_SKELETON_HEALTH = buildDouble(builder, "DECREPIT_SKELETON_HEALTH", ".", 15.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DECREPIT_SKELETON_ARMOR = buildDouble(builder, "DECREPIT_SKELETON_ARMOR", ".", 1.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -616,9 +615,9 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Nightmare Stalker");
-        this.DAYS_TILL_NIGHTMARE = buildInt(builder, "DAYS_TILL_NIGHTMARE", " ", 3, 1,999999,"Days till Nightmare Stalker spawns");
-        this.STALKER_IMMUNITY_ENABLED = buildBoolean(builder, "STALKER_IMMUNITY_ENABLED", " ", true, "Whether Nightmare Stalker has its base immunity to certain things");
-        this.NIGHTMARE_SPAWN_ENABLED = buildBoolean(builder, "NIGHTMARE_SPAWN_ENABLED", " ", true, ".");
+        this.DAYS_TILL_NIGHTMARE = buildInt(builder, "DAYS_TILL_NIGHTMARE", ".", 3, 1,999999,"Days till Nightmare Stalker spawns");
+        this.STALKER_IMMUNITY_ENABLED = buildBoolean(builder, "STALKER_IMMUNITY_ENABLED", ".", true, "Whether Nightmare Stalker has its base immunity to certain things");
+        this.NIGHTMARE_SPAWN_ENABLED = buildBoolean(builder, "NIGHTMARE_SPAWN_ENABLED", ".", true, ".");
         this.NIGHTMARE_STALKER_SPEED = buildDouble(builder, "NIGHTMARE_STALKER_SPEED", ".", 0.28,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.NIGHTMARE_STALKER_HEALTH = buildDouble(builder, "NIGHTMARE_STALKER_HEALTH", ".", 70.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.NIGHTMARE_STALKER_ARMOR = buildDouble(builder, "NIGHTMARE_STALKER_ARMOR", ".", 4.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -629,7 +628,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Maggot");
-        this.MAGGOTS_APPEARANCE_ENABLED = buildBoolean(builder, "MAGGOTS_APPEARANCE_ENABLED", " ", true, "Whether maggots appearing is enabled");
+        this.MAGGOTS_APPEARANCE_ENABLED = buildBoolean(builder, "MAGGOTS_APPEARANCE_ENABLED", ".", true, "Whether maggots appearing is enabled");
         this.MAGGOT_SPEED = buildDouble(builder, "MAGGOT_SPEED", ".", 0.2,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.MAGGOT_HEALTH = buildDouble(builder, "MAGGOT_HEALTH", ".", 6.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.MAGGOT_ARMOR = buildDouble(builder, "MAGGOT_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -639,7 +638,7 @@ public class BornInChaosConfig {
 
         builder.pop();
         builder.push("Diamond Termite");
-        this.INFESTED_DIAMONDS_ENABLED = buildBoolean(builder, "INFESTED_DIAMONDS_ENABLED", " ", true, ".");
+        this.INFESTED_DIAMONDS_ENABLED = buildBoolean(builder, "INFESTED_DIAMONDS_ENABLED", ".", true, ".");
         this.DIAMOND_TERMITE_SPEED = buildDouble(builder, "DIAMOND_TERMITE_SPEED", ".", 0.3,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DIAMOND_TERMITE_HEALTH = buildDouble(builder, "DIAMOND_TERMITE_HEALTH", ".", 14.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DIAMOND_TERMITE_ARMOR = buildDouble(builder, "DIAMOND_TERMITE_ARMOR", ".", 7.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -677,8 +676,8 @@ public class BornInChaosConfig {
         builder.pop();
 
         builder.push("Lifestealer");
-        this.DAYS_TILL_LIFESTEALER = buildInt(builder, "DAYS_TILL_LIFESTEALER", " ", 10, 1,999999,"Days till Lifestealer spawns");
-        this.LIFESTEALER_SPAWN_ENABLED = buildBoolean(builder, "LIFESTEALER_SPAWN_ENABLED", " ", true, ".");
+        this.DAYS_TILL_LIFESTEALER = buildInt(builder, "DAYS_TILL_LIFESTEALER", ".", 10, 1,999999,"Days till Lifestealer spawns");
+        this.LIFESTEALER_SPAWN_ENABLED = buildBoolean(builder, "LIFESTEALER_SPAWN_ENABLED", ".", true, ".");
         this.LIFESTEALER_SPEED = buildDouble(builder, "LIFESTEALER_SPEED", ".", 0.26,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.LIFESTEALER_HEALTH = buildDouble(builder, "LIFESTEALER_HEALTH", ".", 100.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.LIFESTEALER_ARMOR = buildDouble(builder, "LIFESTEALER_ARMOR", ".", 16.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
@@ -731,8 +730,8 @@ public class BornInChaosConfig {
         this.DREADHOUND_LEADER_SPEED = buildDouble(builder, "DREADHOUND_LEADER_SPEED", ".", 0.34,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DREADHOUND_LEADER_HEALTH = buildDouble(builder, "DREADHOUND_LEADER_HEALTH", ".", 100.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DREADHOUND_LEADER_ARMOR = buildDouble(builder, "DREADHOUND_LEADER_ARMOR", ".", 0.5,Double.MIN_VALUE,Double.MAX_VALUE,".");
-        this.DREADHOUND_LEADER_DAMAGE = buildDouble(builder, "DREADHOUND_LEADER_KNOCKBACK_RESISTANCE", ".", 10.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
-        this.DREADHOUND_LEADER_KNOCKBACK_RESISTANCE = buildDouble(builder, ".", ".", 0.7,Double.MIN_VALUE,Double.MAX_VALUE,".");
+        this.DREADHOUND_LEADER_DAMAGE = buildDouble(builder, "DREADHOUND_LEADER_DAMAGE", ".", 10.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
+        this.DREADHOUND_LEADER_KNOCKBACK_RESISTANCE = buildDouble(builder, "DREADHOUND_LEADER_KNOCKBACK_RESISTANCE", ".", 0.7,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.DREADHOUND_LEADER_KNOCKBACK = buildDouble(builder, "DREADHOUND_LEADER_KNOCKBACK", ".", 1.4,Double.MIN_VALUE,Double.MAX_VALUE,".");
 
 
@@ -754,7 +753,7 @@ public class BornInChaosConfig {
         this.PUMPKIN_SPIRIT_DAMAGE = buildDouble(builder, "PUMPKIN_SPIRIT_DAMAGE", ".", 13.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.PUMPKIN_SPIRIT_KNOCKBACK_RESISTANCE = buildDouble(builder, "PUMPKIN_SPIRIT_KNOCKBACK_RESISTANCE", ".", 0.9,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.PUMPKIN_SPIRIT_KNOCKBACK = buildDouble(builder, "PUMPKIN_SPIRIT_KNOCKBACK", ".", 2.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
-        builder.pop();
+
     }
 
     private static ForgeConfigSpec.BooleanValue buildBoolean(ForgeConfigSpec.Builder builder, String name, String catagory, boolean defaultValue, String comment){
