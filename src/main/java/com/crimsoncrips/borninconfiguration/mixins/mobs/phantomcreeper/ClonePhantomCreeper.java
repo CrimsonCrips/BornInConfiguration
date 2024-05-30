@@ -38,7 +38,7 @@ public abstract class ClonePhantomCreeper extends Monster {
         builder = builder.add(Attributes.ARMOR, BIConfig.PHANTOM_CREEPER_ARMOR);
         builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.PHANTOM_CREEPER_DAMAGE);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16.0);
-        builder = builder.add(Attributes.ATTACK_KNOCKBACK, BIConfig.PHANTOM_CREEPER_KNOCKBACK);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.1);
         return builder;
     }
 

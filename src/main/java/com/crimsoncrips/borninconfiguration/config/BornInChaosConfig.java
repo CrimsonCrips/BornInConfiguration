@@ -225,7 +225,7 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.DoubleValue PHANTOM_CREEPER_ARMOR;
     public final ForgeConfigSpec.DoubleValue PHANTOM_CREEPER_DAMAGE;
     public final ForgeConfigSpec.DoubleValue PHANTOM_CREEPER_HEALTH;
-    public final ForgeConfigSpec.DoubleValue PHANTOM_CREEPER_KNOCKBACK;
+
     public final ForgeConfigSpec.DoubleValue PHANTOM_CREEPER_SPEED;
     public final ForgeConfigSpec.DoubleValue RESTLESS_SPIRIT_ARMOR;
     public final ForgeConfigSpec.DoubleValue RESTLESS_SPIRIT_DAMAGE;
@@ -358,8 +358,6 @@ public class BornInChaosConfig {
         this.PHANTOM_CREEPER_HEALTH = buildDouble(builder, "PHANTOM_CREEPER_HEALTH", ".", 20.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.PHANTOM_CREEPER_ARMOR = buildDouble(builder, "PHANTOM_CREEPER_ARMOR", ".", 0.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
         this.PHANTOM_CREEPER_DAMAGE = buildDouble(builder, "PHANTOM_CREEPER_DAMAGE", ".", 3.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
-        this.PHANTOM_CREEPER_KNOCKBACK = buildDouble(builder, "PHANTOM_CREEPER_KNOCKBACK", ".", 16.0,Double.MIN_VALUE,Double.MAX_VALUE,".");
-
 
         builder.pop();
         builder.push("Door Knight");

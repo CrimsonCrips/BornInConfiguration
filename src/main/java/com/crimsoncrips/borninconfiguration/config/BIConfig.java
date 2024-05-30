@@ -6,40 +6,29 @@ import static com.mojang.text2speech.Narrator.LOGGER;
 
 public class BIConfig {
 
-    public static double SUPREME_BONES_CALLER_SPEED;
-    public static double SUPREME_BONES_CALLER_HEALTH;
-    public static double SUPREME_BONES_CALLER_ARMOR;
-    public static double SUPREME_BONES_CALLER_DAMAGE;
-    public static double SUPREME_BONES_CALLER_KNOCKBACK;
-    public static double SUPREME_BONES_CALLER_KNOCKBACK_RESISTANCE;
-    
-    
-    public static boolean BABY_SKELETON_SPAWNING_ENABLED;
 
-    public static double  RESTLESS_SPIRIT_FLYING_SPEED;
+
+
+
+    public static boolean BABY_SKELETON_SPAWNING_ENABLED;
     public static boolean BLOODY_GADFLY_SPAWNING_ENABLED;
     public static boolean BONES_CALLER_SPAWNING_ENABLED;
     public static boolean BONE_IMP_SPAWNING_ENABLED;
-    public static boolean CLOWN_TENT_GENERATION_ENABLED;
     public static boolean CORPSE_FISH_SPAWNING_ENABLED;
     public static boolean CORPSE_FLY_SPAWN_ENABLED;
-    public static boolean DARK_TOWER_GENERATION_ENABLED;
     public static boolean DARK_VORTEX_SPAWNING_ENABLED;
     public static boolean DECAYING_ZOMBIE_SPAWNING_ENABLED;
     public static boolean DECREPIT_SKELETON_SPAWNING_ENABLED;
     public static boolean DOOR_KNIGHT_SPAWNING_ENABLED;
     public static boolean DREADHOUND_SPAWNING_ENABLED;
     public static boolean FALLEN_CHAOS_KNIGHT_SPAWNING_ENABLED;
-    public static boolean LIFESTEALER_SPAWN_ENABLED;
-    public static boolean FARM_GENERATION_ENABLED;
     public static boolean FIRELIGHT_SPAWNING_ENABLED;
-    public static boolean FIRE_WELL_GENERATION_ENABLED;
     public static boolean GLUTTON_FISH_SPAWNING_ENABLED;
     public static boolean INFESTED_DIAMONDS_ENABLED;
+    public static boolean LIFESTEALER_SPAWN_ENABLED;
     public static boolean MAGGOTS_APPEARANCE_ENABLED;
     public static boolean MISSIONER_SPAWNING_ENABLED;
     public static boolean NIGHTMARE_SPAWN_ENABLED;
-    public static boolean OBSERVATION_TOWER_GENERATION_ENABLED;
     public static boolean PHANTOM_CREEPER_SPAWNING_ENABLED;
     public static boolean RESTLESS_SPIRIT_SPAWNING_ENABLED;
     public static boolean ROTTEN_CONSUMPTION_ENABLED;
@@ -56,6 +45,7 @@ public class BIConfig {
     public static boolean ZOMBIE_CLOWN_SPAWNING_ENABLED;
     public static boolean ZOMBIE_FISHERMAN_SPAWNING_ENABLED;
     public static boolean ZOMBIE_LUMBERJACK_SPAWNING_ENABLED;
+    public static double  RESTLESS_SPIRIT_FLYING_SPEED;
     public static double BABY_SKELETON_ARMOR;
     public static double BABY_SKELETON_DAMAGE;
     public static double BABY_SKELETON_HEALTH;
@@ -196,7 +186,6 @@ public class BIConfig {
     public static double PHANTOM_CREEPER_ARMOR;
     public static double PHANTOM_CREEPER_DAMAGE;
     public static double PHANTOM_CREEPER_HEALTH;
-    public static double PHANTOM_CREEPER_KNOCKBACK;
     public static double PHANTOM_CREEPER_SPEED;
     public static double PUMPKIN_SPIRIT_ARMOR;
     public static double PUMPKIN_SPIRIT_DAMAGE;
@@ -258,6 +247,12 @@ public class BIConfig {
     public static double SPIRIT_OF_CHAOS_HEALTH;
     public static double SPIRIT_OF_CHAOS_KNOCKBACK_RESISTANCE;
     public static double SPIRIT_OF_CHAOS_SPEED;
+    public static double SUPREME_BONES_CALLER_ARMOR;
+    public static double SUPREME_BONES_CALLER_DAMAGE;
+    public static double SUPREME_BONES_CALLER_HEALTH;
+    public static double SUPREME_BONES_CALLER_KNOCKBACK;
+    public static double SUPREME_BONES_CALLER_KNOCKBACK_RESISTANCE;
+    public static double SUPREME_BONES_CALLER_SPEED;
     public static double SWARMER_ARMOR;
     public static double SWARMER_DAMAGE;
     public static double SWARMER_HEALTH;
@@ -300,9 +295,9 @@ public class BIConfig {
     public static double ZOMBIE_LUMBERJACK_KNOCKBACK;
     public static double ZOMBIE_LUMBERJACK_KNOCKBACK_RESISTANCE;
     public static double ZOMBIE_LUMBERJACK_SPEED;
+    public static int DAYS_TILL_LIFESTEALER;
     public static int DAYS_TILL_MISSIONER;
     public static int DAYS_TILL_NIGHTMARE;
-    public static int DAYS_TILL_LIFESTEALER;
 
 
     public static void bake() {
@@ -468,7 +463,6 @@ public class BIConfig {
             PHANTOM_CREEPER_ARMOR = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_ARMOR.get();
             PHANTOM_CREEPER_DAMAGE = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_DAMAGE.get();
             PHANTOM_CREEPER_HEALTH = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_HEALTH.get();
-            PHANTOM_CREEPER_KNOCKBACK = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_KNOCKBACK.get();
             PHANTOM_CREEPER_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_SPAWNING_ENABLED.get();
             PHANTOM_CREEPER_SPEED = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_SPEED.get();
             PUMPKIN_SPIRIT_ARMOR = ConfigHolder.BORNCONFIG.PUMPKIN_SPIRIT_ARMOR.get();
@@ -598,12 +592,12 @@ public class BIConfig {
             LIFESTEALER_SPAWN_ENABLED = ConfigHolder.BORNCONFIG.LIFESTEALER_SPAWN_ENABLED.get();
 
 
-             SUPREME_BONES_CALLER_SPEED = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_SPEED.get();
-             SUPREME_BONES_CALLER_HEALTH = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_HEALTH.get();
-             SUPREME_BONES_CALLER_ARMOR = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_ARMOR.get();
-             SUPREME_BONES_CALLER_DAMAGE = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_DAMAGE.get();
-             SUPREME_BONES_CALLER_KNOCKBACK = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_KNOCKBACK.get();
-             SUPREME_BONES_CALLER_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_KNOCKBACK_RESISTANCE.get();
+            SUPREME_BONES_CALLER_SPEED = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_SPEED.get();
+            SUPREME_BONES_CALLER_HEALTH = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_HEALTH.get();
+            SUPREME_BONES_CALLER_ARMOR = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_ARMOR.get();
+            SUPREME_BONES_CALLER_DAMAGE = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_DAMAGE.get();
+            SUPREME_BONES_CALLER_KNOCKBACK = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_KNOCKBACK.get();
+            SUPREME_BONES_CALLER_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.SUPREME_BONES_CALLER_KNOCKBACK_RESISTANCE.get();
 
         } catch (Exception e) {
             LOGGER.warn("An exception was caused trying to load the config for Born In Configuration");

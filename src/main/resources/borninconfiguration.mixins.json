@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "package": "com.crimsoncrips.borninconfiguration.mixins",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "BornInConfiguration.refmap.json",
+  "refmap": "borninconfiguration.refmap.json",
   "mixins": [
     "InfestedDiamonds",
     "RottenConsumption",
@@ -52,7 +52,6 @@
     "mobs.lifestealer.Lifestealer",
     "mobs.lifestealer.LifestealerConvert",
     "mobs.lifestealer.LifestealerTrueFormEntity",
-    "mobs.phantomcreeper.ClonePhantomCreeper",
     "mobs.phantomcreeper.PhantomCreeper",
     "mobs.skeletonbomber.Kamikaze",
     "mobs.skeletonbomber.SkeletonBomber",

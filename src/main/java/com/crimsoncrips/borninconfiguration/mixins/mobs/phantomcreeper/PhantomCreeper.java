@@ -24,7 +24,7 @@ public abstract class PhantomCreeper extends Monster {
     }
 
 
-    @Inject(method = "createAttributes", at = @At("HEAD"), cancellable = true, remap = false)
+    @Inject(method = "createAttributes", at = @At("HEAD"), cancellable = true)
     private static void injected(CallbackInfoReturnable<AttributeSupplier.Builder> cir) {
         cir.setReturnValue(doSomething4());
     }
@@ -38,7 +38,7 @@ public abstract class PhantomCreeper extends Monster {
         builder = builder.add(Attributes.ARMOR, BIConfig.PHANTOM_CREEPER_ARMOR);
         builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.PHANTOM_CREEPER_DAMAGE);
         builder = builder.add(Attributes.FOLLOW_RANGE, 16.0);
-        builder = builder.add(Attributes.ATTACK_KNOCKBACK, BIConfig.PHANTOM_CREEPER_KNOCKBACK);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, 0.1);
         return builder;
     }
 
