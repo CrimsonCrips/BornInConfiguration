@@ -33,12 +33,12 @@ public abstract class MrPumpkin extends Monster {
 
     private static AttributeSupplier.Builder doSomething4() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.LORD_PUMPKINHEAD_SPEED);
-        builder = builder.add(Attributes.MAX_HEALTH, BIConfig.LORD_PUMPKINHEAD_HEALTH);
-        builder = builder.add(Attributes.ARMOR, BIConfig.LORD_PUMPKINHEAD_ARMOR);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.LORD_PUMPKINHEAD_DAMAGE);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.MR_PUMPKIN_SPEED);
+        builder = builder.add(Attributes.MAX_HEALTH, BIConfig.MR_PUMPKIN_HEALTH);
+        builder = builder.add(Attributes.ARMOR, BIConfig.MR_PUMPKIN_ARMOR);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.MR_PUMPKIN_DAMAGE);
         builder = builder.add(Attributes.FOLLOW_RANGE, 20.0);
-        builder = builder.add(Attributes.ATTACK_KNOCKBACK, BIConfig.LORD_PUMPKINHEAD_KNOCKBACK);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, BIConfig.MR_PUMPKIN_KNOCKBACK_RESISTANCE);
         return builder;
     }
 

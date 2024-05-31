@@ -33,12 +33,12 @@ public abstract class DreadhoundLeader extends Monster {
 
     private static AttributeSupplier.Builder doSomething4() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.DREADHOUND_SPEED);
-        builder = builder.add(Attributes.MAX_HEALTH, BIConfig.DREADHOUND_HEALTH);
-        builder = builder.add(Attributes.ARMOR, BIConfig.DREADHOUND_ARMOR);
-        builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.DREADHOUND_DAMAGE);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.DREADHOUND_LEADER_SPEED);
+        builder = builder.add(Attributes.MAX_HEALTH, BIConfig.DREADHOUND_LEADER_HEALTH);
+        builder = builder.add(Attributes.ARMOR, BIConfig.DREADHOUND_LEADER_ARMOR);
+        builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.DREADHOUND_LEADER_DAMAGE);
         builder = builder.add(Attributes.FOLLOW_RANGE, 18.0);
-        builder = builder.add(Attributes.ATTACK_KNOCKBACK, BIConfig.DREADHOUND_KNOCKBACK);
+        builder = builder.add(Attributes.ATTACK_KNOCKBACK, BIConfig.DREADHOUND_LEADER_KNOCKBACK);
         builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, BIConfig.DREADHOUND_LEADER_KNOCKBACK_RESISTANCE);
         return builder;
     }

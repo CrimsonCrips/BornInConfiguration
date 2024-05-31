@@ -33,13 +33,13 @@ public abstract class SenorPumpkinhead extends Monster {
 
     private static AttributeSupplier.Builder doSomething4() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.SENOR_PUMPKIN_HEAD_ARMOR);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.SENOR_PUMPKIN_HEAD_SPEED);
         builder = builder.add(Attributes.MAX_HEALTH, BIConfig.SENOR_PUMPKIN_HEAD_HEALTH);
         builder = builder.add(Attributes.ARMOR, BIConfig.SENOR_PUMPKIN_HEAD_ARMOR);
         builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.SENOR_PUMPKIN_HEAD_DAMAGE);
         builder = builder.add(Attributes.FOLLOW_RANGE, 25.0);
         builder = builder.add(Attributes.ATTACK_KNOCKBACK, BIConfig.SENOR_PUMPKIN_HEAD_KNOCKBACK);
-        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, BIConfig.SENOR_PUMPKIN_HEAD_KNOCKBACK);
+        builder = builder.add(Attributes.KNOCKBACK_RESISTANCE, BIConfig.SENOR_PUMPKIN_HEAD_KNOCKBACK_RESISTANCE);
         builder = builder.add(Attributes.FLYING_SPEED, BIConfig.SENOR_PUMPKIN_HEAD_FLYING_SPEED);
         return builder;
     }

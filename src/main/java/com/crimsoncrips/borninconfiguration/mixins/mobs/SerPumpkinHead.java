@@ -35,7 +35,7 @@ public abstract class SerPumpkinHead extends Monster {
 
     private static AttributeSupplier.Builder doSomething4() {
         AttributeSupplier.Builder builder = Mob.createMobAttributes();
-        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.SER_PUMPKIN_HEAD_ARMOR);
+        builder = builder.add(Attributes.MOVEMENT_SPEED, BIConfig.SER_PUMPKIN_HEAD_SPEED);
         builder = builder.add(Attributes.MAX_HEALTH, BIConfig.SER_PUMPKIN_HEAD_HEALTH);
         builder = builder.add(Attributes.ARMOR, BIConfig.SER_PUMPKIN_HEAD_ARMOR);
         builder = builder.add(Attributes.ATTACK_DAMAGE, BIConfig.SER_PUMPKIN_HEAD_DAMAGE);

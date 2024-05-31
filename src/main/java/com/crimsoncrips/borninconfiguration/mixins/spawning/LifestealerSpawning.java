@@ -31,7 +31,7 @@ public class LifestealerSpawning {
 
 
     private static boolean doSomething4(LevelAccessor world, double x, double y, double z) {
-        if (world.dayTime() >= (13000L * BIConfig.DAYS_TILL_NIGHTMARE) && (world.canSeeSkyFromBelowWater(BlockPos.containing(x, y + 1.0, z)) && world.getMaxLocalRawBrightness(BlockPos.containing(x, y, z)) <= 4 || !world.canSeeSkyFromBelowWater(BlockPos.containing(x, y + 1.0, z)) && world.getMaxLocalRawBrightness(BlockPos.containing(x, y, z)) <= 0) && !world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("deep_dark")) && !world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("mushroom_fields")) && !world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("plains")) && BIConfig.LIFESTEALER_SPAWN_ENABLED) {
+        if (world.dayTime() >= (13000L * BIConfig.DAYS_TILL_LIFESTEALER) && (world.canSeeSkyFromBelowWater(BlockPos.containing(x, y + 1.0, z)) && world.getMaxLocalRawBrightness(BlockPos.containing(x, y, z)) <= 4 || !world.canSeeSkyFromBelowWater(BlockPos.containing(x, y + 1.0, z)) && world.getMaxLocalRawBrightness(BlockPos.containing(x, y, z)) <= 0) && !world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("deep_dark")) && !world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("mushroom_fields")) && !world.getBiome(BlockPos.containing(x, y, z)).is(new ResourceLocation("plains")) && BIConfig.LIFESTEALER_SPAWN_ENABLED) {
             ResourceKey var10000;
             if (world instanceof Level) {
                 Level _lvl = (Level)world;
