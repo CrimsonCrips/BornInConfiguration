@@ -1,4 +1,4 @@
-package com.crimsoncrips.borninconfiguration.mixins.mobs.decayingzombie;
+package com.crimsoncrips.borninconfiguration.mixins.healtharguments;
 
 
 import net.mcreator.borninchaosv.init.BornInChaosV1ModEntities;

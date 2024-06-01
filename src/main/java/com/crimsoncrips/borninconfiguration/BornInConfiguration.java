@@ -3,6 +3,7 @@ package com.crimsoncrips.borninconfiguration;
 
 import com.crimsoncrips.borninconfiguration.config.BIConfig;
 import com.crimsoncrips.borninconfiguration.config.ConfigHolder;
+import com.crimsoncrips.borninconfiguration.event.BIConfigEvent;
 import com.crimsoncrips.borninconfiguration.utils.EntityUtils;
 import net.mcreator.borninchaosv.entity.DarkVortexEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -34,7 +35,7 @@ public class BornInConfiguration {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::onModConfigEvent);
         MinecraftForge.EVENT_BUS.register(this);
-
+        MinecraftForge.EVENT_BUS.register(new BIConfigEvent());
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHolder.BORNCONFIG_SPEC, "borninconfiguration.toml");
 
@@ -46,24 +47,6 @@ public class BornInConfiguration {
         if (config.getSpec() == ConfigHolder.BORNCONFIG_SPEC) {
             BIConfig.bake();
         }
-    }
-
-    @SubscribeEvent
-    public void onMobSpawn(MobSpawnEvent.FinalizeSpawn event) {
-        Mob mob = event.getEntity();
-
-        if (mob instanceof DarkVortexEntity) {
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.DARK_VORTEX_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.DARK_VORTEX_HEALTH);
-            mob.setHealth((float) BIConfig.DARK_VORTEX_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.DARK_VORTEX_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.DARK_VORTEX_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.FOLLOW_RANGE, 17.0);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.DARK_VORTEX_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.DARK_VORTEX_KNOCKBACK_RESISTANCE);
-        }
-
-        // TODO: Add more entities here
     }
 
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

@@ -1,4 +1,4 @@
-package com.crimsoncrips.borninconfiguration.mixins.mobs.skeletonbomber;
+package com.crimsoncrips.borninconfiguration.mixins.healtharguments;
 
 
 import com.crimsoncrips.borninconfiguration.config.BIConfig;
