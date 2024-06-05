@@ -28,7 +28,7 @@
     "spawning.FallenChaosKnightSpawning",
     "spawning.FirelightSpawning",
     "spawning.GluttonFishSpawning",
-    "spawning.LifestealerSpawning",
+    "spawning.lifestealer.LifestealerSpawning",
     "spawning.MissionerSpawning",
     "spawning.PhantomCreeperSpawning",
     "spawning.RestlessSpiritSpawning",

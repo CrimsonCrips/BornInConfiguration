@@ -35,38 +35,31 @@ public abstract class LifestealerConvert {
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         ci.cancel();
-        if (entity != null) {
+        if (entity instanceof LivingEntity livingEntity) {
             if (world instanceof ServerLevel) {
                 ServerLevel _level = (ServerLevel)world;
                 _level.sendParticles((SimpleParticleType) BornInChaosV1ModParticleTypes.DIM.get(), x, y, z, 2, 0.3, 0.2, 0.3, 0.1);
             }
 
-            LivingEntity _livEntity = (LivingEntity)entity;
-            float var10000 = _livEntity.getHealth();
-            float maxHealth = _livEntity.getMaxHealth();
-
-            if (var10000 <= 0.99F * maxHealth) {
-                if (world instanceof ServerLevel) {
-                    ServerLevel _level = (ServerLevel)world;
-                    Entity entityToSpawn = ((EntityType) BornInChaosV1ModEntities.LIFESTEALER_TRUE_FORM.get()).spawn(_level, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
+            if (livingEntity.getHealth() <= 0.99F * livingEntity.getMaxHealth()) {
+                if (world instanceof ServerLevel serverLevel) {
+                    Entity entityToSpawn = ((EntityType) BornInChaosV1ModEntities.LIFESTEALER_TRUE_FORM.get()).spawn(serverLevel, BlockPos.containing(x, y, z), MobSpawnType.MOB_SUMMONED);
                     if (entityToSpawn != null) {
                         entityToSpawn.setYRot(entity.getYRot());
                         entityToSpawn.setYBodyRot(entity.getYRot());
                         entityToSpawn.setYHeadRot(entity.getYRot());
                         entityToSpawn.setXRot(entity.getXRot());
                     }
+                    if (!entity.level().isClientSide()) {
+                        entity.discard();
+                    }
                 }
 
-                if (!entity.level().isClientSide()) {
-                    entity.discard();
-                }
-
-                if (world instanceof Level) {
-                    Level _level = (Level)world;
-                    if (!_level.isClientSide()) {
-                        _level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("born_in_chaos_v1:lifestealer_scream_ap")), SoundSource.NEUTRAL, 3.0F, 1.0F);
+                if (world instanceof Level level) {
+                    if (!level.isClientSide()) {
+                        level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("born_in_chaos_v1:lifestealer_scream_ap")), SoundSource.NEUTRAL, 3.0F, 1.0F);
                     } else {
-                        _level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("born_in_chaos_v1:lifestealer_scream_ap")), SoundSource.NEUTRAL, 3.0F, 1.0F, false);
+                        level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("born_in_chaos_v1:lifestealer_scream_ap")), SoundSource.NEUTRAL, 3.0F, 1.0F, false);
                     }
                 }
             }

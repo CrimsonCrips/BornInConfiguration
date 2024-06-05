@@ -1,4 +1,4 @@
-package com.crimsoncrips.borninconfiguration.mixins.spawning;
+package com.crimsoncrips.borninconfiguration.mixins.spawning.lifestealer;
 
 
 import com.crimsoncrips.borninconfiguration.config.BIConfig;

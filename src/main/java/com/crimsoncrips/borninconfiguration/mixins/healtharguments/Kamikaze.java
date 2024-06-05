@@ -36,46 +36,25 @@ public abstract class Kamikaze{
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         ci.cancel();
-        if (entity != null) {
-            float var10000;
-            float maxHealth;
+        if (entity instanceof LivingEntity livingEntity) {
+            if (livingEntity.getHealth() <= 0.60F * livingEntity.getMaxHealth()) {
 
-            LivingEntity _livEnt = (LivingEntity)entity;
-            var10000 = _livEnt.getHealth();
-            maxHealth = _livEnt.getMaxHealth();
-
-            if (var10000 <= 0.60F * maxHealth) {
-                if (entity instanceof LivingEntity) {
-                    LivingEntity _livEnt1 = (LivingEntity)entity;
-                    if (_livEnt1.hasEffect((MobEffect) BornInChaosV1ModMobEffects.DETONATION.get())) {
+                    if (livingEntity.hasEffect((MobEffect) BornInChaosV1ModMobEffects.DETONATION.get())) {
                         return;
                     }
+
+                if (!livingEntity.level().isClientSide()) {
+                    livingEntity.addEffect(new MobEffectInstance(BornInChaosV1ModMobEffects.DETONATION.get(), 80, 0, false, false));
+                    livingEntity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 5, false, false));
+
                 }
 
-                LivingEntity _livEnt4;
-                if (entity instanceof LivingEntity) {
-                    _livEnt4 = (LivingEntity)entity;
-                    if (!_livEnt4.level().isClientSide()) {
-                        _livEnt4.addEffect(new MobEffectInstance((MobEffect)BornInChaosV1ModMobEffects.DETONATION.get(), 80, 0, false, false));
-                    }
-                }
+                if (livingEntity.hasEffect(BornInChaosV1ModMobEffects.DETONATION.get()) && world instanceof Level level) {
 
-                if (entity instanceof LivingEntity) {
-                    _livEnt4 = (LivingEntity)entity;
-                    if (!_livEnt4.level().isClientSide()) {
-                        _livEnt4.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 80, 5, false, false));
-                    }
-                }
-
-                if (entity instanceof LivingEntity) {
-                    _livEnt4 = (LivingEntity)entity;
-                    if (_livEnt4.hasEffect((MobEffect)BornInChaosV1ModMobEffects.DETONATION.get()) && world instanceof Level) {
-                        Level _level = (Level)world;
-                        if (!_level.isClientSide()) {
-                            _level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.creeper.primed")), SoundSource.NEUTRAL, 1.0F, 1.0F);
-                        } else {
-                            _level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.creeper.primed")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
-                        }
+                    if (!level.isClientSide()) {
+                        level.playSound((Player)null, BlockPos.containing(x, y, z), (SoundEvent) ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.creeper.primed")), SoundSource.NEUTRAL, 1.0F, 1.0F);
+                    } else {
+                        level.playLocalSound(x, y, z, (SoundEvent)ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("entity.creeper.primed")), SoundSource.NEUTRAL, 1.0F, 1.0F, false);
                     }
                 }
             }
