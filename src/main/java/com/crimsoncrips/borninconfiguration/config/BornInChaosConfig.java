@@ -323,6 +323,8 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.IntValue DAYS_TILL_MISSIONER;
     public final ForgeConfigSpec.IntValue DAYS_TILL_NIGHTMARE;
 
+    public final ForgeConfigSpec.BooleanValue RETALLIATION_ENABLED;
+
 
 
 
@@ -332,6 +334,8 @@ public class BornInChaosConfig {
         this.ROTTEN_CONSUMPTION_ENABLED = buildBoolean(builder, "ROTTEN_CONSUMPTION_ENABLED", true, "Whether Rotten Flesh afflicts you with Rotten Stink");
         this.SOUL_STRATIFICATION_EFFECT_ENABLED = buildBoolean(builder, "SOUL_STRATIFICATION_EFFECT_ENABLED", true, "Whether soul stratisfaction is enabled");
         this.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED = buildBoolean(builder, "SPIRIT_DISSAPPEAR_IN_SUN_ENABLED", true, "Whether spirits disappear in the sun is enabled");
+        this.RETALLIATION_ENABLED = buildBoolean(builder, "RETALLIATION_ENABLED", true, "Whether mobs retalliate to other mobs attacking them");
+
         builder.pop();
         builder.push("Baby Skeleton");
         this.BABY_SKELETON_ARMOR = buildDouble(builder, "BABY_SKELETON_ARMOR", 1.0);

@@ -9,7 +9,7 @@ public class BIConfig {
 
 
 
-
+    public static boolean RETALLIATION_ENABLED;
     public static boolean BABY_SKELETON_SPAWNING_ENABLED;
     public static boolean BLOODY_GADFLY_SPAWNING_ENABLED;
     public static boolean BONES_CALLER_SPAWNING_ENABLED;
@@ -662,6 +662,7 @@ public class BIConfig {
             ZOMBIE_LUMBERJACK_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.ZOMBIE_LUMBERJACK_KNOCKBACK_RESISTANCE.get();
             ZOMBIE_LUMBERJACK_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.ZOMBIE_LUMBERJACK_SPAWNING_ENABLED.get();
             ZOMBIE_LUMBERJACK_SPEED = ConfigHolder.BORNCONFIG.ZOMBIE_LUMBERJACK_SPEED.get();
+            RETALLIATION_ENABLED = ConfigHolder.BORNCONFIG.RETALLIATION_ENABLED.get();
             } catch (Exception e) {
             LOGGER.warn("An exception was caused trying to load the config for Born In Configuration");
             e.printStackTrace();

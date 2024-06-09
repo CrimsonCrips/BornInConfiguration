@@ -38,7 +38,6 @@ public class BornInConfiguration {
         MinecraftForge.EVENT_BUS.register(new BIConfigEvent());
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, ConfigHolder.BORNCONFIG_SPEC, "borninconfiguration.toml");
-
     }
 
     public void onModConfigEvent(final ModConfigEvent event) {
