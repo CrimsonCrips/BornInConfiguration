@@ -16,7 +16,7 @@ license="MIT"
 # The modid of the mod
 modId="borninconfiguration" #mandatory
 # The version number of the mod
-version="1.3.2" #mandatory
+version="1.4" #mandatory
 # A display name for the mod
 displayName="Born In Configuration" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
