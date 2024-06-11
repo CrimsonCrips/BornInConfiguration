@@ -96,6 +96,7 @@ public class BIConfig {
     public static double DARK_VORTEX_SPEED;
     public static double DECAYING_ZOMBIE_ARMOR;
     public static double DECAYING_ZOMBIE_DAMAGE;
+    public static int SCARLET_SPAWN_AMMOUNT;
     public static double DECAYING_ZOMBIE_HEALTH;
     public static double DECAYING_ZOMBIE_KNOCKBACK;
     public static double DECAYING_ZOMBIE_SPEED;
@@ -336,6 +337,7 @@ public class BIConfig {
 
     public static void bake() {
         try {
+            SCARLET_SPAWN_AMMOUNT = ConfigHolder.BORNCONFIG.SCARLET_SPAWN_AMMOUNT.get();
             LORD_HEADLESS_ARMOR = ConfigHolder.BORNCONFIG.LORD_HEADLESS_ARMOR.get();
             LORD_HEADLESS_DAMAGE = ConfigHolder.BORNCONFIG.LORD_HEADLESS_DAMAGE.get();
             LORD_HEADLESS_HEALTH = ConfigHolder.BORNCONFIG.LORD_HEADLESS_HEALTH.get();

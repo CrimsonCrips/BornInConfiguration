@@ -322,6 +322,7 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.IntValue DAYS_TILL_LIFESTEALER;
     public final ForgeConfigSpec.IntValue DAYS_TILL_MISSIONER;
     public final ForgeConfigSpec.IntValue DAYS_TILL_NIGHTMARE;
+    public final ForgeConfigSpec.IntValue SCARLET_SPAWN_AMMOUNT;
 
     public final ForgeConfigSpec.BooleanValue RETALLIATION_ENABLED;
 
@@ -593,6 +594,7 @@ public class BornInChaosConfig {
         this.RESTLESS_SPIRIT_SPEED = buildDouble(builder, "RESTLESS_SPIRIT_SPEED", 0.4);
         builder.pop();
         builder.push("Scarlet Prosecuter");
+        this.SCARLET_SPAWN_AMMOUNT = buildInt(builder, "SCARLET_SPAWN_AMMOUNT", 5, 0,1000,"Amount of Scarlet Prosecuters (setting it to 0 will cause non to spawn)");
         this.SCARLET_PROSECUTER_ARMOR = buildDouble(builder, "SCARLET_PROSECUTER_ARMOR", 0.0);
         this.SCARLET_PROSECUTER_DAMAGE = buildDouble(builder, "SCARLET_PROSECUTER_DAMAGE", 5.0);
         this.SCARLET_PROSECUTER_FLYING_SPEED = buildDouble(builder, "SCARLET_PROSECUTER_FLYING_SPEED", 0.6);
