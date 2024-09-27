@@ -488,12 +488,12 @@ public class BornInChaosConfig {
         this.GLUTTON_FISH_SWIM_SPEED = buildDouble(builder, "GLUTTON_FISH_SWIM_SPEED", 0.7);
         builder.pop();
         builder.push("Infernal Spirit");
-        this.INFERNAL_SPIRIT_ARMOR = buildDouble(builder, "GLUTTON_FISH_SPEED", 0.22);
-        this.INFERNAL_SPIRIT_DAMAGE = buildDouble(builder, "GLUTTON_FISH_DAMAGE", 16.0);
-        this.INFERNAL_SPIRIT_HEALTH = buildDouble(builder, "GLUTTON_FISH_HEALTH", 90.0);
-        this.INFERNAL_SPIRIT_KNOCKBACK = buildDouble(builder, "GLUTTON_FISH_KNOCKBACK", 2.3);
-        this.INFERNAL_SPIRIT_KNOCKBACK_RESISTANCE = buildDouble(builder, "GLUTTON_FISH_KNOCKBACK_RESISTANCE", 0.9);
-        this.INFERNAL_SPIRIT_SPEED = buildDouble(builder, "GLUTTON_FISH_ARMOR", 12.0);
+        this.INFERNAL_SPIRIT_ARMOR = buildDouble(builder, "INFERNAL_SPIRIT_ARMOR", 0.22);
+        this.INFERNAL_SPIRIT_DAMAGE = buildDouble(builder, "INFERNAL_SPIRIT_DAMAGE", 16.0);
+        this.INFERNAL_SPIRIT_HEALTH = buildDouble(builder, "INFERNAL_SPIRIT_HEALTH", 90.0);
+        this.INFERNAL_SPIRIT_KNOCKBACK = buildDouble(builder, "INFERNAL_SPIRIT_KNOCKBACK", 2.3);
+        this.INFERNAL_SPIRIT_KNOCKBACK_RESISTANCE = buildDouble(builder, "INFERNAL_SPIRIT_KNOCKBACK_RESISTANCE", 0.9);
+        this.INFERNAL_SPIRIT_SPEED = buildDouble(builder, "INFERNAL_SPIRIT_SPEED", 12.0);
         builder.pop();
         builder.push("Lifestealer");
         this.DAYS_TILL_LIFESTEALER = buildInt(builder, "DAYS_TILL_LIFESTEALER", 10, 1,999999,"Days till Lifestealer spawns");
