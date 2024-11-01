@@ -727,7 +727,7 @@ public class BornInChaosConfig {
         this.MOTHER_SPIDER_HEALTH = buildDouble(builder, "MOTHER_SPIDER_HEALTH", 90);
         this.MOTHER_SPIDER_KNOCKBACK = buildDouble(builder, "MOTHER_SPIDER_KNOCKBACK", 1);
         this.MOTHER_SPIDER_KNOCKBACK_RESISTANCE = buildDouble(builder, "MOTHER_SPIDER_KNOCKBACK_RESISTANCE", 1);
-        this.MOTHER_SPIDER_SPEED = buildDouble(builder, "MOTHER_SPIDER_SPEED", 1.3);
+        this.MOTHER_SPIDER_SPEED = buildDouble(builder, "MOTHER_SPIDER_SPEED", 0.3);
         builder.pop();
         builder.push("Mr Pumpkin Head");
         this.MR_PUMPKIN_SPAWNING_ENABLED = buildBoolean(builder, "MR_PUMPKIN_SPAWNING_ENABLED", true, ".");
