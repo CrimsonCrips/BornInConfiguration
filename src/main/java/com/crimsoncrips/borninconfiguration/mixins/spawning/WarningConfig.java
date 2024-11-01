@@ -28,6 +28,8 @@ public class WarningConfig {
         ci.cancel();
         if (entity == null)
             return;
+        if (!BIConfig.WARNING_SPAWN_ENABLED)
+            return;
         Player player = (Player)entity;
         if (BIConfig.NIGHTMARE_STALKER_SPAWNING_ENABLED && world.dayTime() == BIConfig.DAYS_TILL_NIGHTMARE * 24000L){
             if (world instanceof Level level){

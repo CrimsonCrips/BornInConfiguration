@@ -437,6 +437,7 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.DoubleValue SPIRIT_OF_CHAOS_KNOCKBACK;
     public final ForgeConfigSpec.BooleanValue SPIRIT_OF_CHAOS_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue SWARMER_SPAWNING_ENABLED;
+    public final ForgeConfigSpec.BooleanValue WARNING_SPAWN_ENABLED;
 
 
     public BornInChaosConfig(final ForgeConfigSpec.Builder builder) {
@@ -448,9 +449,9 @@ public class BornInChaosConfig {
         this.RETALLIATION_ENABLED = buildBoolean(builder, "RETALLIATION_ENABLED", true, "Whether mobs retalliate to other mobs attacking them");
         this.PHANTOM_BOMB_COUNT = buildInt(builder, "PHANTOM_BOMB_COUNT", 2, 1,999999,"Amount of phantom bombs that gets spawned when thrown");
         this.INFESTED_DIAMONDS_ENABLED = buildBoolean(builder, "INFESTED_DIAMONDS_ENABLED", true, "Whether infested diamonds generate");
+        this.WARNING_SPAWN_ENABLED = buildBoolean(builder, "WARNING_SPAWN_ENABLED", true, "Whether messages appear for Missioners and Nightmare Stalkers");
 
-
-        builder.pop();
+        builder.push("Mobs");
         builder.push("Baby Skeleton");
         this.BABY_SKELETON_ARMOR = buildDouble(builder, "BABY_SKELETON_ARMOR", 1.0);
         this.BABY_SKELETON_DAMAGE = buildDouble(builder, "BABY_SKELETON_DAMAGE", 2.0);

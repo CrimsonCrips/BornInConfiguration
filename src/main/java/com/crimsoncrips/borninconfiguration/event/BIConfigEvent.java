@@ -897,11 +897,186 @@ public class BIConfigEvent {
             }
         }
 
-        if(entityType == BornInChaosV1ModEntities.MAGGOT.get()){
-            if (true) {
+        if(entityType == BornInChaosV1ModEntities.MISSIONER.get()){
+            if (BIConfig.MISSIONER_SPAWNING_ENABLED) {
+                if (time >= (24000L * BIConfig.DAYS_TILL_MISSIONER)) {
+                    spawnPlacementCheck.setResult(Event.Result.ALLOW);
+                }
+            } else {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
             }
         }
+
+        if(entityType == BornInChaosV1ModEntities.MOTHER_SPIDER.get()){
+            if (BIConfig.MOTHER_SPIDER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.MR_PUMPKIN.get()){
+            if (BIConfig.MR_PUMPKIN_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.NIGHTMARE_STALKER.get()){
+            if (BIConfig.NIGHTMARE_STALKER_SPAWNING_ENABLED) {
+                if (time >= (24000L * BIConfig.DAYS_TILL_NIGHTMARE)) {
+                    spawnPlacementCheck.setResult(Event.Result.ALLOW);
+                }
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.PHANTOM_CREEPER.get()){
+            if (BIConfig.PHANTOM_CREEPER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.PUMPKINHEAD.get()){
+            if (BIConfig.PUMPKIN_HEAD_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.RESTLESS_SPIRIT.get()){
+            if (BIConfig.RESTLESS_SPIRIT_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+        if(entityType == BornInChaosV1ModEntities.SEARED_SPIRIT.get()){
+            if (BIConfig.SEARED_SPIRIT_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SENOR_PUMPKIN.get()){
+            if (BIConfig.SENOR_PUMPKIN_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SIAMESE_SKELETONS.get()){
+            if (BIConfig.SIAMESE_SKELETON_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SIR_PUMPKINHEAD.get()){
+            if (BIConfig.SIR_PUMPKINHEAD_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SKELETON_DEMOMAN.get()){
+            if (BIConfig.SKELETON_DEMOMAN_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SKELETON_THRASHER.get()){
+            if (BIConfig.SKELETON_THRASHER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SPIRIT_GUIDE.get()){
+            if (BIConfig.SPIRIT_GUIDE_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SPIRITOF_CHAOS.get()){
+            if (BIConfig.SPIRIT_OF_CHAOS_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SUPREME_BONESCALLER.get() || entityType == BornInChaosV1ModEntities.SUPREME_BONESCALLER_NOT_DESPAWN.get() ){
+            if (BIConfig.SUPREME_BONESCALLER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.SWARMER.get()){
+            if (BIConfig.SWARMER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.THORNSHELL_CRAB.get()){
+            if (BIConfig.THORNSHELL_CRAB_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.ZOMBIE_BRUISER.get()){
+            if (BIConfig.ZOMBIE_BRUISER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.ZOMBIE_CLOWN.get()){
+            if (BIConfig.ZOMBIE_CLOWN_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.ZOMBIE_FISHERMAN.get()){
+            if (BIConfig.ZOMBIE_FISHERMAN_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.ZOMBIE_LUMBERJACK.get()){
+            if (BIConfig.ZOMBIE_LUMBERJACK_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+
 
 
 

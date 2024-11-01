@@ -531,6 +531,7 @@ public class BIConfig {
     public static boolean STALKER_IMMUNITY_ENABLED;
     public static boolean SOUL_STRATIFICATION_EFFECT_ENABLED;
     public static boolean SPIRIT_DISSAPPEAR_IN_SUN_ENABLED;
+    public static boolean WARNING_SPAWN_ENABLED;
     public static int PHANTOM_BOMB_COUNT;
 
 
@@ -1055,7 +1056,7 @@ public class BIConfig {
             SOUL_STRATIFICATION_EFFECT_ENABLED = ConfigHolder.BORNCONFIG.SOUL_STRATIFICATION_EFFECT_ENABLED.get();
             SPIRIT_DISSAPPEAR_IN_SUN_ENABLED = ConfigHolder.BORNCONFIG.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED.get();
             STALKER_IMMUNITY_ENABLED = ConfigHolder.BORNCONFIG.STALKER_IMMUNITY_ENABLED.get();
-
+            WARNING_SPAWN_ENABLED = ConfigHolder.BORNCONFIG.WARNING_SPAWN_ENABLED.get();
 
 
 

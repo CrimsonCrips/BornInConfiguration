@@ -10,16 +10,8 @@
     "SoulStratisfaction",
     "SpiritsDissapearInSun",
     "StalkerImmunity",
-    "healtharguments.ConvertSkeleton",
-    "healtharguments.Kamikaze",
-    "healtharguments.LifestealerConvert",
-    "healtharguments.SiameseSplit",
     "spawning.ScarletProsecuterSpawning",
     "spawning.WarningConfig",
-    "spawning.maggot.BarrelZombieMaggot",
-    "spawning.maggot.DoorKnightMaggot",
-    "spawning.maggot.ZombieClownMaggot",
-    "spawning.maggot.ZombieMaggot",
     "weapon.PhantomBomb"
   ],
   "client": [
