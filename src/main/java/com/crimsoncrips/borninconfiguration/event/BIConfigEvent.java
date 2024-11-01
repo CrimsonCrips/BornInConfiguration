@@ -5,12 +5,18 @@ import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import com.crimsoncrips.borninconfiguration.config.BIConfig;
 import com.crimsoncrips.borninconfiguration.utils.EntityUtils;
 import net.mcreator.borninchaosv.entity.*;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.PathfinderMob;
+import net.mcreator.borninchaosv.init.BornInChaosV1ModEntities;
+import net.mcreator.borninchaosv.init.BornInChaosV1ModItems;
+import net.minecraft.core.Holder;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.SpawnData;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -30,6 +36,19 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.BABY_SKELETON_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.BABY_SKELETON_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.BABY_SKELETON_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.BABY_SKELETON_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof BabySpiderEntity || mob instanceof BabySpiderControlledEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.BABY_SPIDER_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.BABY_SPIDER_HEALTH);
+            mob.setHealth((float) BIConfig.BABY_SPIDER_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.BABY_SPIDER_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.BABY_SPIDER_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.BABY_SPIDER_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.BABY_SPIDER_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof BarrelZombieEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -55,7 +74,7 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.BLOODY_GADFLY_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.BLOODY_GADFLY_KNOCKBACK_RESISTANCE);
         }
-        if (mob instanceof BoneImpEntity) {
+        if (mob instanceof BoneImpEntity || mob instanceof BoneImpMinionEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
@@ -66,18 +85,6 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.BONE_IMP_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.BONE_IMP_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.BONE_IMP_KNOCKBACK_RESISTANCE);
-        }
-        if (mob instanceof BoneImpMinionEntity) {
-            if (BIConfig.RETALLIATION_ENABLED){
-                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
-            }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.BONE_MINION_IMP_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.BONE_MINION_IMP_HEALTH);
-            mob.setHealth((float) BIConfig.BONE_MINION_IMP_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.BONE_MINION_IMP_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.BONE_MINION_IMP_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.BONE_MINION_IMP_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.BONE_MINION_IMP_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof BonescallerEntity || mob instanceof BonescallerNotDespawnEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -90,6 +97,30 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.BONES_CALLER_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.BONES_CALLER_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.BONES_CALLER_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof ControlledBabySkeletonEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.CONTROLLED_BABY_SKELETON_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.CONTROLLED_BABY_SKELETON_HEALTH);
+            mob.setHealth((float) BIConfig.CONTROLLED_BABY_SKELETON_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.CONTROLLED_BABY_SKELETON_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.CONTROLLED_BABY_SKELETON_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.CONTROLLED_BABY_SKELETON_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.CONTROLLED_BABY_SKELETON_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof ControlledSpiritualAssistantEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.CONTROLLED_SPIRITUAL_ASSISTANT_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.CONTROLLED_SPIRITUAL_ASSISTANT_HEALTH);
+            mob.setHealth((float) BIConfig.CONTROLLED_SPIRITUAL_ASSISTANT_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.CONTROLLED_SPIRITUAL_ASSISTANT_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.CONTROLLED_SPIRITUAL_ASSISTANT_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.CONTROLLED_SPIRITUAL_ASSISTANT_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.CONTROLLED_SPIRITUAL_ASSISTANT_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof CorpseFishEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -114,7 +145,6 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.CORPSE_FLY_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.CORPSE_FLY_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.CORPSE_FLY_KNOCKBACK_RESISTANCE);
-
         }
         if (mob instanceof DarkVortexEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -138,6 +168,8 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.DECAYING_ZOMBIE_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.DECAYING_ZOMBIE_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.DECAYING_ZOMBIE_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.DECAYING_ZOMBIE_KNOCKBACK_RESISTANCE);
+
         }
         if (mob instanceof DecrepitSkeletonEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -149,6 +181,8 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.DECREPIT_SKELETON_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.DECREPIT_SKELETON_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.DECREPIT_SKELETON_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.DECAYING_ZOMBIE_KNOCKBACK_RESISTANCE);
+
         }
         if (mob instanceof DiamondThermiteEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -178,25 +212,37 @@ public class BIConfigEvent {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.DREADHOUND_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.DREADHOUND_HEALTH);
-            mob.setHealth((float) BIConfig.DREADHOUND_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.DREADHOUND_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.DREADHOUND_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.DREADHOUND_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.DREADHOUND_KNOCKBACK_RESISTANCE);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.DREAD_HOUND_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.DREAD_HOUND_HEALTH);
+            mob.setHealth((float) BIConfig.DREAD_HOUND_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.DREAD_HOUND_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.DREAD_HOUND_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.DREAD_HOUND_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.DREAD_HOUND_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof FallenChaosKnightEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.FALLEN_CHAOS_KNIGHT_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.FALLEN_CHAOS_KNIGHT_HEALTH);
-            mob.setHealth((float) BIConfig.FALLEN_CHAOS_KNIGHT_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.FALLEN_CHAOS_KNIGHT_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.FALLEN_CHAOS_KNIGHT_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.FALLEN_CHAOS_KNIGHT_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.FALLEN_CHAOS_KNIGHT_KNOCKBACK_RESISTANCE);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.FALLEN_KNIGHT_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.FALLEN_KNIGHT_HEALTH);
+            mob.setHealth((float) BIConfig.FALLEN_KNIGHT_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.FALLEN_KNIGHT_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.FALLEN_KNIGHT_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.FALLEN_KNIGHT_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.FALLEN_KNIGHT_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof FelsteedEntity || mob instanceof RidingFelsteedEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.FELSTEED_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.FELSTEED_HEALTH);
+            mob.setHealth((float) BIConfig.FELSTEED_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.FELSTEED_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.FELSTEED_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.FELSTEED_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.FELSTEED_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof FirelightEntity || mob instanceof FirelightNotDespawnEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -208,6 +254,8 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.FIRELIGHT_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.FIRELIGHT_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.FIRELIGHT_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.FIRELIGHT_KNOCKBACK_RESISTANCE);
+
         }
         if (mob instanceof GluttonFishEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -245,18 +293,55 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.LIFESTEALER_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.LIFESTEALER_KNOCKBACK_RESISTANCE);
         }
-        if (mob instanceof LordPumpkinheadEntity || mob instanceof LordPumpkinheadWithoutaHorseEntity) {
+        if (mob instanceof LordPumpkinheadEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.LORD_PUMPKINHEAD_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.LORD_PUMPKINHEAD_HEALTH);
-            mob.setHealth((float) BIConfig.LORD_PUMPKINHEAD_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.LORD_PUMPKINHEAD_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.LORD_PUMPKINHEAD_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.LORD_PUMPKINHEAD_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.LORD_PUMPKINHEAD_KNOCKBACK_RESISTANCE);
-        }if (mob instanceof LordTheHeadlessEntity) {
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.LORD_PUMPKIN_HEAD_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.LORD_PUMPKIN_HEAD_HEALTH);
+            mob.setHealth((float) BIConfig.LORD_PUMPKIN_HEAD_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.LORD_PUMPKIN_HEAD_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.LORD_PUMPKIN_HEAD_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.LORD_PUMPKIN_HEAD_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.LORD_PUMPKIN_HEAD_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof LordPumpkinheadHeadEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.LORD_PUMPKIN_HEAD_HEAD_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.LORD_PUMPKIN_HEAD_HEAD_HEALTH);
+            mob.setHealth((float) BIConfig.LORD_PUMPKIN_HEAD_HEAD_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.LORD_PUMPKIN_HEAD_HEAD_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.LORD_PUMPKIN_HEAD_HEAD_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.LORD_PUMPKIN_HEAD_HEAD_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.LORD_PUMPKIN_HEAD_HEAD_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof LordPumpkinheadWithoutaHorseEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.LORD_PUMPKIN_HEAD_HORSELESS_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.LORD_PUMPKIN_HEAD_HORSELESS_HEALTH);
+            mob.setHealth((float) BIConfig.LORD_PUMPKIN_HEAD_HORSELESS_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.LORD_PUMPKIN_HEAD_HORSELESS_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.LORD_PUMPKIN_HEAD_HORSELESS_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.LORD_PUMPKIN_HEAD_HORSELESS_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.LORD_PUMPKIN_HEAD_HORSELESS_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof LordTheHeadlessEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.LORD_HEADLESS_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.LORD_HEADLESS_HEALTH);
+            mob.setHealth((float) BIConfig.LORD_HEADLESS_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.LORD_HEADLESS_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.LORD_HEADLESS_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.LORD_HEADLESS_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.LORD_HEADLESS_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof LordsFelsteedEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
@@ -292,12 +377,25 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.MISSIONER_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.MISSIONER_KNOCKBACK_RESISTANCE);
         }
+        if (mob instanceof MotherSpiderEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.MOTHER_SPIDER_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.MOTHER_SPIDER_HEALTH);
+            mob.setHealth((float) BIConfig.MOTHER_SPIDER_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.MOTHER_SPIDER_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.MOTHER_SPIDER_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.MOTHER_SPIDER_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.MOTHER_SPIDER_KNOCKBACK_RESISTANCE);
+        }
         if (mob instanceof MrPumpkinEntity || mob instanceof MrPumpkinControlledEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
             EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.MR_PUMPKIN_SPEED);
             EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.MR_PUMPKIN_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.FLYING_SPEED, BIConfig.MR_PUMPKIN_FLYING_SPEED);
             mob.setHealth((float) BIConfig.MR_PUMPKIN_HEALTH);
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.MR_PUMPKIN_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.MR_PUMPKIN_DAMAGE);
@@ -315,7 +413,8 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.NIGHTMARE_STALKER_DAMAGE);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.NIGHTMARE_STALKER_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.NIGHTMARE_STALKER_KNOCKBACK_RESISTANCE);
-        }if (mob instanceof PhantomCreeperCopyEntity || mob instanceof PhantomCreeperEntity) {
+        }
+        if (mob instanceof PhantomCreeperCopyEntity || mob instanceof PhantomCreeperEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
@@ -324,18 +423,6 @@ public class BIConfigEvent {
             mob.setHealth((float) BIConfig.PHANTOM_CREEPER_HEALTH);
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.PHANTOM_CREEPER_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.PHANTOM_CREEPER_DAMAGE);
-        }
-        if (mob instanceof PumpkinheadEntity) {
-            if (BIConfig.RETALLIATION_ENABLED){
-                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
-            }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.PUMPKINHEAD_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.PUMPKINHEAD_HEALTH);
-            mob.setHealth((float) BIConfig.PUMPKINHEAD_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.PUMPKINHEAD_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.PUMPKINHEAD_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.PUMPKINHEAD_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.PUMPKINHEAD_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof PumpkinSpiritEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -349,6 +436,18 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.PUMPKIN_SPIRIT_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.PUMPKIN_SPIRIT_KNOCKBACK_RESISTANCE);
         }
+        if (mob instanceof PumpkinheadEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.PUMPKIN_HEAD_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.PUMPKIN_HEAD_HEALTH);
+            mob.setHealth((float) BIConfig.PUMPKIN_HEAD_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.PUMPKIN_HEAD_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.PUMPKIN_HEAD_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.PUMPKIN_HEAD_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.PUMPKIN_HEAD_KNOCKBACK_RESISTANCE);
+        }
         if (mob instanceof RestlessSpiritEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
@@ -361,6 +460,18 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.RESTLESS_SPIRIT_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.RESTLESS_SPIRIT_KNOCKBACK_RESISTANCE);
             EntityUtils.setAttribute(mob, Attributes.FLYING_SPEED, BIConfig.RESTLESS_SPIRIT_FLYING_SPEED);
+        }
+        if (mob instanceof RidingLordsFelsteedEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.RIDEABLE_LORD_FELSTEED_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.RIDEABLE_LORD_FELSTEED_HEALTH);
+            mob.setHealth((float) BIConfig.RIDEABLE_LORD_FELSTEED_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.RIDEABLE_LORD_FELSTEED_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.RIDEABLE_LORD_FELSTEED_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.RIDEABLE_LORD_FELSTEED_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.RIDEABLE_LORD_FELSTEED_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof ScarletPersecutorEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -391,58 +502,88 @@ public class BIConfigEvent {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SENOR_PUMPKIN_HEAD_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SENOR_PUMPKIN_HEAD_HEALTH);
-            mob.setHealth((float) BIConfig.SENOR_PUMPKIN_HEAD_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SENOR_PUMPKIN_HEAD_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SENOR_PUMPKIN_HEAD_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SENOR_PUMPKIN_HEAD_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SENOR_PUMPKIN_HEAD_KNOCKBACK_RESISTANCE);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SENOR_PUMPKIN_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SENOR_PUMPKIN_HEALTH);
+            mob.setHealth((float) BIConfig.SENOR_PUMPKIN_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SENOR_PUMPKIN_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SENOR_PUMPKIN_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SENOR_PUMPKIN_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SENOR_PUMPKIN_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof SiameseSkeletonsEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIAMESE_SKELETONS_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIAMESE_SKELETONS_HEALTH);
-            mob.setHealth((float) BIConfig.SIAMESE_SKELETONS_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIAMESE_SKELETONS_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIAMESE_SKELETONS_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIAMESE_SKELETONS_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIAMESE_SKELETON_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIAMESE_SKELETON_HEALTH);
+            mob.setHealth((float) BIConfig.SIAMESE_SKELETON_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIAMESE_SKELETON_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIAMESE_SKELETON_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIAMESE_SKELETON_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SIAMESE_SKELETON_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof SiameseSkeletonsleftEntity || mob instanceof SiameseSkeletonsrightEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIAMESE_SKELETONS_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIAMESE_SKELETONS_HEALTH / 2);
-            mob.setHealth((float) BIConfig.SIAMESE_SKELETONS_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIAMESE_SKELETONS_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIAMESE_SKELETONS_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIAMESE_SKELETONS_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIAMESE_SKELETON_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIAMESE_SKELETON_HEALTH / 2);
+            mob.setHealth((float) BIConfig.SIAMESE_SKELETON_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIAMESE_SKELETON_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIAMESE_SKELETON_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIAMESE_SKELETON_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SIAMESE_SKELETON_KNOCKBACK_RESISTANCE);
+
         }
         if (mob instanceof SirPumpkinheadEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIR_PUMPKIN_HEAD_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIR_PUMPKIN_HEAD_HEALTH);
-            mob.setHealth((float) BIConfig.SIR_PUMPKIN_HEAD_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIR_PUMPKIN_HEAD_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIR_PUMPKIN_HEAD_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIR_PUMPKIN_HEAD_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SIR_PUMPKIN_HEAD_KNOCKBACK_RESISTANCE);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIR_PUMPKINHEAD_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIR_PUMPKINHEAD_HEALTH);
+            mob.setHealth((float) BIConfig.SIR_PUMPKINHEAD_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIR_PUMPKINHEAD_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIR_PUMPKINHEAD_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIR_PUMPKINHEAD_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SIR_PUMPKINHEAD_KNOCKBACK_RESISTANCE);
         }
+        if (mob instanceof SirPumpkinheadWithoutHorseEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIR_PUMPKINHEAD_HORSELESS_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIR_PUMPKINHEAD_HORSELESS_HEALTH);
+            mob.setHealth((float) BIConfig.SIR_PUMPKINHEAD_HORSELESS_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIR_PUMPKINHEAD_HORSELESS_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIR_PUMPKINHEAD_HORSELESS_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIR_PUMPKINHEAD_HORSELESS_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SIR_PUMPKINHEAD_HORSELESS_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof SirTheHeadlessEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SIR_PUMPKINHEAD_HEADLESS_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SIR_PUMPKINHEAD_HEADLESS_HEALTH);
+            mob.setHealth((float) BIConfig.SIR_PUMPKINHEAD_HEADLESS_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SIR_PUMPKINHEAD_HEADLESS_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SIR_PUMPKINHEAD_HEADLESS_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SIR_PUMPKINHEAD_HEADLESS_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SIR_PUMPKINHEAD_HEADLESS_KNOCKBACK_RESISTANCE);
+        }
+
         if (mob instanceof SkeletonDemomanEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SKELETON_BOMBER_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SKELETON_BOMBER_HEALTH);
-            mob.setHealth((float) BIConfig.SKELETON_BOMBER_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SKELETON_BOMBER_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SKELETON_BOMBER_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SKELETON_BOMBER_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SKELETON_DEMOMAN_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SKELETON_DEMOMAN_HEALTH);
+            mob.setHealth((float) BIConfig.SKELETON_DEMOMAN_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SKELETON_DEMOMAN_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SKELETON_DEMOMAN_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SKELETON_DEMOMAN_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SKELETON_DEMOMAN_KNOCKBACK_RESISTANCE);
+
         }
         if (mob instanceof SkeletonThrasherEntity || mob instanceof SkeletonThrasherNotDespawnEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -468,6 +609,18 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SPIRIT_GUIDE_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SPIRIT_GUIDE_KNOCKBACK_RESISTANCE);
         }
+        if (mob instanceof SpiritGuideAssistantEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SPIRIT_GUIDE_ASSISTANT_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SPIRIT_GUIDE_ASSISTANT_HEALTH);
+            mob.setHealth((float) BIConfig.SPIRIT_GUIDE_ASSISTANT_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SPIRIT_GUIDE_ASSISTANT_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SPIRIT_GUIDE_ASSISTANT_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SPIRIT_GUIDE_ASSISTANT_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SPIRIT_GUIDE_ASSISTANT_KNOCKBACK_RESISTANCE);
+        }
         if (mob instanceof SpiritofChaosEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
@@ -477,30 +630,45 @@ public class BIConfigEvent {
             mob.setHealth((float) BIConfig.SPIRIT_OF_CHAOS_HEALTH);
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SPIRIT_OF_CHAOS_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SPIRIT_OF_CHAOS_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SPIRIT_OF_CHAOS_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SPIRIT_OF_CHAOS_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof SupremeBonescallerEntity || mob instanceof SupremeBonescallerNotDespawnEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SUPREME_BONES_CALLER_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SUPREME_BONES_CALLER_HEALTH);
-            mob.setHealth((float) BIConfig.SUPREME_BONES_CALLER_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SUPREME_BONES_CALLER_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SUPREME_BONES_CALLER_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SUPREME_BONES_CALLER_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SUPREME_BONES_CALLER_KNOCKBACK_RESISTANCE);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SUPREME_BONESCALLER_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SUPREME_BONESCALLER_HEALTH);
+            mob.setHealth((float) BIConfig.SUPREME_BONESCALLER_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SUPREME_BONESCALLER_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SUPREME_BONESCALLER_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SUPREME_BONESCALLER_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SUPREME_BONESCALLER_KNOCKBACK_RESISTANCE);
+        }
+        if (mob instanceof SupremeBonescallerStage2Entity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SUPREME_BONESCALLER_PHASE_2_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SUPREME_BONESCALLER_PHASE_2_HEALTH);
+            mob.setHealth((float) BIConfig.SUPREME_BONESCALLER_PHASE_2_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SUPREME_BONESCALLER_PHASE_2_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SUPREME_BONESCALLER_PHASE_2_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SUPREME_BONESCALLER_PHASE_2_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SUPREME_BONESCALLER_PHASE_2_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof SpiritGuideAssistantEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SPIRIT_ASSISTANT_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SPIRIT_ASSISTANT_HEALTH);
-            mob.setHealth((float) BIConfig.SPIRIT_ASSISTANT_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SPIRIT_ASSISTANT_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SPIRIT_ASSISTANT_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SPIRIT_ASSISTANT_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.SPIRIT_GUIDE_ASSISTANT_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.SPIRIT_GUIDE_ASSISTANT_HEALTH);
+            mob.setHealth((float) BIConfig.SPIRIT_GUIDE_ASSISTANT_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.SPIRIT_GUIDE_ASSISTANT_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.SPIRIT_GUIDE_ASSISTANT_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.SPIRIT_GUIDE_ASSISTANT_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.SPIRIT_GUIDE_ASSISTANT_KNOCKBACK_RESISTANCE);
+
         }
         if (mob instanceof SwarmerEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -518,13 +686,13 @@ public class BIConfigEvent {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
             }
-            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.THORNSHELL_SPEED);
-            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.THORNSHELL_HEALTH);
-            mob.setHealth((float) BIConfig.THORNSHELL_HEALTH);
-            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.THORNSHELL_ARMOR);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.THORNSHELL_DAMAGE);
-            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.THORNSHELL_KNOCKBACK);
-            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.THORNSHELL_KNOCKBACK_RESISTANCE);
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.THORNSHELL_CRAB_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.THORNSHELL_CRAB_HEALTH);
+            mob.setHealth((float) BIConfig.THORNSHELL_CRAB_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.THORNSHELL_CRAB_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.THORNSHELL_CRAB_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.THORNSHELL_CRAB_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.THORNSHELL_CRAB_KNOCKBACK_RESISTANCE);
         }
         if (mob instanceof ZombieBruiserEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -575,6 +743,172 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.ZOMBIE_LUMBERJACK_KNOCKBACK_RESISTANCE);
         }
     }
+
+
+    @SubscribeEvent
+    public void mobSpawn(MobSpawnEvent.SpawnPlacementCheck spawnPlacementCheck){
+        EntityType<?> entityType = spawnPlacementCheck.getEntityType();
+        Holder<Biome> biome = spawnPlacementCheck.getLevel().getBiome(spawnPlacementCheck.getPos());
+        long time = spawnPlacementCheck.getLevel().dayTime();
+
+        if(entityType == BornInChaosV1ModEntities.BABY_SKELETON.get() || entityType == BornInChaosV1ModEntities.BABY_SKELETON_MINION.get()){
+            if (BIConfig.BABY_SKELETON_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.BABY_SPIDER.get() || entityType == BornInChaosV1ModEntities.BABY_SPIDER_CONTROLLED.get()){
+            if (BIConfig.BABY_SPIDER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.BARREL_ZOMBIE.get()){
+            if (BIConfig.ZOMBIE_BARREL_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.BLOODY_GADFLY.get()){
+            if (BIConfig.BLOODY_GADFLY_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.BONE_IMP.get() || entityType == BornInChaosV1ModEntities.BONE_IMP_MINION.get()){
+            if (BIConfig.BONE_IMP_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.BONESCALLER.get() || entityType == BornInChaosV1ModEntities.BONESCALLER_NOT_DESPAWN.get()){
+            if (BIConfig.BONE_IMP_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.CORPSE_FISH.get()){
+            if (BIConfig.CORPSE_FISH_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.CORPSE_FLY.get()){
+            if (BIConfig.CORPSE_FLY_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.DARK_VORTEX.get()){
+            if (BIConfig.DARK_VORTEX_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.DECAYING_ZOMBIE.get() || entityType == BornInChaosV1ModEntities.DECAYING_ZOMBIE_NOT_DESPAWN.get()){
+            if (BIConfig.DECAYING_ZOMBIE_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.DECREPIT_SKELETON.get()){
+            if (BIConfig.DECREPIT_SKELETON_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.DIRE_HOUND_LEADER.get()){
+            if (BIConfig.DIRE_HOUND_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.DOOR_KNIGHT.get() || entityType == BornInChaosV1ModEntities.DOOR_KNIGHT_NOT_DESPAWN.get()){
+            if (BIConfig.DOOR_KNIGHT_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.DREAD_HOUND.get()  || entityType == BornInChaosV1ModEntities.DREAD_HOUND_NOT_DESPAWN.get()){
+            if (BIConfig.DREAD_HOUND_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.FALLEN_CHAOS_KNIGHT.get()){
+            if (BIConfig.FALLEN_KNIGHT_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.FIRELIGHT.get()){
+            if (BIConfig.FIRELIGHT_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.GLUTTON_FISH.get()){
+            if (BIConfig.GLUTTON_FISH_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.ALLOW);
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.LIFESTEALER.get()){
+            if (BIConfig.LIFESTEALER_SPAWNING_ENABLED) {
+                if (time >= (24000L * BIConfig.DAYS_TILL_LIFESTEALER)) {
+                    spawnPlacementCheck.setResult(Event.Result.ALLOW);
+                }
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.MAGGOT.get()){
+            if (true) {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+
+
+
+
+    }
+
 
 
 }

@@ -42,7 +42,7 @@ public abstract class ScarletProsecuterSpawning{
         Entity entityToSpawn = (BornInChaosV1ModEntities.SCARLET_PERSECUTOR.get()).spawn(serverLevel, BlockPos.containing(x + 3.0, y + 0.5, z), MobSpawnType.MOB_SUMMONED);
         if (entityToSpawn == null)
             return;
-        serverLevel.sendParticles((SimpleParticleType) BornInChaosV1ModParticleTypes.DIM.get(), x + 3.0, y + 0.5, z, 6, 1.0, 1.0, 1.0, 1.0);
+        serverLevel.sendParticles(BornInChaosV1ModParticleTypes.DIM.get(), x + 3.0, y + 0.5, z, 6, 1.0, 1.0, 1.0, 1.0);
         entityToSpawn.setYRot(serverLevel.getRandom().nextFloat() * 360.0F);
     }
 

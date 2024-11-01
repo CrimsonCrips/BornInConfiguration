@@ -16,7 +16,7 @@ license="MIT"
 # The modid of the mod
 modId="borninconfiguration" #mandatory
 # The version number of the mod
-version="1.4" #mandatory
+version="2" #mandatory
 # A display name for the mod
 displayName="Born In Configuration" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
@@ -40,20 +40,13 @@ authors="The Crimson" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''A Unofficial Config for Born in Chaos'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies."${mod_id}"]] #optional
-   # the modid of the dependency
+[[dependencies.borninconfiguration]] #optional
    modId="forge" #mandatory
-   # Does this dependency have to exist - if not, ordering below must be specified
    mandatory=true #mandatory
-   # The version range of the dependency
-   versionRange="${forge_version_range}" #mandatory
-   # An ordering relationship for the dependency - BEFORE or AFTER required if the dependency is not mandatory
-   # BEFORE - This mod is loaded BEFORE the dependency
-   # AFTER - This mod is loaded AFTER the dependency
+   versionRange="${forge_version_range}"
    ordering="NONE"
-   # Side this dependency is applied on - BOTH, CLIENT, or SERVER
-   side="BOTH"# Here's another dependency
-[[dependencies."${mod_id}"]]
+   side="BOTH"
+[[dependencies.borninconfiguration]]
    modId="minecraft"
    mandatory=true
    # This version range declares a minimum of the current minecraft version up to but not including the next major version
@@ -61,10 +54,10 @@ description='''A Unofficial Config for Born in Chaos'''
    ordering="NONE"
    side="BOTH"
 
-[[dependencies."${mod_id}"]]
+[[dependencies.borninconfiguration]]
 modId="born_in_chaos_v1"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange="[1.0.0,)"
+versionRange="[1.4]"
 ordering="BEFORE"
 side="BOTH"

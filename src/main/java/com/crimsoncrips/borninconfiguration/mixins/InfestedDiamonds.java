@@ -16,11 +16,11 @@ public class InfestedDiamonds {
 
     @Inject(method = "execute", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(LevelAccessor world, CallbackInfoReturnable<Boolean> cir) {
-        cir.setReturnValue(bornInConfiguration$doSomething4());
+        cir.setReturnValue(bornInConfiguration$newExecution());
     }
 
     @Unique
-    private static boolean bornInConfiguration$doSomething4() {
+    private static boolean bornInConfiguration$newExecution() {
        return BIConfig.INFESTED_DIAMONDS_ENABLED;
     }
 }
