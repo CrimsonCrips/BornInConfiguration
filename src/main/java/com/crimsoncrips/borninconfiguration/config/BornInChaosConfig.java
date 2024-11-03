@@ -36,7 +36,6 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.BooleanValue GLUTTON_FISH_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue INFESTED_DIAMONDS_ENABLED;
     public final ForgeConfigSpec.BooleanValue MISSIONER_SPAWNING_ENABLED;
-    public final ForgeConfigSpec.BooleanValue NIGHTMARE_SPAWN_ENABLED;
     public final ForgeConfigSpec.BooleanValue PHANTOM_CREEPER_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue RESTLESS_SPIRIT_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue ROTTEN_CONSUMPTION_ENABLED;
@@ -782,7 +781,6 @@ public class BornInChaosConfig {
         this.NIGHTMARE_STALKER_SPAWNING_ENABLED = buildBoolean(builder, "NIGHTMARE_STALKER_SPAWNING_ENABLED", true, ".");
         this.DAYS_TILL_NIGHTMARE = buildInt(builder, "DAYS_TILL_NIGHTMARE", 3, 1,999999,"Days till Nightmare Stalker spawns");
         this.STALKER_IMMUNITY_ENABLED = buildBoolean(builder, "STALKER_IMMUNITY_ENABLED", true, "Whether Nightmare Stalker has its base immunity to certain things");
-        this.NIGHTMARE_SPAWN_ENABLED = buildBoolean(builder, "NIGHTMARE_SPAWN_ENABLED", true, ".");
         this.NIGHTMARE_STALKER_ARMOR = buildDouble(builder, "NIGHTMARE_STALKER_ARMOR", 4.0);
         this.NIGHTMARE_STALKER_DAMAGE = buildDouble(builder, "NIGHTMARE_STALKER_DAMAGE", 7.0);
         this.NIGHTMARE_STALKER_HEALTH = buildDouble(builder, "NIGHTMARE_STALKER_HEALTH", 70.0);
