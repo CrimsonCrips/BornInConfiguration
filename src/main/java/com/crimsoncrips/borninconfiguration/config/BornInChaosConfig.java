@@ -96,6 +96,30 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.DoubleValue  MR_PUMPKIN_KNOCKBACK;
     public final ForgeConfigSpec.DoubleValue  MR_PUMPKIN_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue  MR_PUMPKIN_SPEED;
+
+    public final ForgeConfigSpec.DoubleValue  MS_PUMPKIN_ARMOR;
+    public final ForgeConfigSpec.DoubleValue  MS_PUMPKIN_DAMAGE;
+    public final ForgeConfigSpec.DoubleValue  MS_PUMPKIN_FLYING_SPEED;
+    public final ForgeConfigSpec.DoubleValue  MS_PUMPKIN_HEALTH;
+    public final ForgeConfigSpec.DoubleValue  MS_PUMPKIN_KNOCKBACK;
+    public final ForgeConfigSpec.DoubleValue  MS_PUMPKIN_KNOCKBACK_RESISTANCE;
+    public final ForgeConfigSpec.DoubleValue  MS_PUMPKIN_SPEED;
+
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_BRUISER_ARMOR;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_BRUISER_DAMAGE;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_BRUISER_HEALTH;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_BRUISER_KNOCKBACK;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_BRUISER_KNOCKBACK_RESISTANCE;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_BRUISER_SPEED;
+
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_DUNCE_ARMOR;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_DUNCE_DAMAGE;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_DUNCE_HEALTH;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_DUNCE_KNOCKBACK;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_DUNCE_KNOCKBACK_RESISTANCE;
+    public final ForgeConfigSpec.DoubleValue  PUMPKIN_DUNCE_SPEED;
+
+
     public final ForgeConfigSpec.DoubleValue  NIGHTMARE_STALKER_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue  PUMPKIN_SPIRIT_ARMOR;
     public final ForgeConfigSpec.DoubleValue  PUMPKIN_SPIRIT_DAMAGE;
@@ -373,6 +397,13 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.DoubleValue LORD_FELSTEED_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue LORD_FELSTEED_SPEED;
     public final ForgeConfigSpec.BooleanValue MR_PUMPKIN_SPAWNING_ENABLED;
+
+    public final ForgeConfigSpec.BooleanValue MS_PUMPKIN_SPAWNING_ENABLED;
+
+    public final ForgeConfigSpec.BooleanValue PUMPKIN_BRUISER_SPAWNING_ENABLED;
+
+    public final ForgeConfigSpec.BooleanValue PUMPKIN_DUNCE_SPAWNING_ENABLED;
+
     public final ForgeConfigSpec.BooleanValue MOTHER_SPIDER_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue SUPREME_BONESCALLER_SPAWNING_ENABLED;
 
@@ -426,7 +457,6 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.BooleanValue BABY_SPIDER_SPAWNING_ENABLED;
     public final ForgeConfigSpec.DoubleValue BABY_SPIDER_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue BABY_SPIDER_SPEED;
-    public final ForgeConfigSpec.ConfigValue<List<? extends String>> MISSIONER_MOB_SPAWNS;
 
     public final ForgeConfigSpec.BooleanValue RETALLIATION_ENABLED;
     public final ForgeConfigSpec.BooleanValue PUMPKIN_HEAD_SPAWNING_ENABLED;
@@ -710,7 +740,6 @@ public class BornInChaosConfig {
         this.MAGGOT_SPEED = buildDouble(builder, "MAGGOT_SPEED", 0.2);
         builder.pop();
         builder.push("Missioner");
-        this.MISSIONER_MOB_SPAWNS = builder.comment("List of mobs that the Missioner can spawn").defineList("MISSIONER_MOB_SPAWNS", BIConfig.MISSIONER_MOB_SPAWNS, o -> o instanceof String);
         this.DAYS_TILL_MISSIONER = buildInt(builder, "DAYS_TILL_MISSIONER", 10, 1,999999,"Days till The Missioner spawns");
         this.MISSIONER_ARMOR = buildDouble(builder, "MISSIONER_ARMOR", 10.0);
         this.MISSIONER_DAMAGE = buildDouble(builder, "MISSIONER_DAMAGE", 9.0);
@@ -739,6 +768,16 @@ public class BornInChaosConfig {
         this.MR_PUMPKIN_KNOCKBACK_RESISTANCE = buildDouble(builder, "MR_PUMPKIN_KNOCKBACK_RESISTANCE", 0.9);
         this.MR_PUMPKIN_SPEED = buildDouble(builder, "MR_PUMPKIN_SPEED", 0.35);
         builder.pop();
+        builder.push("Ms Pumpkin Head");
+        this.MS_PUMPKIN_SPAWNING_ENABLED = buildBoolean(builder, "MS_PUMPKIN_SPAWNING_ENABLED", true, ".");
+        this.MS_PUMPKIN_ARMOR = buildDouble(builder, "MS_PUMPKIN_ARMOR", 1);
+        this.MS_PUMPKIN_DAMAGE = buildDouble(builder, "MS_PUMPKIN_DAMAGE", 3.0);
+        this.MS_PUMPKIN_FLYING_SPEED = buildDouble(builder, "MS_PUMPKIN_FLYING_SPEED", 0.35);
+        this.MS_PUMPKIN_HEALTH = buildDouble(builder, "MS_PUMPKIN_HEALTH", 25);
+        this.MS_PUMPKIN_KNOCKBACK = buildDouble(builder, "MS_PUMPKIN_KNOCKBACK", 0);
+        this.MS_PUMPKIN_KNOCKBACK_RESISTANCE = buildDouble(builder, "MS_PUMPKIN_KNOCKBACK_RESISTANCE", 0.8);
+        this.MS_PUMPKIN_SPEED = buildDouble(builder, "MS_PUMPKIN_SPEED", 0.2);
+        builder.pop();
         builder.push("Nightmare Stalker");
         this.NIGHTMARE_STALKER_SPAWNING_ENABLED = buildBoolean(builder, "NIGHTMARE_STALKER_SPAWNING_ENABLED", true, ".");
         this.DAYS_TILL_NIGHTMARE = buildInt(builder, "DAYS_TILL_NIGHTMARE", 3, 1,999999,"Days till Nightmare Stalker spawns");
@@ -758,6 +797,24 @@ public class BornInChaosConfig {
         this.PHANTOM_CREEPER_SPAWNING_ENABLED = buildBoolean(builder, "PHANTOM_CREEPER_SPAWNING_ENABLED", true, ".");
         this.PHANTOM_CREEPER_SPEED = buildDouble(builder, "PHANTOM_CREEPER_SPEED", 0.25);
         this.PHANTOM_CREEPER_KNOCKBACK_RESISTANCE = buildDouble(builder, "PHANTOM_CREEPER_KNOCKBACK_RESISTANCE", 0);
+        builder.pop();
+        builder.push("Pumpkin Bruiser");
+        this.PUMPKIN_BRUISER_ARMOR = buildDouble(builder, "PUMPKIN_BRUISER_ARMOR", 2);
+        this.PUMPKIN_BRUISER_DAMAGE = buildDouble(builder, "PUMPKIN_BRUISER_DAMAGE", 8);
+        this.PUMPKIN_BRUISER_HEALTH = buildDouble(builder, "PUMPKIN_BRUISER_HEALTH", 90.0);
+        this.PUMPKIN_BRUISER_SPAWNING_ENABLED = buildBoolean(builder, "PUMPKIN_BRUISER_SPAWNING_ENABLED", true, ".");
+        this.PUMPKIN_BRUISER_SPEED = buildDouble(builder, "PUMPKIN_BRUISER_SPEED", 0.26);
+        this.PUMPKIN_BRUISER_KNOCKBACK = buildDouble(builder, "PUMPKIN_BRUISER_KNOCKBACK", 3.6);
+        this.PUMPKIN_BRUISER_KNOCKBACK_RESISTANCE = buildDouble(builder, "PUMPKIN_BRUISER_KNOCKBACK_RESISTANCE", 0.6);
+        builder.pop();
+        builder.push("Pumpkin Dunce");
+        this.PUMPKIN_DUNCE_ARMOR = buildDouble(builder, "PUMPKIN_DUNCE_ARMOR", 0.0);
+        this.PUMPKIN_DUNCE_DAMAGE = buildDouble(builder, "PUMPKIN_DUNCE_DAMAGE", 3.0);
+        this.PUMPKIN_DUNCE_HEALTH = buildDouble(builder, "PUMPKIN_DUNCE_HEALTH", 18.0);
+        this.PUMPKIN_DUNCE_SPAWNING_ENABLED = buildBoolean(builder, "PUMPKIN_DUNCE_SPAWNING_ENABLED", true, ".");
+        this.PUMPKIN_DUNCE_SPEED = buildDouble(builder, "PUMPKIN_DUNCE_SPEED", 0.26);
+        this.PUMPKIN_DUNCE_KNOCKBACK = buildDouble(builder, "PUMPKIN_DUNCE_KNOCKBACK", 0.5);
+        this.PUMPKIN_DUNCE_KNOCKBACK_RESISTANCE = buildDouble(builder, "PUMPKIN_DUNCE_KNOCKBACK_RESISTANCE", 0.3);
         builder.pop();
         builder.push("Pumpkin Head");
         this.PUMPKIN_HEAD_SPAWNING_ENABLED = buildBoolean(builder, "PUMPKIN_HEAD_SPAWNING_ENABLED", true, ".");

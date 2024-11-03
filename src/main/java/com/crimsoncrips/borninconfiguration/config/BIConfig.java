@@ -262,8 +262,7 @@ public class BIConfig {
     public static double MAGGOT_SPEED;
 
     //Missioner
-    public static List<? extends String> MISSIONER_MOB_SPAWNS = Lists.newArrayList(
-            "minecraft:zombie_villager");
+
     public static int DAYS_TILL_MISSIONER;
     public static boolean MISSIONER_SPAWNING_ENABLED;
     public static double MISSIONER_ARMOR;
@@ -282,7 +281,7 @@ public class BIConfig {
     public static double MOTHER_SPIDER_KNOCKBACK_RESISTANCE;
     public static double MOTHER_SPIDER_SPEED;
 
-    //Mr Pumpkin
+    //Ms Pumpkin
     public static boolean MR_PUMPKIN_SPAWNING_ENABLED;
     public static double MR_PUMPKIN_ARMOR;
     public static double MR_PUMPKIN_DAMAGE;
@@ -291,6 +290,16 @@ public class BIConfig {
     public static double MR_PUMPKIN_KNOCKBACK_RESISTANCE;
     public static double MR_PUMPKIN_SPEED;
     public static double MR_PUMPKIN_FLYING_SPEED;
+
+    //MS Pumpkin
+    public static boolean MS_PUMPKIN_SPAWNING_ENABLED;
+    public static double MS_PUMPKIN_ARMOR;
+    public static double MS_PUMPKIN_DAMAGE;
+    public static double MS_PUMPKIN_HEALTH;
+    public static double MS_PUMPKIN_KNOCKBACK;
+    public static double MS_PUMPKIN_KNOCKBACK_RESISTANCE;
+    public static double MS_PUMPKIN_SPEED;
+    public static double MS_PUMPKIN_FLYING_SPEED;
 
     //Nightmare Stalker
     public static int DAYS_TILL_NIGHTMARE;
@@ -309,6 +318,24 @@ public class BIConfig {
     public static double PHANTOM_CREEPER_HEALTH;
     public static double PHANTOM_CREEPER_KNOCKBACK_RESISTANCE;
     public static double PHANTOM_CREEPER_SPEED;
+
+    //Pumpkin Bruiser
+    public static boolean PUMPKIN_BRUISER_SPAWNING_ENABLED;
+    public static double PUMPKIN_BRUISER_ARMOR;
+    public static double PUMPKIN_BRUISER_DAMAGE;
+    public static double PUMPKIN_BRUISER_HEALTH;
+    public static double PUMPKIN_BRUISER_KNOCKBACK_RESISTANCE;
+    public static double PUMPKIN_BRUISER_SPEED;
+    public static double PUMPKIN_BRUISER_KNOCKBACK;
+
+    //Pumpkin Dunce
+    public static boolean PUMPKIN_DUNCE_SPAWNING_ENABLED;
+    public static double PUMPKIN_DUNCE_ARMOR;
+    public static double PUMPKIN_DUNCE_DAMAGE;
+    public static double PUMPKIN_DUNCE_HEALTH;
+    public static double PUMPKIN_DUNCE_KNOCKBACK_RESISTANCE;
+    public static double PUMPKIN_DUNCE_SPEED;
+    public static double PUMPKIN_DUNCE_KNOCKBACK;
 
     //Pumpkin Spirit
     public static double PUMPKIN_SPIRIT_ARMOR;
@@ -790,7 +817,6 @@ public class BIConfig {
             MAGGOT_SPEED = ConfigHolder.BORNCONFIG.MAGGOT_SPEED.get();
 
             //Missioner
-            MISSIONER_MOB_SPAWNS = (List<? extends String>) ConfigHolder.BORNCONFIG.MISSIONER_MOB_SPAWNS.get();
             MISSIONER_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.MISSIONER_SPAWNING_ENABLED.get();
             MISSIONER_ARMOR = ConfigHolder.BORNCONFIG.MISSIONER_ARMOR.get();
             MISSIONER_DAMAGE = ConfigHolder.BORNCONFIG.MISSIONER_DAMAGE.get();
@@ -819,6 +845,17 @@ public class BIConfig {
             MR_PUMPKIN_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.MR_PUMPKIN_KNOCKBACK_RESISTANCE.get();
             MR_PUMPKIN_SPEED = ConfigHolder.BORNCONFIG.MR_PUMPKIN_SPEED.get();
 
+            //Ms Pumpkin
+            MS_PUMPKIN_FLYING_SPEED = ConfigHolder.BORNCONFIG.MR_PUMPKIN_FLYING_SPEED.get();
+
+            MS_PUMPKIN_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.MS_PUMPKIN_SPAWNING_ENABLED.get();
+            MS_PUMPKIN_ARMOR = ConfigHolder.BORNCONFIG.MS_PUMPKIN_ARMOR.get();
+            MS_PUMPKIN_DAMAGE = ConfigHolder.BORNCONFIG.MS_PUMPKIN_DAMAGE.get();
+            MS_PUMPKIN_HEALTH = ConfigHolder.BORNCONFIG.MS_PUMPKIN_HEALTH.get();
+            MS_PUMPKIN_KNOCKBACK = ConfigHolder.BORNCONFIG.MS_PUMPKIN_KNOCKBACK.get();
+            MS_PUMPKIN_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.MS_PUMPKIN_KNOCKBACK_RESISTANCE.get();
+            MS_PUMPKIN_SPEED = ConfigHolder.BORNCONFIG.MS_PUMPKIN_SPEED.get();
+
             //Nightmare Stalker
             DAYS_TILL_NIGHTMARE = ConfigHolder.BORNCONFIG.DAYS_TILL_NIGHTMARE.get();
             NIGHTMARE_STALKER_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.NIGHTMARE_STALKER_SPAWNING_ENABLED.get();
@@ -836,6 +873,24 @@ public class BIConfig {
             PHANTOM_CREEPER_HEALTH = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_HEALTH.get();
             PHANTOM_CREEPER_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_KNOCKBACK_RESISTANCE.get();
             PHANTOM_CREEPER_SPEED = ConfigHolder.BORNCONFIG.PHANTOM_CREEPER_SPEED.get();
+
+            //Pumpkin Bruiser
+            PUMPKIN_BRUISER_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.PUMPKIN_BRUISER_SPAWNING_ENABLED.get();
+            PUMPKIN_BRUISER_ARMOR = ConfigHolder.BORNCONFIG.PUMPKIN_BRUISER_ARMOR.get();
+            PUMPKIN_BRUISER_DAMAGE = ConfigHolder.BORNCONFIG.PUMPKIN_BRUISER_DAMAGE.get();
+            PUMPKIN_BRUISER_HEALTH = ConfigHolder.BORNCONFIG.PUMPKIN_BRUISER_HEALTH.get();
+            PUMPKIN_BRUISER_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.PUMPKIN_BRUISER_KNOCKBACK_RESISTANCE.get();
+            PUMPKIN_BRUISER_SPEED = ConfigHolder.BORNCONFIG.PUMPKIN_BRUISER_SPEED.get();
+            PUMPKIN_BRUISER_KNOCKBACK = ConfigHolder.BORNCONFIG.PUMPKIN_BRUISER_KNOCKBACK.get();
+
+            //Pumpkin Dunce
+            PUMPKIN_DUNCE_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.PUMPKIN_DUNCE_SPAWNING_ENABLED.get();
+            PUMPKIN_DUNCE_ARMOR = ConfigHolder.BORNCONFIG.PUMPKIN_DUNCE_ARMOR.get();
+            PUMPKIN_DUNCE_DAMAGE = ConfigHolder.BORNCONFIG.PUMPKIN_DUNCE_DAMAGE.get();
+            PUMPKIN_DUNCE_HEALTH = ConfigHolder.BORNCONFIG.PUMPKIN_DUNCE_HEALTH.get();
+            PUMPKIN_DUNCE_KNOCKBACK_RESISTANCE = ConfigHolder.BORNCONFIG.PUMPKIN_DUNCE_KNOCKBACK_RESISTANCE.get();
+            PUMPKIN_DUNCE_SPEED = ConfigHolder.BORNCONFIG.PUMPKIN_DUNCE_SPEED.get();
+            PUMPKIN_DUNCE_KNOCKBACK = ConfigHolder.BORNCONFIG.PUMPKIN_DUNCE_KNOCKBACK.get();
 
             //Pumpkin Spirit
             PUMPKIN_SPIRIT_ARMOR = ConfigHolder.BORNCONFIG.PUMPKIN_SPIRIT_ARMOR.get();

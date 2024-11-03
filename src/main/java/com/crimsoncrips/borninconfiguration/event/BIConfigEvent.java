@@ -8,16 +8,19 @@ import net.mcreator.borninchaosv.entity.*;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModEntities;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModItems;
 import net.minecraft.core.Holder;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.SpawnData;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BornInConfiguration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -402,6 +405,19 @@ public class BIConfigEvent {
             EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.MR_PUMPKIN_KNOCKBACK);
             EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.MR_PUMPKIN_KNOCKBACK_RESISTANCE);
         }
+        if (mob instanceof MrsPumpkinEntity ) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.MS_PUMPKIN_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.MS_PUMPKIN_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.FLYING_SPEED, BIConfig.MS_PUMPKIN_FLYING_SPEED);
+            mob.setHealth((float) BIConfig.MS_PUMPKIN_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.MS_PUMPKIN_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.MS_PUMPKIN_DAMAGE);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.MS_PUMPKIN_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.KNOCKBACK_RESISTANCE, BIConfig.MS_PUMPKIN_KNOCKBACK_RESISTANCE);
+        }
         if (mob instanceof NightmareStalkerEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
                 mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
@@ -423,6 +439,28 @@ public class BIConfigEvent {
             mob.setHealth((float) BIConfig.PHANTOM_CREEPER_HEALTH);
             EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.PHANTOM_CREEPER_ARMOR);
             EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.PHANTOM_CREEPER_DAMAGE);
+        }
+        if (mob instanceof PumpkinBruiserEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.PUMPKIN_BRUISER_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.PUMPKIN_BRUISER_HEALTH);
+            mob.setHealth((float) BIConfig.PUMPKIN_BRUISER_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.PUMPKIN_BRUISER_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.PUMPKIN_BRUISER_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.PUMPKIN_BRUISER_DAMAGE);
+        }
+        if (mob instanceof PumpkinDunceEntity) {
+            if (BIConfig.RETALLIATION_ENABLED){
+                mob.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) mob));
+            }
+            EntityUtils.setAttribute(mob, Attributes.MOVEMENT_SPEED, BIConfig.PUMPKIN_DUNCE_SPEED);
+            EntityUtils.setAttribute(mob, Attributes.MAX_HEALTH, BIConfig.PUMPKIN_DUNCE_HEALTH);
+            mob.setHealth((float) BIConfig.PUMPKIN_DUNCE_HEALTH);
+            EntityUtils.setAttribute(mob, Attributes.ARMOR, BIConfig.PUMPKIN_DUNCE_ARMOR);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_KNOCKBACK, BIConfig.PUMPKIN_DUNCE_KNOCKBACK);
+            EntityUtils.setAttribute(mob, Attributes.ATTACK_DAMAGE, BIConfig.PUMPKIN_DUNCE_DAMAGE);
         }
         if (mob instanceof PumpkinSpiritEntity) {
             if (BIConfig.RETALLIATION_ENABLED){
@@ -855,8 +893,8 @@ public class BIConfigEvent {
 
         if(entityType == BornInChaosV1ModEntities.LIFESTEALER.get()){
             if (BIConfig.LIFESTEALER_SPAWNING_ENABLED) {
-                if (time >= (24000L * BIConfig.DAYS_TILL_LIFESTEALER)) {
-                    spawnPlacementCheck.setResult(Event.Result.ALLOW);
+                if (!(time >= (24000L * BIConfig.DAYS_TILL_LIFESTEALER))) {
+                    spawnPlacementCheck.setResult(Event.Result.DENY);
                 }
             } else {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
@@ -865,8 +903,8 @@ public class BIConfigEvent {
 
         if(entityType == BornInChaosV1ModEntities.MISSIONER.get()){
             if (BIConfig.MISSIONER_SPAWNING_ENABLED) {
-                if (time >= (24000L * BIConfig.DAYS_TILL_MISSIONER)) {
-                    spawnPlacementCheck.setResult(Event.Result.ALLOW);
+                if (!(time >= (24000L * BIConfig.DAYS_TILL_MISSIONER))) {
+                    spawnPlacementCheck.setResult(Event.Result.DENY);
                 }
             } else {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
@@ -885,16 +923,34 @@ public class BIConfigEvent {
             }
         }
 
+        if(entityType == BornInChaosV1ModEntities.MRS_PUMPKIN.get()){
+            if (!BIConfig.MS_PUMPKIN_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
         if(entityType == BornInChaosV1ModEntities.NIGHTMARE_STALKER.get()){
             if (BIConfig.NIGHTMARE_STALKER_SPAWNING_ENABLED) {
-                if (time >= (24000L * BIConfig.DAYS_TILL_NIGHTMARE)) {
-                    spawnPlacementCheck.setResult(Event.Result.ALLOW);
+                if (!(time >= (24000L * BIConfig.DAYS_TILL_NIGHTMARE))) {
+                    spawnPlacementCheck.setResult(Event.Result.DENY);
                 }
+            } else {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
             }
         }
 
         if(entityType == BornInChaosV1ModEntities.PHANTOM_CREEPER.get()){
             if (!BIConfig.PHANTOM_CREEPER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+        if(entityType == BornInChaosV1ModEntities.PUMPKIN_BRUISER.get()){
+            if (!BIConfig.PUMPKIN_BRUISER_SPAWNING_ENABLED) {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+        if(entityType == BornInChaosV1ModEntities.PUMPKIN_DUNCE.get()){
+            if (!BIConfig.PUMPKIN_DUNCE_SPAWNING_ENABLED) {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
             }
         }
@@ -1007,6 +1063,8 @@ public class BIConfigEvent {
 
 
     }
+
+
 
 
 
