@@ -817,6 +817,7 @@ public class BIConfig {
             MAGGOT_SPEED = ConfigHolder.BORNCONFIG.MAGGOT_SPEED.get();
 
             //Missioner
+            DAYS_TILL_MISSIONER = ConfigHolder.BORNCONFIG.DAYS_TILL_MISSIONER.get();
             MISSIONER_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.MISSIONER_SPAWNING_ENABLED.get();
             MISSIONER_ARMOR = ConfigHolder.BORNCONFIG.MISSIONER_ARMOR.get();
             MISSIONER_DAMAGE = ConfigHolder.BORNCONFIG.MISSIONER_DAMAGE.get();

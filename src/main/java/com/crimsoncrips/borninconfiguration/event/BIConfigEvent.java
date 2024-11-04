@@ -12,6 +12,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.SpawnData;
 import net.minecraft.world.level.biome.Biome;
@@ -893,7 +894,7 @@ public class BIConfigEvent {
 
         if(entityType == BornInChaosV1ModEntities.LIFESTEALER.get()){
             if (BIConfig.LIFESTEALER_SPAWNING_ENABLED) {
-                if (!(time >= (24000L * BIConfig.DAYS_TILL_LIFESTEALER))) {
+                if (time < 24000L * BIConfig.DAYS_TILL_LIFESTEALER) {
                     spawnPlacementCheck.setResult(Event.Result.DENY);
                 }
             } else {
@@ -903,7 +904,7 @@ public class BIConfigEvent {
 
         if(entityType == BornInChaosV1ModEntities.MISSIONER.get()){
             if (BIConfig.MISSIONER_SPAWNING_ENABLED) {
-                if (!(time >= (24000L * BIConfig.DAYS_TILL_MISSIONER))) {
+                if (time < 24000L * BIConfig.DAYS_TILL_MISSIONER) {
                     spawnPlacementCheck.setResult(Event.Result.DENY);
                 }
             } else {
@@ -931,7 +932,7 @@ public class BIConfigEvent {
 
         if(entityType == BornInChaosV1ModEntities.NIGHTMARE_STALKER.get()){
             if (BIConfig.NIGHTMARE_STALKER_SPAWNING_ENABLED) {
-                if (!(time >= (24000L * BIConfig.DAYS_TILL_NIGHTMARE))) {
+                if (time < 24000L * BIConfig.DAYS_TILL_NIGHTMARE) {
                     spawnPlacementCheck.setResult(Event.Result.DENY);
                 }
             } else {
