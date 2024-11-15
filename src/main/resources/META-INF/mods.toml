@@ -58,6 +58,6 @@ description='''A Unofficial Config for Born in Chaos'''
 modId="born_in_chaos_v1"
 mandatory=true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange="[1.4] "
+versionRange="[1.5.2]"
 ordering="BEFORE"
 side="BOTH"
