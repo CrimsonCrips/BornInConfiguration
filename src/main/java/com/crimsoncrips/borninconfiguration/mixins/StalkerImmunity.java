@@ -47,12 +47,4 @@ public abstract class StalkerImmunity extends Monster implements GeoEntity {
         super.hurt(source, amount);
         return true;
     }
-
-    @Override
-    @Shadow
-    public abstract void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar);
-
-    @Override
-    @Shadow
-    public abstract AnimatableInstanceCache getAnimatableInstanceCache();
 }

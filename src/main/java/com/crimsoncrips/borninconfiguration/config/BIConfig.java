@@ -304,6 +304,8 @@ public class BIConfig {
     //Nightmare Stalker
     public static int DAYS_TILL_NIGHTMARE;
     public static boolean NIGHTMARE_STALKER_SPAWNING_ENABLED;
+    public static boolean NIGHTMARE_STRENGTH_ENABLED;
+    public static boolean NIGHTMARE_EFFECTS_ENABLED;
     public static double NIGHTMARE_STALKER_ARMOR;
     public static double NIGHTMARE_STALKER_DAMAGE;
     public static double NIGHTMARE_STALKER_HEALTH;
@@ -858,6 +860,8 @@ public class BIConfig {
             MS_PUMPKIN_SPEED = ConfigHolder.BORNCONFIG.MS_PUMPKIN_SPEED.get();
 
             //Nightmare Stalker
+            NIGHTMARE_EFFECTS_ENABLED = ConfigHolder.BORNCONFIG.NIGHTMARE_EFFECTS_ENABLED.get();
+            NIGHTMARE_STRENGTH_ENABLED = ConfigHolder.BORNCONFIG.NIGHTMARE_STRENGTH_ENABLED.get();
             DAYS_TILL_NIGHTMARE = ConfigHolder.BORNCONFIG.DAYS_TILL_NIGHTMARE.get();
             NIGHTMARE_STALKER_SPAWNING_ENABLED = ConfigHolder.BORNCONFIG.NIGHTMARE_STALKER_SPAWNING_ENABLED.get();
             NIGHTMARE_STALKER_ARMOR = ConfigHolder.BORNCONFIG.NIGHTMARE_STALKER_ARMOR.get();

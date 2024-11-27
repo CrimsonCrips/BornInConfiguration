@@ -27,6 +27,8 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.BooleanValue CORPSE_FISH_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue CORPSE_FLY_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue DARK_VORTEX_SPAWNING_ENABLED;
+    public final ForgeConfigSpec.BooleanValue NIGHTMARE_STRENGTH_ENABLED;
+    public final ForgeConfigSpec.BooleanValue NIGHTMARE_EFFECTS_ENABLED;
     public final ForgeConfigSpec.BooleanValue DECAYING_ZOMBIE_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue DECREPIT_SKELETON_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue DOOR_KNIGHT_SPAWNING_ENABLED;
@@ -778,6 +780,9 @@ public class BornInChaosConfig {
         this.MS_PUMPKIN_SPEED = buildDouble(builder, "MS_PUMPKIN_SPEED", 0.2);
         builder.pop();
         builder.push("Nightmare Stalker");
+        this.NIGHTMARE_EFFECTS_ENABLED = buildBoolean(builder, "NIGHTMARE_EFFECTS_ENABLED", true, "Whether you get effects when hit by a nightmare stalker");
+
+        this.NIGHTMARE_STRENGTH_ENABLED = buildBoolean(builder, "NIGHTMARE_STRENGTH_ENABLED", true, "Whether nightmare stalker, gets stronger the longer the world is");
         this.NIGHTMARE_STALKER_SPAWNING_ENABLED = buildBoolean(builder, "NIGHTMARE_STALKER_SPAWNING_ENABLED", true, ".");
         this.DAYS_TILL_NIGHTMARE = buildInt(builder, "DAYS_TILL_NIGHTMARE", 3, 1,999999,"Days till Nightmare Stalker spawns");
         this.STALKER_IMMUNITY_ENABLED = buildBoolean(builder, "STALKER_IMMUNITY_ENABLED", true, "Whether Nightmare Stalker has its base immunity to certain things");
