@@ -1,7 +1,7 @@
 package com.crimsoncrips.borninconfiguration.mixins.weapon;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModEntities;
 import net.mcreator.borninchaosv.procedures.*;
 import net.minecraft.core.BlockPos;
@@ -31,8 +31,8 @@ public class PhantomBomb {
         }
 
         if (world instanceof ServerLevel serverLevel) {
-            if (BIConfig.PHANTOM_BOMB_COUNT != 0) {
-                for (int i = 0; i < BIConfig.PHANTOM_BOMB_COUNT; i++) {
+            if (BornInConfiguration.COMMON_CONFIG.PHANTOM_BOMB_COUNT.get() != 0) {
+                for (int i = 0; i < BornInConfiguration.COMMON_CONFIG.PHANTOM_BOMB_COUNT.get(); i++) {
                     phantomBomb(serverLevel,world,x,y,z);
                 }
             }

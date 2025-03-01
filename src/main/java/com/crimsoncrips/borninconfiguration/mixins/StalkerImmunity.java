@@ -1,7 +1,7 @@
 package com.crimsoncrips.borninconfiguration.mixins;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.entity.NightmareStalkerEntity;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
@@ -11,10 +11,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.core.animation.AnimatableManager;
 
 @Mixin(NightmareStalkerEntity.class)
 
@@ -26,7 +23,7 @@ public abstract class StalkerImmunity extends Monster implements GeoEntity {
 
     @Override
     public boolean hurt(@NotNull DamageSource source, float amount) {
-        if (!BIConfig.STALKER_IMMUNITY_ENABLED) {
+        if (!BornInConfiguration.COMMON_CONFIG.STALKER_IMMUNITY_ENABLED.get()) {
             super.hurt(source, amount);
             return true;
         }

@@ -1,9 +1,7 @@
 package com.crimsoncrips.borninconfiguration.mixins;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
-import net.mcreator.borninchaosv.init.BornInChaosV1ModGameRules;
-import net.mcreator.borninchaosv.procedures.GenerationofInfectedDiamondsProProcedure;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.procedures.SpiritGonProcedure;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -15,7 +13,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(SpiritGonProcedure.class)
 
@@ -26,7 +23,7 @@ public class SpiritsDissapearInSun {
         ci.cancel(); // prevent the original method from running
 
         if (entity != null) {
-            if (BIConfig.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED && world.canSeeSkyFromBelowWater(BlockPos.containing(x, y + 1.0, z)) && world instanceof Level) {
+            if (BornInConfiguration.COMMON_CONFIG.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED.get() && world.canSeeSkyFromBelowWater(BlockPos.containing(x, y + 1.0, z)) && world instanceof Level) {
                 Level _lvl2 = (Level)world;
                 if (_lvl2.isDay() && !world.getLevelData().isRaining() && !world.getLevelData().isThundering() && !world.isClientSide()) {
                     if (!entity.level().isClientSide()) {

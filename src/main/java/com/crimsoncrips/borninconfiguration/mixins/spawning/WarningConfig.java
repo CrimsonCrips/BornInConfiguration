@@ -1,23 +1,14 @@
 package com.crimsoncrips.borninconfiguration.mixins.spawning;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModMobEffects;
 import net.mcreator.borninchaosv.procedures.WarningSoundProcedure;
-import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -32,15 +23,15 @@ public class WarningConfig {
        ci.cancel();
         if (entity == null)
             return;
-        if (!BIConfig.WARNING_SPAWN_ENABLED)
+        if (!BornInConfiguration.COMMON_CONFIG.WARNING_SPAWN_ENABLED.get())
             return;
         if (entity instanceof LivingEntity livingEntity) {
-            if (BIConfig.NIGHTMARE_STALKER_SPAWNING_ENABLED && world.dayTime() == BIConfig.DAYS_TILL_NIGHTMARE * 24000L) {
+            if (BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_SPAWNING_ENABLED.get() && world.dayTime() == BornInConfiguration.COMMON_CONFIG.DAYS_TILL_NIGHTMARE.get() * 24000L) {
                 if (!livingEntity.level().isClientSide()) {
                     livingEntity.addEffect(new MobEffectInstance(BornInChaosV1ModMobEffects.BAD_FEELING.get(), 10, 0, false, false));
                 }
             }
-            if (BIConfig.MISSIONER_SPAWNING_ENABLED && world.dayTime() == BIConfig.DAYS_TILL_MISSIONER * 24000L) {
+            if (BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() && world.dayTime() == BornInConfiguration.COMMON_CONFIG.DAYS_TILL_MISSIONER.get() * 24000L) {
                 if (!livingEntity.level().isClientSide()) {
                     livingEntity.addEffect(new MobEffectInstance(BornInChaosV1ModMobEffects.BAD_FEELING.get(), 10, 0, false, false));
                 }

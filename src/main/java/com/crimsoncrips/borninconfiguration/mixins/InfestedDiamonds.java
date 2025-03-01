@@ -1,7 +1,7 @@
 package com.crimsoncrips.borninconfiguration.mixins;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.procedures.GenerationofInfectedDiamondsProProcedure;
 import net.minecraft.world.level.LevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,6 +21,6 @@ public class InfestedDiamonds {
 
     @Unique
     private static boolean bornInConfiguration$newExecution() {
-       return BIConfig.INFESTED_DIAMONDS_ENABLED;
+       return BornInConfiguration.COMMON_CONFIG.INFESTED_DIAMONDS_ENABLED.get();
     }
 }

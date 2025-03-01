@@ -170,8 +170,8 @@ dependencies {
     runtimeOnly fg.deobf("curse.maven:dusk-468908:5114857")
     runtimeOnly fg.deobf("curse.maven:cupboard-326652:5170315")
 
-    implementation fg.deobf("curse.maven:geckolib-388172:5188427")
-    implementation fg.deobf("curse.maven:born-in-chaos-686437:6053249")
+    implementation fg.deobf("curse.maven:geckolib-388172:6027567")
+    implementation fg.deobf("curse.maven:born-in-chaos-686437:6193155")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 

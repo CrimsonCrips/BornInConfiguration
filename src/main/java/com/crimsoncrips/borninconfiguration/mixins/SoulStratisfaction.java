@@ -1,14 +1,11 @@
 package com.crimsoncrips.borninconfiguration.mixins;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
-import net.mcreator.borninchaosv.init.BornInChaosV1ModGameRules;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModMobEffects;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModParticleTypes;
 import net.mcreator.borninchaosv.procedures.SoulStratificationKazhdyiTikVoVriemiaEffiektaProcedure;
-import net.mcreator.borninchaosv.procedures.SpiritGonProcedure;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -40,7 +37,7 @@ public class SoulStratisfaction {
         ci.cancel(); // prevent the original method from running
 
         if (entity != null) {
-            if (BIConfig.SOUL_STRATIFICATION_EFFECT_ENABLED) {
+            if (BornInConfiguration.COMMON_CONFIG.SOUL_STRATIFICATION_EFFECT_ENABLED.get()) {
                 LivingEntity _livEnt;
                 if (entity instanceof LivingEntity) {
                     _livEnt = (LivingEntity) entity;

@@ -1,11 +1,8 @@
-package com.crimsoncrips.borninconfiguration.config;
+package com.crimsoncrips.borninconfiguration;
 
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.common.ForgeConfigSpec;
 
-import java.util.List;
-
-public class BornInChaosConfig {
+public class BICServerConfig {
 
         public final ForgeConfigSpec.DoubleValue  SUPREME_BONESCALLER_ARMOR;
         public final ForgeConfigSpec.DoubleValue  SUPREME_BONESCALLER_DAMAGE;
@@ -447,6 +444,20 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.DoubleValue SIR_PUMPKINHEAD_HEADLESS_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue SIR_PUMPKINHEAD_HEADLESS_SPEED;
 
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_ARMOR;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_DAMAGE;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_HEALTH;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_KNOCKBACK;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_KNOCKBACK_RESISTANCE;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_SPEED;
+
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_HENCHMAN_ARMOR;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_HENCHMAN_DAMAGE;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_HENCHMAN_HEALTH;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_HENCHMAN_KNOCKBACK;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_HENCHMAN_KNOCKBACK_RESISTANCE;
+    public final ForgeConfigSpec.DoubleValue KRAMPUS_HENCHMAN_SPEED;
+
 
     public final ForgeConfigSpec.DoubleValue FIRELIGHT_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue BABY_SPIDER_ARMOR;
@@ -469,9 +480,11 @@ public class BornInChaosConfig {
     public final ForgeConfigSpec.BooleanValue SPIRIT_OF_CHAOS_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue SWARMER_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue WARNING_SPAWN_ENABLED;
+    public final ForgeConfigSpec.BooleanValue KRAMPUS_HENCHMAN_SPAWNING_ENABLED;
 
+    public final ForgeConfigSpec.BooleanValue KRAMPUS_SPAWNING_ENABLED;
 
-    public BornInChaosConfig(final ForgeConfigSpec.Builder builder) {
+    public BICServerConfig(final ForgeConfigSpec.Builder builder) {
 
         builder.push("General");
         this.ROTTEN_CONSUMPTION_ENABLED = buildBoolean(builder, "ROTTEN_CONSUMPTION_ENABLED", true, "Whether Rotten Flesh afflicts you with Rotten Stink");
@@ -680,7 +693,26 @@ public class BornInChaosConfig {
         this.INFERNAL_SPIRIT_HEALTH = buildDouble(builder, "INFERNAL_SPIRIT_HEALTH", 90.0);
         this.INFERNAL_SPIRIT_KNOCKBACK = buildDouble(builder, "INFERNAL_SPIRIT_KNOCKBACK", 2.3);
         this.INFERNAL_SPIRIT_KNOCKBACK_RESISTANCE = buildDouble(builder, "INFERNAL_SPIRIT_KNOCKBACK_RESISTANCE", 0.9);
-        this.INFERNAL_SPIRIT_SPEED = buildDouble(builder, "INFERNAL_SPIRIT_SPEED", 12.0);
+        this.INFERNAL_SPIRIT_SPEED = buildDouble(builder, "INFERNAL_SPIRIT_SPEED", 0.22);
+        builder.pop();
+        builder.push("Krampus Henchman");
+        this.KRAMPUS_HENCHMAN_ARMOR = buildDouble(builder, "KRAMPUS_HENCHMAN_ARMOR", 5.0);
+        this.KRAMPUS_HENCHMAN_DAMAGE = buildDouble(builder, "KRAMPUS_HENCHMAN_DAMAGE", 4);
+        this.KRAMPUS_HENCHMAN_HEALTH = buildDouble(builder, "KRAMPUS_HENCHMAN_HEALTH", 30.0);
+        this.KRAMPUS_HENCHMAN_KNOCKBACK = buildDouble(builder, "KRAMPUS_HENCHMAN_KNOCKBACK", 0.6);
+        this.KRAMPUS_HENCHMAN_KNOCKBACK_RESISTANCE = buildDouble(builder, "KRAMPUS_HENCHMAN_KNOCKBACK_RESISTANCE", 0.9);
+        this.KRAMPUS_HENCHMAN_SPEED = buildDouble(builder, "KRAMPUS_HENCHMAN_SPEED", 0.29);
+        this.KRAMPUS_HENCHMAN_SPAWNING_ENABLED = buildBoolean(builder, "KRAMPUS_HENCHMAN_SPAWNING_ENABLED", true, ".");
+        builder.pop();
+        builder.push("Krampus");
+        this.KRAMPUS_ARMOR = buildDouble(builder, "KRAMPUS_ARMOR", 10.0);
+        this.KRAMPUS_DAMAGE = buildDouble(builder, "KRAMPUS_DAMAGE", 14.0);
+        this.KRAMPUS_HEALTH = buildDouble(builder, "KRAMPUS_HEALTH", 250.0);
+        this.KRAMPUS_KNOCKBACK = buildDouble(builder, "KRAMPUS_KNOCKBACK", 2.3);
+        this.KRAMPUS_KNOCKBACK_RESISTANCE = buildDouble(builder, "KRAMPUS_KNOCKBACK_RESISTANCE", 0.9);
+        this.KRAMPUS_SPEED = buildDouble(builder, "KRAMPUS_SPEED", 0.26);
+        this.KRAMPUS_SPAWNING_ENABLED = buildBoolean(builder, "KRAMPUS_SPAWNING_ENABLED", true, ".");
+
         builder.pop();
         builder.push("Lifestealer");
         this.DAYS_TILL_LIFESTEALER = buildInt(builder, "DAYS_TILL_LIFESTEALER", 10, 1,999999,"Days till Lifestealer spawns");
@@ -781,7 +813,6 @@ public class BornInChaosConfig {
         builder.pop();
         builder.push("Nightmare Stalker");
         this.NIGHTMARE_EFFECTS_ENABLED = buildBoolean(builder, "NIGHTMARE_EFFECTS_ENABLED", true, "Whether you get effects when hit by a nightmare stalker");
-
         this.NIGHTMARE_STRENGTH_ENABLED = buildBoolean(builder, "NIGHTMARE_STRENGTH_ENABLED", true, "Whether nightmare stalker, gets stronger the longer the world is");
         this.NIGHTMARE_STALKER_SPAWNING_ENABLED = buildBoolean(builder, "NIGHTMARE_STALKER_SPAWNING_ENABLED", true, ".");
         this.DAYS_TILL_NIGHTMARE = buildInt(builder, "DAYS_TILL_NIGHTMARE", 3, 1,999999,"Days till Nightmare Stalker spawns");
@@ -925,7 +956,7 @@ public class BornInChaosConfig {
         this.SKELETON_DEMOMAN_SPEED = buildDouble(builder, "SKELETON_DEMOMAN_SPEED", 0.22);
         this.SKELETON_DEMOMAN_KNOCKBACK_RESISTANCE = buildDouble(builder, "SKELETON_DEMOMAN_KNOCKBACK_RESISTANCE", 0);
         this.SKELETON_DEMOMAN_SPAWNING_ENABLED = buildBoolean(builder, "SKELETON_DEMOMAN_SPAWNING_ENABLED", true, ".");
-       
+
         builder.pop();
         builder.push("Skeleton Thrasher");
         this.SKELETON_THRASHER_ARMOR = buildDouble(builder, "SKELETON_THRASHER_ARMOR", 7.0);

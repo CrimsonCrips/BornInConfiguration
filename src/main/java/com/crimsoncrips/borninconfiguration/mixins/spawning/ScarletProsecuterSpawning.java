@@ -1,27 +1,16 @@
 package com.crimsoncrips.borninconfiguration.mixins.spawning;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
-import net.mcreator.borninchaosv.entity.SkeletonDemomanEntity;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModEntities;
-import net.mcreator.borninchaosv.init.BornInChaosV1ModMobEffects;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModParticleTypes;
 import net.mcreator.borninchaosv.procedures.CursedMarkKoghdaEffiektZakanchivaietsiaProcedure;
-import net.mcreator.borninchaosv.procedures.SkeletonBombKoghdaSushchnostRanienaProcedure;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
-import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -31,7 +20,6 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CursedMarkKoghdaEffiektZakanchivaietsiaProcedure.class)
 
@@ -59,8 +47,8 @@ public abstract class ScarletProsecuterSpawning{
             }
             if (world.getBlockState(BlockPos.containing(x + 3.0, y + 1.0, z)).canOcclude())
                 return;
-            if (BIConfig.SCARLET_SPAWN_AMMOUNT != 0) {
-                for (int i = 0; i < BIConfig.SCARLET_SPAWN_AMMOUNT; i++) {
+            if (BornInConfiguration.COMMON_CONFIG.SCARLET_SPAWN_AMMOUNT.get() != 0) {
+                for (int i = 0; i < BornInConfiguration.COMMON_CONFIG.SCARLET_SPAWN_AMMOUNT.get(); i++) {
                     spawnProescuter((ServerLevel) level, x, y, z);
                 }
             }

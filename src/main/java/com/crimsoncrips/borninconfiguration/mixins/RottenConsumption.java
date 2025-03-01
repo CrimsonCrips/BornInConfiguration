@@ -1,10 +1,9 @@
 package com.crimsoncrips.borninconfiguration.mixins;
 
 
-import com.crimsoncrips.borninconfiguration.config.BIConfig;
+import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModMobEffects;
 import net.mcreator.borninchaosv.procedures.EatingRottenFleshProcedure;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,7 +23,7 @@ public class RottenConsumption {
     private static void injected(Event event, Entity entity, ItemStack itemstack, CallbackInfo ci) {
         ci.cancel(); // prevent the original method from running
 
-        if (!BIConfig.ROTTEN_CONSUMPTION_ENABLED) // don't run if the feature is disabled
+        if (!BornInConfiguration.COMMON_CONFIG.ROTTEN_CONSUMPTION_ENABLED.get()) // don't run if the feature is disabled
             return;
         if (itemstack.getItem() != Items.ROTTEN_FLESH)
             return;
