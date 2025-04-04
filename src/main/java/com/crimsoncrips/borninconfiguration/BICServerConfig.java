@@ -25,6 +25,11 @@ public class BICServerConfig {
     public final ForgeConfigSpec.BooleanValue CORPSE_FLY_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue DARK_VORTEX_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue NIGHTMARE_STRENGTH_ENABLED;
+
+    public final ForgeConfigSpec.BooleanValue NIGHTMARE_FREEZE_ENABLED;
+    public final ForgeConfigSpec.BooleanValue MISSIONER_RAID_ENABLED;
+    public final ForgeConfigSpec.BooleanValue FALLEN_KNIGHT_CURSE_ENABLED;
+    public final ForgeConfigSpec.BooleanValue MISSIONER_RAIN_ENABLED;
     public final ForgeConfigSpec.BooleanValue NIGHTMARE_EFFECTS_ENABLED;
     public final ForgeConfigSpec.BooleanValue DECAYING_ZOMBIE_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue DECREPIT_SKELETON_SPAWNING_ENABLED;
@@ -658,6 +663,8 @@ public class BICServerConfig {
         this.FALLEN_KNIGHT_KNOCKBACK_RESISTANCE = buildDouble(builder, "FALLEN_KNIGHT_KNOCKBACK_RESISTANCE", 0.7);
         this.FALLEN_KNIGHT_SPAWNING_ENABLED = buildBoolean(builder, "FALLEN_KNIGHT_SPAWNING_ENABLED", true, ".");
         this.FALLEN_KNIGHT_SPEED = buildDouble(builder, "FALLEN_KNIGHT_SPEED", 0.32);
+        this.FALLEN_KNIGHT_CURSE_ENABLED = buildBoolean(builder, "FALLEN_KNIGHT_CURSE_ENABLED", true, "Whether Fallen Knights inflict cursed marks");
+
         builder.pop();
         builder.push("Felsteed");
         this.FELSTEED_ARMOR = buildDouble(builder, "FELSTEED_ARMOR", 2);
@@ -781,6 +788,9 @@ public class BICServerConfig {
         this.MISSIONER_KNOCKBACK_RESISTANCE = buildDouble(builder, "MISSIONER_KNOCKBACK_RESISTANCE", 1.0);
         this.MISSIONER_SPAWNING_ENABLED = buildBoolean(builder, "MISSIONER_SPAWNING_ENABLED", true, ".");
         this.MISSIONER_SPEED = buildDouble(builder, "MISSIONER_SPEED", 0.24);
+        this.MISSIONER_RAID_ENABLED = buildBoolean(builder, "MISSIONER_RAID_ENABLED", true, "Missioner spawns on raids");
+        this.MISSIONER_RAIN_ENABLED = buildBoolean(builder, "MISSIONER_RAIN_ENABLED", true, "Missioner can switch weather to rain");
+
         builder.pop();
         builder.push("Mother Spider");
         this.MOTHER_SPIDER_SPAWNING_ENABLED = buildBoolean(builder, "MOTHER_SPIDER_SPAWNING_ENABLED", true, ".");
@@ -814,6 +824,7 @@ public class BICServerConfig {
         builder.push("Nightmare Stalker");
         this.NIGHTMARE_EFFECTS_ENABLED = buildBoolean(builder, "NIGHTMARE_EFFECTS_ENABLED", true, "Whether you get effects when hit by a nightmare stalker");
         this.NIGHTMARE_STRENGTH_ENABLED = buildBoolean(builder, "NIGHTMARE_STRENGTH_ENABLED", true, "Whether nightmare stalker, gets stronger the longer the world is");
+        this.NIGHTMARE_FREEZE_ENABLED = buildBoolean(builder, "NIGHTMARE_FREEZE_ENABLED", true, "Whether nightmare stalker freezes water");
         this.NIGHTMARE_STALKER_SPAWNING_ENABLED = buildBoolean(builder, "NIGHTMARE_STALKER_SPAWNING_ENABLED", true, ".");
         this.DAYS_TILL_NIGHTMARE = buildInt(builder, "DAYS_TILL_NIGHTMARE", 3, 1,999999,"Days till Nightmare Stalker spawns");
         this.STALKER_IMMUNITY_ENABLED = buildBoolean(builder, "STALKER_IMMUNITY_ENABLED", true, "Whether Nightmare Stalker has its base immunity to certain things");
