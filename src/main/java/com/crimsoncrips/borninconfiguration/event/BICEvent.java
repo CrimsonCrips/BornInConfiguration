@@ -154,6 +154,19 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.DARK_VORTEX_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.DARK_VORTEX_KNOCKBACK_RESISTANCE.get());
         }
+        if (spawningEntity instanceof DireHoundLeaderEntity){
+            if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
+                spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
+            }
+            EntityUtils.setAttribute(spawningEntity, Attributes.MOVEMENT_SPEED, BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_SPEED.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.MAX_HEALTH, BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_HEALTH.get());
+            setHealth(spawningEntity,BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_HEALTH.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ARMOR, BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_ARMOR.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_DAMAGE.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_KNOCKBACK.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_KNOCKBACK_RESISTANCE.get());
+
+        }
         if (spawningEntity instanceof DecayingZombieEntity || spawningEntity instanceof DecayingZombieNotDespawnEntity) {
             if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
                 spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
