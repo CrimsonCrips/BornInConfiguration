@@ -99,7 +99,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.BONE_IMP_DAMAGE.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.BONE_IMP_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.BONE_IMP_KNOCKBACK_RESISTANCE.get());
-            if (!BornInConfiguration.COMMON_CONFIG.BONE_IMP_SPAWNING_ENABLED.get() && spawningEntity instanceof BoneImpEntity) {
+            if (!BornInConfiguration.COMMON_CONFIG.BONE_IMP_SPAWNING_ENABLED.get()) {
                 event.setSpawnCancelled(true);
             }
         }
@@ -496,6 +496,38 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.MOTHER_SPIDER_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.MOTHER_SPIDER_KNOCKBACK_RESISTANCE.get());
             if (!BornInConfiguration.COMMON_CONFIG.MOTHER_SPIDER_SPAWNING_ENABLED.get()) {
+                event.setSpawnCancelled(true);
+            }
+        }
+
+        if (spawningEntity instanceof KrampusEntity) {
+            if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
+                spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
+            }
+            EntityUtils.setAttribute(spawningEntity, Attributes.MOVEMENT_SPEED, BornInConfiguration.COMMON_CONFIG.KRAMPUS_SPEED.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.MAX_HEALTH, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HEALTH.get());
+            setHealth(spawningEntity,BornInConfiguration.COMMON_CONFIG.KRAMPUS_HEALTH.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ARMOR, BornInConfiguration.COMMON_CONFIG.KRAMPUS_ARMOR.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_DAMAGE.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.KRAMPUS_KNOCKBACK.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_KNOCKBACK_RESISTANCE.get());
+            if (!BornInConfiguration.COMMON_CONFIG.KRAMPUS_SPAWNING_ENABLED.get()) {
+                event.setSpawnCancelled(true);
+            }
+        }
+
+        if (spawningEntity instanceof KrampusHenchmanEntity) {
+            if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
+                spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
+            }
+            EntityUtils.setAttribute(spawningEntity, Attributes.MOVEMENT_SPEED, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_SPEED.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.MAX_HEALTH, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_HEALTH.get());
+            setHealth(spawningEntity,BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_HEALTH.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ARMOR, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_ARMOR.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_DAMAGE.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_KNOCKBACK.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_KNOCKBACK_RESISTANCE.get());
+            if (!BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_SPAWNING_ENABLED.get()) {
                 event.setSpawnCancelled(true);
             }
         }
