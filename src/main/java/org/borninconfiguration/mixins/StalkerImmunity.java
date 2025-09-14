@@ -12,17 +12,23 @@ import net.minecraft.world.level.Level;
 import org.borninconfiguration.BornInConfiguration;
 import org.jetbrains.annotations.NotNull;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import software.bernie.geckolib.animatable.GeoEntity;
 
 @Mixin(NightmareStalkerEntity.class)
 
-public abstract class StalkerImmunity extends Monster implements GeoEntity {
+public abstract class StalkerImmunity extends Monster {
 
-    protected StalkerImmunity(EntityType<? extends Monster> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+
+    protected StalkerImmunity(EntityType<? extends Monster> p_33002_, Level p_33003_) {
+        super(p_33002_, p_33003_);
     }
 
-    @Override
+    /**
+     * @author
+     * @reason
+     */
+    @Overwrite
     public boolean hurt(@NotNull DamageSource source, float amount) {
         if (!BornInConfiguration.COMMON_CONFIG.STALKER_IMMUNITY_ENABLED.get()) {
             super.hurt(source, amount);

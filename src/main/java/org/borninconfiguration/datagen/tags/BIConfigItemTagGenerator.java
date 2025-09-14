@@ -21,7 +21,7 @@ public class BIConfigItemTagGenerator extends ItemTagsProvider {
     }
 
 	@SuppressWarnings("unchecked")
-    @Override
+    
 	protected void addTags(HolderLookup.Provider provider) {
 
 		tag(BLOCK_BREAKERS)
@@ -29,7 +29,7 @@ public class BIConfigItemTagGenerator extends ItemTagsProvider {
 
 	}
 
-	@Override
+	
 	public String getName() {
 		return "BIC Item Tags";
 	}

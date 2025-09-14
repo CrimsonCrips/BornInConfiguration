@@ -17,6 +17,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Locale;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
+@Mod(BornInConfiguration.MODID)
 public class BornInConfiguration {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "borninconfiguration";
@@ -33,7 +34,6 @@ public class BornInConfiguration {
     public BornInConfiguration(ModContainer modContainer,IEventBus eventBus) {
         modContainer.registerConfig(ModConfig.Type.COMMON, COMMON_CONFIG_SPEC, "borninconfiguration-general.toml");
         eventBus.addListener(BIConfigDatagen::generateData);
-        NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.register(new BICEvent());
     }
 

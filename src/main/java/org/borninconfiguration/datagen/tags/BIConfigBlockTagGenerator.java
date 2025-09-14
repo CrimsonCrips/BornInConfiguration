@@ -24,12 +24,12 @@ public class BIConfigBlockTagGenerator extends IntrinsicHolderTagsProvider<Block
 		super(output, Registries.BLOCK, future, block -> block.builtInRegistryHolder().key(), BornInConfiguration.MODID, helper);
 	}
 
-	@Override
+	
 	public String getName() {
 		return "BIC Block Tags";
 	}
 
-	@Override
+	
 	protected void addTags(HolderLookup.Provider provider) {
 
 	}
