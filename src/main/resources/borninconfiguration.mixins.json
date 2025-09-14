@@ -1,9 +1,26 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "org.borninconfiguration.mixin",
+  "package": "org.borninconfiguration.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AxeAttackMixin",
+    "CursedMarkAttack",
+    "InfestedDiamonds",
+    "MissionerRain",
+    "RottenConsumption",
+    "SoulStratisfaction",
+    "SpiritsDissapearInSun",
+    "StalkerDamageEffects",
+    "StalkerEffects",
+    "StalkerEffects2",
+    "StalkerImmunity",
+    "spawning.ScarletProsecuterSpawning",
+    "spawning.WarningConfig",
+    "weapon.NuthammerMixin",
+    "weapon.PhantomBomb",
+    "weapon.PumpkinPIstolMixin",
+    "weapon.PumpkinStaffMixin"
   ],
   "client": [
   ],
