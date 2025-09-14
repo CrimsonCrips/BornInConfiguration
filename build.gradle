@@ -8,8 +8,28 @@ plugins {
 version = mod_version
 group = mod_group_id
 
+
 repositories {
     mavenLocal()
+
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
+
+        maven {
+            url = 'https://www.cursemaven.com'
+            content {
+                includeGroup 'curse.maven'
+            }
+        }
+    }
 }
 
 base {
@@ -96,26 +116,22 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 
 dependencies {
-    // Example mod dependency with JEI
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-    // compileOnly "mezz.jei:jei-${mc_version}-forge-api:${jei_version}"
-    // runtimeOnly "mezz.jei:jei-${mc_version}-forge:${jei_version}"
+    // Specify the version of Minecraft to use.
+    // Any artifact can be supplied so long as it has a "userdev" classifier artifact and is a compatible patcher artifact.
+    // The "userdev" classifier will be requested and setup by ForgeGradle.
+    // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
+    // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
 
-    // Example mod dependency using a mod jar from ./libs with a flat dir repository
-    // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
-    // The group id is ignored when searching -- in this case, it is "blank"
-    // implementation "blank:coolmod-${mc_version}:${coolmod_version}"
+    runtimeOnly "maven.modrinth:prickle:EE1FHDyD"
+    runtimeOnly "maven.modrinth:jade:15.10.3+neoforge"
+    runtimeOnly "maven.modrinth:bookshelf-lib:21.1.69"
+    runtimeOnly "maven.modrinth:enchantment-descriptions:2J8rg8A0"
+    runtimeOnly "maven.modrinth:jei:oghFmDkL"
 
-    // Example mod dependency using a file as dependency
-    // implementation files("libs/coolmod-${mc_version}-${coolmod_version}.jar")
+    implementation "curse.maven:geckolib-388172:6920810"
+    implementation "curse.maven:born-in-chaos-686437:6833966"
 
-    // Example project dependency using a sister or child project:
-    // implementation project(":myproject")
-
-    // For more info:
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
+    implementation(jarJar("io.github.llamalad7:mixinextras-neoforge:0.5.0"))
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
