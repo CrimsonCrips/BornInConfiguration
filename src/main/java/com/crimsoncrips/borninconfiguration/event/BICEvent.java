@@ -6,7 +6,6 @@ import com.crimsoncrips.borninconfiguration.utils.EntityUtils;
 import net.mcreator.borninchaosv.entity.*;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModEntities;
 import net.minecraft.core.Holder;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
@@ -298,6 +297,30 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.GLUTTON_FISH_DAMAGE.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.GLUTTON_FISH_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.GLUTTON_FISH_KNOCKBACK_RESISTANCE.get());
+        }
+        if (spawningEntity instanceof KrampusEntity) {
+            if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
+                spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
+            }
+            EntityUtils.setAttribute(spawningEntity, Attributes.MOVEMENT_SPEED, BornInConfiguration.COMMON_CONFIG.KRAMPUS_SPEED.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.MAX_HEALTH, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HEALTH.get());
+            setHealth(spawningEntity,BornInConfiguration.COMMON_CONFIG.KRAMPUS_HEALTH.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ARMOR, BornInConfiguration.COMMON_CONFIG.KRAMPUS_ARMOR.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_DAMAGE.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.KRAMPUS_KNOCKBACK.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_KNOCKBACK_RESISTANCE.get());
+        }
+        if (spawningEntity instanceof KrampusHenchmanEntity) {
+            if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
+                spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
+            }
+            EntityUtils.setAttribute(spawningEntity, Attributes.MOVEMENT_SPEED, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_SPEED.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.MAX_HEALTH, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_HEALTH.get());
+            setHealth(spawningEntity,BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_HEALTH.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ARMOR, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_ARMOR.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_DAMAGE.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_KNOCKBACK.get());
+            EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.KRAMPUS_HENCHMAN_KNOCKBACK_RESISTANCE.get());
         }
         if (spawningEntity instanceof InfernalSpiritEntity) {
             if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
@@ -731,19 +754,6 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.SUPREME_BONESCALLER_PHASE_2_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.SUPREME_BONESCALLER_PHASE_2_KNOCKBACK_RESISTANCE.get());
         }
-        if (spawningEntity instanceof SpiritGuideAssistantEntity) {
-            if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
-                spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
-            }
-            EntityUtils.setAttribute(spawningEntity, Attributes.MOVEMENT_SPEED, BornInConfiguration.COMMON_CONFIG.SPIRIT_GUIDE_ASSISTANT_SPEED.get());
-            EntityUtils.setAttribute(spawningEntity, Attributes.MAX_HEALTH, BornInConfiguration.COMMON_CONFIG.SPIRIT_GUIDE_ASSISTANT_HEALTH.get());
-            setHealth(spawningEntity,BornInConfiguration.COMMON_CONFIG.SPIRIT_GUIDE_ASSISTANT_HEALTH.get());
-            EntityUtils.setAttribute(spawningEntity, Attributes.ARMOR, BornInConfiguration.COMMON_CONFIG.SPIRIT_GUIDE_ASSISTANT_ARMOR.get());
-            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.SPIRIT_GUIDE_ASSISTANT_DAMAGE.get());
-            EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.SPIRIT_GUIDE_ASSISTANT_KNOCKBACK.get());
-            EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.SPIRIT_GUIDE_ASSISTANT_KNOCKBACK_RESISTANCE.get());
-
-        }
         if (spawningEntity instanceof SwarmerEntity) {
             if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
                 spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
@@ -892,7 +902,7 @@ public class BICEvent {
         }
 
         if(entityType == BornInChaosV1ModEntities.DIRE_HOUND_LEADER.get()){
-            if (!BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_SPAWNING_ENABLED.get()) {
+            if (!BornInConfiguration.COMMON_CONFIG.DIRE_HOUND_LEADER_SPAWNING_ENABLED.get()) {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
             }
         }
@@ -940,21 +950,19 @@ public class BICEvent {
         }
 
         if(entityType == BornInChaosV1ModEntities.LIFESTEALER.get()){
-            if (BornInConfiguration.COMMON_CONFIG.LIFESTEALER_SPAWNING_ENABLED.get()) {
-                if (time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_LIFESTEALER.get()) {
-                    spawnPlacementCheck.setResult(Event.Result.DENY);
-                }
-            } else {
+            if (!BornInConfiguration.COMMON_CONFIG.LIFESTEALER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_LIFESTEALER.get()) {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
             }
         }
 
-        if(entityType == BornInChaosV1ModEntities.MISSIONER.get() || entityType == BornInChaosV1ModEntities.MISSIONARY_RAIDER.get()){
-            if (BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get()) {
-                if (time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_MISSIONER.get()) {
-                    spawnPlacementCheck.setResult(Event.Result.DENY);
-                }
-            } else {
+        if(entityType == BornInChaosV1ModEntities.MISSIONER.get()){
+            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_MISSIONER.get()) {
+                spawnPlacementCheck.setResult(Event.Result.DENY);
+            }
+        }
+
+        if(entityType == BornInChaosV1ModEntities.MISSIONARY_RAIDER.get()){
+            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_RAID_ENABLED.get()) {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
             }
         }
@@ -978,11 +986,7 @@ public class BICEvent {
         }
 
         if(entityType == BornInChaosV1ModEntities.NIGHTMARE_STALKER.get()){
-            if (BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_SPAWNING_ENABLED.get()) {
-                if (time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_NIGHTMARE.get()) {
-                    spawnPlacementCheck.setResult(Event.Result.DENY);
-                }
-            } else {
+            if (!BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_NIGHTMARE.get()) {
                 spawnPlacementCheck.setResult(Event.Result.DENY);
             }
         }

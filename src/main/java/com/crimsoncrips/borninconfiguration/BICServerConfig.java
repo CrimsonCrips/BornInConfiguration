@@ -15,6 +15,7 @@ public class BICServerConfig {
         public final ForgeConfigSpec.DoubleValue INFERNAL_SPIRIT_KNOCKBACK;
         public final ForgeConfigSpec.DoubleValue INFERNAL_SPIRIT_KNOCKBACK_RESISTANCE;
         public final ForgeConfigSpec.DoubleValue INFERNAL_SPIRIT_SPEED ;
+    public final ForgeConfigSpec.BooleanValue MISSIONER_RAID_ENABLED;
     public final ForgeConfigSpec.IntValue PHANTOM_BOMB_COUNT ;
 
     public final ForgeConfigSpec.IntValue UPGRADED_PUMPKIN_PISTOL_COOLDOWN;
@@ -77,7 +78,7 @@ public class BICServerConfig {
     public final ForgeConfigSpec.DoubleValue  DIRE_HOUND_LEADER_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue  DIRE_HOUND_LEADER_SPEED;
 
-    public final ForgeConfigSpec.BooleanValue  DIRE_HOUND_SPAWNING_ENABLED;
+    public final ForgeConfigSpec.BooleanValue DIRE_HOUND_LEADER_SPAWNING_ENABLED;
     public final ForgeConfigSpec.DoubleValue  FALLEN_KNIGHT_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue  GLUTTON_FISH_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue  GLUTTON_FISH_SWIM_SPEED;
@@ -94,6 +95,7 @@ public class BICServerConfig {
     public final ForgeConfigSpec.DoubleValue  LORD_PUMPKIN_HEAD_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue  LORD_PUMPKIN_HEAD_SPEED;
     public final ForgeConfigSpec.DoubleValue  MAGGOT_KNOCKBACK_RESISTANCE;
+    public final ForgeConfigSpec.BooleanValue MAGGOT_SPAWNING_ENABLED;
     public final ForgeConfigSpec.DoubleValue  MISSIONER_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue  MR_PUMPKIN_ARMOR;
     public final ForgeConfigSpec.DoubleValue  MR_PUMPKIN_DAMAGE;
@@ -644,7 +646,7 @@ public class BICServerConfig {
         this.DIAMOND_TERMITE_SPEED = buildDouble(builder, "DIAMOND_TERMITE_SPEED", 0.3);
         builder.pop();
         builder.push("Dire Hound Leader");
-        this.DIRE_HOUND_SPAWNING_ENABLED = buildBoolean(builder, "DIRE_HOUND_SPAWNING_ENABLED", true, ".");
+        this.DIRE_HOUND_LEADER_SPAWNING_ENABLED = buildBoolean(builder, "DIRE_HOUND_SPAWNING_ENABLED", true, ".");
         this.DIRE_HOUND_LEADER_ARMOR = buildDouble(builder, "DIRE_HOUND_LEADER_ARMOR", 0.5);
         this.DIRE_HOUND_LEADER_DAMAGE = buildDouble(builder, "DIRE_HOUND_LEADER_DAMAGE", 10.0);
         this.DIRE_HOUND_LEADER_HEALTH = buildDouble(builder, "DIRE_HOUND_LEADER_HEALTH", 100.0);
@@ -793,6 +795,8 @@ public class BICServerConfig {
         this.MAGGOT_KNOCKBACK = buildDouble(builder, "MAGGOT_KNOCKBACK", 1);
         this.MAGGOT_KNOCKBACK_RESISTANCE = buildDouble(builder, "MAGGOT_KNOCKBACK_RESISTANCE", 0.2);
         this.MAGGOT_SPEED = buildDouble(builder, "MAGGOT_SPEED", 0.2);
+        this.MAGGOT_SPAWNING_ENABLED = buildBoolean(builder, "MAGGOT_SPAWNING_ENABLED", true, ".");
+
         builder.pop();
         builder.push("Missioner");
         this.DAYS_TILL_MISSIONER = buildInt(builder, "DAYS_TILL_MISSIONER", 10, 1,999999,"Days till The Missioner spawns");
@@ -804,6 +808,7 @@ public class BICServerConfig {
         this.MISSIONER_SPAWNING_ENABLED = buildBoolean(builder, "MISSIONER_SPAWNING_ENABLED", true, ".");
         this.MISSIONER_SPEED = buildDouble(builder, "MISSIONER_SPEED", 0.24);
         this.MISSIONER_RAIN_ENABLED = buildBoolean(builder, "MISSIONER_RAIN_ENABLED", true, "Missioner can switch weather to rain");
+        this.MISSIONER_RAID_ENABLED = buildBoolean(builder, "MISSIONER_RAID_ENABLED", true, "Missioner can spawn in raids");
 
         builder.pop();
         builder.push("Mother Spider");
