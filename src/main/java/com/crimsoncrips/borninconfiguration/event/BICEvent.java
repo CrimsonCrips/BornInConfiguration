@@ -404,7 +404,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.MAGGOT_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.MAGGOT_KNOCKBACK_RESISTANCE.get());
         }
-        if (spawningEntity instanceof MissionerEntity) {
+        if (spawningEntity instanceof MissionerEntity || spawningEntity instanceof MissionaryRaiderEntity) {
             if (BornInConfiguration.COMMON_CONFIG.RETALLIATION_ENABLED.get()){
                 spawningEntity.targetSelector.addGoal(1, new HurtByTargetGoal((PathfinderMob) spawningEntity));
             }
@@ -949,7 +949,7 @@ public class BICEvent {
             }
         }
 
-        if(entityType == BornInChaosV1ModEntities.MISSIONER.get()){
+        if(entityType == BornInChaosV1ModEntities.MISSIONER.get() || entityType == BornInChaosV1ModEntities.MISSIONARY_RAIDER.get()){
             if (BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get()) {
                 if (time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_MISSIONER.get()) {
                     spawnPlacementCheck.setResult(Event.Result.DENY);

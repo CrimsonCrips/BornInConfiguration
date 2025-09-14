@@ -16,6 +16,10 @@ public class BICServerConfig {
         public final ForgeConfigSpec.DoubleValue INFERNAL_SPIRIT_KNOCKBACK_RESISTANCE;
         public final ForgeConfigSpec.DoubleValue INFERNAL_SPIRIT_SPEED ;
     public final ForgeConfigSpec.IntValue PHANTOM_BOMB_COUNT ;
+
+    public final ForgeConfigSpec.IntValue UPGRADED_PUMPKIN_PISTOL_COOLDOWN;
+    public final ForgeConfigSpec.IntValue PUMPKIN_PISTOL_COOLDOWN;
+
      public final ForgeConfigSpec.DoubleValue  SUPREME_BONESCALLER_SPEED;
     public final ForgeConfigSpec.BooleanValue BABY_SKELETON_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue BLOODY_GADFLY_SPAWNING_ENABLED;
@@ -27,7 +31,6 @@ public class BICServerConfig {
     public final ForgeConfigSpec.BooleanValue NIGHTMARE_STRENGTH_ENABLED;
 
     public final ForgeConfigSpec.BooleanValue NIGHTMARE_FREEZE_ENABLED;
-    public final ForgeConfigSpec.BooleanValue MISSIONER_RAID_ENABLED;
     public final ForgeConfigSpec.BooleanValue FALLEN_KNIGHT_CURSE_ENABLED;
     public final ForgeConfigSpec.BooleanValue MISSIONER_RAIN_ENABLED;
     public final ForgeConfigSpec.BooleanValue NIGHTMARE_EFFECTS_ENABLED;
@@ -353,6 +356,7 @@ public class BICServerConfig {
     public final ForgeConfigSpec.IntValue DAYS_TILL_MISSIONER;
     public final ForgeConfigSpec.IntValue DAYS_TILL_NIGHTMARE;
     public final ForgeConfigSpec.IntValue SCARLET_SPAWN_AMMOUNT;
+    public final ForgeConfigSpec.IntValue PUMPKIN_STAFF_SUMMON_AMOUNT;
 
     public final ForgeConfigSpec.DoubleValue CONTROLLED_BABY_SKELETON_ARMOR;
     public final ForgeConfigSpec.DoubleValue CONTROLLED_BABY_SKELETON_DAMAGE;
@@ -360,6 +364,7 @@ public class BICServerConfig {
     public final ForgeConfigSpec.DoubleValue CONTROLLED_BABY_SKELETON_KNOCKBACK;
     public final ForgeConfigSpec.DoubleValue CONTROLLED_BABY_SKELETON_KNOCKBACK_RESISTANCE;
     public final ForgeConfigSpec.DoubleValue CONTROLLED_BABY_SKELETON_SPEED;
+    public final ForgeConfigSpec.DoubleValue NUTBREAKER_HEAD_CHANCE;
 
     public final ForgeConfigSpec.DoubleValue CONTROLLED_SPIRITUAL_ASSISTANT_ARMOR;
     public final ForgeConfigSpec.DoubleValue CONTROLLED_SPIRITUAL_ASSISTANT_DAMAGE;
@@ -491,14 +496,24 @@ public class BICServerConfig {
 
     public BICServerConfig(final ForgeConfigSpec.Builder builder) {
 
+
+
         builder.push("General");
         this.ROTTEN_CONSUMPTION_ENABLED = buildBoolean(builder, "ROTTEN_CONSUMPTION_ENABLED", true, "Whether Rotten Flesh afflicts you with Rotten Stink");
         this.SOUL_STRATIFICATION_EFFECT_ENABLED = buildBoolean(builder, "SOUL_STRATIFICATION_EFFECT_ENABLED", true, "Whether soul stratisfaction is enabled");
         this.SPIRIT_DISSAPPEAR_IN_SUN_ENABLED = buildBoolean(builder, "SPIRIT_DISSAPPEAR_IN_SUN_ENABLED", true, "Whether spirits disappear in the sun is enabled");
         this.RETALLIATION_ENABLED = buildBoolean(builder, "RETALLIATION_ENABLED", true, "Whether mobs retalliate to other mobs attacking them");
-        this.PHANTOM_BOMB_COUNT = buildInt(builder, "PHANTOM_BOMB_COUNT", 2, 1,999999,"Amount of phantom bombs that gets spawned when thrown");
         this.INFESTED_DIAMONDS_ENABLED = buildBoolean(builder, "INFESTED_DIAMONDS_ENABLED", true, "Whether infested diamonds generate");
         this.WARNING_SPAWN_ENABLED = buildBoolean(builder, "WARNING_SPAWN_ENABLED", true, "Whether you get the warning effect that you get for Missioners and Nightmare Stalkers");
+        builder.pop();
+
+        builder.push("Weapons");
+        this.PHANTOM_BOMB_COUNT = buildInt(builder, "PHANTOM_BOMB_COUNT", 2, 1,Integer.MAX_VALUE,"Amount of phantom bombs that gets spawned when thrown");
+        this.UPGRADED_PUMPKIN_PISTOL_COOLDOWN = buildInt(builder, "UPGRADED_PUMPKIN_PISTOL_COOLDOWN", 1, 0,Integer.MAX_VALUE,"Amount of seconds for the cooldown of pumpkin pistol with the hat on");
+        this.PUMPKIN_PISTOL_COOLDOWN = buildInt(builder, "PUMPKIN_PISTOL_COOLDOWN", 2, 0,Integer.MAX_VALUE,"Amount of seconds for the cooldown of pumpkin pistol");
+        this.NUTBREAKER_HEAD_CHANCE = buildDouble(builder, "NUTBREAKER_HEAD_CHANCE", 0.35F, 0.0F,1.0F,"Chance to proc head effect with nutcracker");
+        this.PUMPKIN_STAFF_SUMMON_AMOUNT = buildInt(builder, "PUMPKIN_STAFF_SUMMON_AMOUNT", 1, 1,Integer.MAX_VALUE,"Amount of Mr.Pumpkins spawned");
+
 
         builder.push("Mobs");
         builder.push("Baby Skeleton");
@@ -788,7 +803,6 @@ public class BICServerConfig {
         this.MISSIONER_KNOCKBACK_RESISTANCE = buildDouble(builder, "MISSIONER_KNOCKBACK_RESISTANCE", 1.0);
         this.MISSIONER_SPAWNING_ENABLED = buildBoolean(builder, "MISSIONER_SPAWNING_ENABLED", true, ".");
         this.MISSIONER_SPEED = buildDouble(builder, "MISSIONER_SPEED", 0.24);
-        this.MISSIONER_RAID_ENABLED = buildBoolean(builder, "MISSIONER_RAID_ENABLED", true, "Missioner spawns on raids");
         this.MISSIONER_RAIN_ENABLED = buildBoolean(builder, "MISSIONER_RAIN_ENABLED", true, "Missioner can switch weather to rain");
 
         builder.pop();
@@ -1088,5 +1102,9 @@ public class BICServerConfig {
 
     private static ForgeConfigSpec.DoubleValue buildDouble(ForgeConfigSpec.Builder builder, String name, double defaultValue) {
         return builder.comment(".").translation(name).defineInRange(name, defaultValue, 0, Double.MAX_VALUE);
+    }
+
+    private static ForgeConfigSpec.DoubleValue buildDouble(ForgeConfigSpec.Builder builder, String name, double defaultValue, double min, double max, String comment){
+        return builder.comment(comment).translation(name).defineInRange(name, defaultValue, min, max);
     }
 }

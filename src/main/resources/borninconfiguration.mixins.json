@@ -5,9 +5,9 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "borninconfiguration.refmap.json",
   "mixins": [
+    "AxeAttackMixin",
     "CursedMarkAttack",
     "InfestedDiamonds",
-    "MissionerRaid",
     "MissionerRain",
     "RottenConsumption",
     "SoulStratisfaction",
@@ -18,7 +18,10 @@
     "StalkerImmunity",
     "spawning.ScarletProsecuterSpawning",
     "spawning.WarningConfig",
-    "weapon.PhantomBomb"
+    "weapon.NuthammerMixin",
+    "weapon.PhantomBomb",
+    "weapon.PumpkinPIstolMixin",
+    "weapon.PumpkinStaffMixin"
   ],
   "client": [
   ],
