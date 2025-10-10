@@ -378,7 +378,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.LIFESTEALER_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.LIFESTEALER_KNOCKBACK_RESISTANCE.get());
 
-            if (!BornInConfiguration.COMMON_CONFIG.LIFESTEALER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_LIFESTEALER.get()) {
+            if (!BornInConfiguration.COMMON_CONFIG.LIFESTEALER_SPAWNING_ENABLED.get() || !(time > 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_LIFESTEALER.get())) {
                event.setSpawnCancelled(true);
             }
         }
@@ -477,7 +477,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.MISSIONER_DAMAGE.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.MISSIONER_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.MISSIONER_KNOCKBACK_RESISTANCE.get());
-            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_MISSIONER.get()) {
+            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() || !(time > 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_MISSIONER.get())) {
                 event.setSpawnCancelled(true);
             }
             if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_RAID_ENABLED.get() && spawningEntity instanceof MissionaryRaiderEntity) {
@@ -574,7 +574,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_DAMAGE.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_KNOCKBACK_RESISTANCE.get());
-            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_NIGHTMARE.get()) {
+            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() || !(time > 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_NIGHTMARE.get())) {
                 event.setSpawnCancelled(true);
             }
         }
