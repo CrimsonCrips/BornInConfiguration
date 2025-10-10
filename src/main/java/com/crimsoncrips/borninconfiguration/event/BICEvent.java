@@ -9,7 +9,10 @@ import net.minecraft.core.Holder;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,6 +20,14 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = BornInConfiguration.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class BICEvent {
+
+    @SubscribeEvent
+    public void tick(LivingEvent.LivingTickEvent livingTickEvent){
+        LivingEntity livingEntity = livingTickEvent.getEntity();
+        if (livingEntity instanceof Player player && !BornInConfiguration.COMMON_CONFIG.NAUGHTINESS_ENABLED.get()){
+            player.getPersistentData().putDouble("naughtiness", 0);
+        }
+    }
 
     @SubscribeEvent
     public void onMobSpawn(MobSpawnEvent.FinalizeSpawn event) {

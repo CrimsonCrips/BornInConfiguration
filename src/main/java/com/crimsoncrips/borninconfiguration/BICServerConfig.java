@@ -4,6 +4,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
 
 public class BICServerConfig {
 
+    public final ForgeConfigSpec.BooleanValue NAUGHTINESS_ENABLED;
+
         public final ForgeConfigSpec.DoubleValue  SUPREME_BONESCALLER_ARMOR;
         public final ForgeConfigSpec.DoubleValue  SUPREME_BONESCALLER_DAMAGE;
         public final ForgeConfigSpec.DoubleValue  SUPREME_BONESCALLER_HEALTH;
@@ -507,6 +509,8 @@ public class BICServerConfig {
         this.RETALLIATION_ENABLED = buildBoolean(builder, "RETALLIATION_ENABLED", true, "Whether mobs retalliate to other mobs attacking them");
         this.INFESTED_DIAMONDS_ENABLED = buildBoolean(builder, "INFESTED_DIAMONDS_ENABLED", true, "Whether infested diamonds generate");
         this.WARNING_SPAWN_ENABLED = buildBoolean(builder, "WARNING_SPAWN_ENABLED", true, "Whether you get the warning effect that you get for Missioners and Nightmare Stalkers");
+        this.NAUGHTINESS_ENABLED = buildBoolean(builder, "NAUGHTINESS_ENABLED", true, "Whether you gain naughtiness from certain actions");
+
         builder.pop();
 
         builder.push("Weapons");

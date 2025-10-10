@@ -8,6 +8,7 @@
     "AxeAttackMixin",
     "CursedMarkAttack",
     "InfestedDiamonds",
+    "HenchmanAttackMixin",
     "MissionerRain",
     "RottenConsumption",
     "SoulStratisfaction",
