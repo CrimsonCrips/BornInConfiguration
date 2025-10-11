@@ -5,6 +5,8 @@ import com.crimsoncrips.borninconfiguration.BornInConfiguration;
 import com.crimsoncrips.borninconfiguration.utils.EntityUtils;
 import net.mcreator.borninchaosv.entity.*;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModEntities;
+import net.mcreator.borninchaosv.network.BornInChaosV1ModVariables;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -24,8 +26,13 @@ public class BICEvent {
     @SubscribeEvent
     public void tick(LivingEvent.LivingTickEvent livingTickEvent){
         LivingEntity livingEntity = livingTickEvent.getEntity();
+
+
         if (livingEntity instanceof Player player && !BornInConfiguration.COMMON_CONFIG.NAUGHTINESS_ENABLED.get()){
-            player.getPersistentData().putDouble("naughtiness", 0);
+            double naughty = (player.getCapability(BornInChaosV1ModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new BornInChaosV1ModVariables.PlayerVariables())).naughtiness;
+            if (naughty > 0){
+                (player.getCapability(BornInChaosV1ModVariables.PLAYER_VARIABLES_CAPABILITY, (Direction)null).orElse(new BornInChaosV1ModVariables.PlayerVariables())).naughtiness = 0;
+            }
         }
     }
 
@@ -388,7 +395,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.LIFESTEALER_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.LIFESTEALER_KNOCKBACK_RESISTANCE.get());
 
-            if (!BornInConfiguration.COMMON_CONFIG.LIFESTEALER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_LIFESTEALER.get()) {
+            if (!BornInConfiguration.COMMON_CONFIG.LIFESTEALER_SPAWNING_ENABLED.get()) {
                 event.setSpawnCancelled(true);
             }
         }
@@ -487,7 +494,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.MISSIONER_DAMAGE.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.MISSIONER_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.MISSIONER_KNOCKBACK_RESISTANCE.get());
-            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_MISSIONER.get()) {
+            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get()) {
                 event.setSpawnCancelled(true);
             }
             if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_RAID_ENABLED.get() && spawningEntity instanceof MissionaryRaiderEntity) {
@@ -584,7 +591,7 @@ public class BICEvent {
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_DAMAGE, BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_DAMAGE.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.ATTACK_KNOCKBACK, BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_KNOCKBACK.get());
             EntityUtils.setAttribute(spawningEntity, Attributes.KNOCKBACK_RESISTANCE, BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_KNOCKBACK_RESISTANCE.get());
-            if (!BornInConfiguration.COMMON_CONFIG.MISSIONER_SPAWNING_ENABLED.get() || time < 24000L * BornInConfiguration.COMMON_CONFIG.DAYS_TILL_NIGHTMARE.get()) {
+            if (!BornInConfiguration.COMMON_CONFIG.NIGHTMARE_STALKER_SPAWNING_ENABLED.get()) {
                 event.setSpawnCancelled(true);
             }
         }
