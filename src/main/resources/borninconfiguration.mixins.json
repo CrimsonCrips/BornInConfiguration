@@ -6,6 +6,7 @@
   "mixins": [
     "AxeAttackMixin",
     "CursedMarkAttack",
+    "HenchmanAttackMixin",
     "InfestedDiamonds",
     "MissionerRain",
     "RottenConsumption",
@@ -15,6 +16,9 @@
     "StalkerEffects",
     "StalkerEffects2",
     "StalkerImmunity",
+    "spawning.LifestealerOverride",
+    "spawning.MissionerOverride",
+    "spawning.NightmareOveride",
     "spawning.ScarletProsecuterSpawning",
     "spawning.WarningConfig",
     "weapon.NuthammerMixin",

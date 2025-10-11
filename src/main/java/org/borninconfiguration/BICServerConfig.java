@@ -493,7 +493,7 @@ public class BICServerConfig {
     public final ModConfigSpec.BooleanValue SWARMER_SPAWNING_ENABLED;
     public final ModConfigSpec.BooleanValue WARNING_SPAWN_ENABLED;
     public final ModConfigSpec.BooleanValue KRAMPUS_HENCHMAN_SPAWNING_ENABLED;
-
+    public final ModConfigSpec.BooleanValue NAUGHTINESS_ENABLED;
     public final ModConfigSpec.BooleanValue KRAMPUS_SPAWNING_ENABLED;
 
     public BICServerConfig(final ModConfigSpec.Builder builder) {
@@ -507,6 +507,7 @@ public class BICServerConfig {
         this.RETALLIATION_ENABLED = buildBoolean(builder, "RETALLIATION_ENABLED", true, "Whether mobs retalliate to other mobs attacking them");
         this.INFESTED_DIAMONDS_ENABLED = buildBoolean(builder, "INFESTED_DIAMONDS_ENABLED", true, "Whether infested diamonds generate");
         this.WARNING_SPAWN_ENABLED = buildBoolean(builder, "WARNING_SPAWN_ENABLED", true, "Whether you get the warning effect that you get for Missioners and Nightmare Stalkers");
+        this.NAUGHTINESS_ENABLED = buildBoolean(builder, "NAUGHTINESS_ENABLED", true, "Whether you gain naughtiness from certain actions");
         builder.pop();
 
         builder.push("Weapons");
