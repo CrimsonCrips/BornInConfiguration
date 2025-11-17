@@ -495,6 +495,7 @@ public class BICServerConfig {
     public final ForgeConfigSpec.BooleanValue SWARMER_SPAWNING_ENABLED;
     public final ForgeConfigSpec.BooleanValue WARNING_SPAWN_ENABLED;
     public final ForgeConfigSpec.BooleanValue KRAMPUS_HENCHMAN_SPAWNING_ENABLED;
+    public final ForgeConfigSpec.BooleanValue KRAMPUS_HENCHMAN_DROPING_ENABLED;
 
     public final ForgeConfigSpec.BooleanValue KRAMPUS_SPAWNING_ENABLED;
 
@@ -731,6 +732,7 @@ public class BICServerConfig {
         this.KRAMPUS_HENCHMAN_KNOCKBACK_RESISTANCE = buildDouble(builder, "KRAMPUS_HENCHMAN_KNOCKBACK_RESISTANCE", 0.9);
         this.KRAMPUS_HENCHMAN_SPEED = buildDouble(builder, "KRAMPUS_HENCHMAN_SPEED", 0.29);
         this.KRAMPUS_HENCHMAN_SPAWNING_ENABLED = buildBoolean(builder, "KRAMPUS_HENCHMAN_SPAWNING_ENABLED", true, ".");
+        this.KRAMPUS_HENCHMAN_DROPING_ENABLED = buildBoolean(builder, "KRAMPUS_HENCHMAN_DROPING_ENABLED", true, "Whether Krampus Henchnmen make you drop your items when hit");
         builder.pop();
         builder.push("Krampus");
         this.KRAMPUS_ARMOR = buildDouble(builder, "KRAMPUS_ARMOR", 10.0);
