@@ -128,8 +128,8 @@ dependencies {
     runtimeOnly "maven.modrinth:enchantment-descriptions:2J8rg8A0"
     runtimeOnly "maven.modrinth:jei:oghFmDkL"
 
-    implementation "curse.maven:geckolib-388172:6920810"
-    implementation "curse.maven:born-in-chaos-686437:6833966"
+    implementation "curse.maven:geckolib-388172:7415496"
+    implementation "curse.maven:born-in-chaos-686437:7366499"
 
     implementation(jarJar("io.github.llamalad7:mixinextras-neoforge:0.5.0"))
 }
