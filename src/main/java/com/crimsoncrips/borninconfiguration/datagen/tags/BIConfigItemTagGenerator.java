@@ -32,7 +32,7 @@ public class BIConfigItemTagGenerator extends ItemTagsProvider {
 
 	@Override
 	public String getName() {
-		return "ACE Item Tags";
+		return "BIC Item Tags";
 	}
 
 
