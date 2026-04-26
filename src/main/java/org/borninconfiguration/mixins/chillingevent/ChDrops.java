@@ -38,9 +38,9 @@ public abstract class ChDrops {
     @Inject(method = "execute(Lnet/neoforged/bus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(Event event, LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         ci.cancel();
-        boolean season = (Calendar.getInstance().get(2) == 11 && Calendar.getInstance().get(5) >= 21 && Calendar.getInstance().get(5) <= 31 || Calendar.getInstance().get(2) == 0 && Calendar.getInstance().get(5) >= 1 && Calendar.getInstance().get(5) <= 10 || BornInConfiguration.COMMON_CONFIG.CHILLING_HORROR_ENABLED.get());
+        boolean season = ((Calendar.getInstance().get(2) == 11 && Calendar.getInstance().get(5) >= 21 && Calendar.getInstance().get(5) <= 31 || Calendar.getInstance().get(2) == 0 && Calendar.getInstance().get(5) >= 1 && Calendar.getInstance().get(5) <= 10) || BornInConfiguration.COMMON_CONFIG.CHILLING_HORROR_ENABLED.get());
         if (entity != null) {
-            if ((entity instanceof Zombie || entity instanceof Skeleton) && world.getLevelData().getGameRules().getBoolean(BornInChaosV1ModGameRules.SEASONAL_EVENTS) && season) {
+            if ((entity instanceof Zombie || entity instanceof Skeleton) && season) {
                 ItemStack var10000;
                 if (entity instanceof LivingEntity) {
                     LivingEntity _entGetArmor = (LivingEntity) entity;

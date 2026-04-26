@@ -34,7 +34,6 @@ public class BICServerConfig {
     public final ModConfigSpec.BooleanValue FALLEN_KNIGHT_CURSE_ENABLED;
     public final ModConfigSpec.BooleanValue MISSIONER_RAIN_ENABLED;
     public final ModConfigSpec.BooleanValue MISSIONER_RAID_ENABLED;
-    public final ModConfigSpec.BooleanValue NIGHTMARE_EFFECTS_ENABLED;
     public final ModConfigSpec.BooleanValue DECAYING_ZOMBIE_SPAWNING_ENABLED;
     public final ModConfigSpec.BooleanValue DECREPIT_SKELETON_SPAWNING_ENABLED;
     public final ModConfigSpec.BooleanValue DOOR_KNIGHT_SPAWNING_ENABLED;
@@ -497,6 +496,7 @@ public class BICServerConfig {
     public final ModConfigSpec.BooleanValue KRAMPUS_SPAWNING_ENABLED;
     public final ModConfigSpec.BooleanValue KRAMPUS_HENCHMAN_DROPING_ENABLED;
     public final ModConfigSpec.BooleanValue CHILLING_HORROR_ENABLED;
+    public final ModConfigSpec.BooleanValue CHAOTIC_SPRING_ENABLED;
     public BICServerConfig(final ModConfigSpec.Builder builder) {
 
 
@@ -510,6 +510,7 @@ public class BICServerConfig {
         this.WARNING_SPAWN_ENABLED = buildBoolean(builder, "WARNING_SPAWN_ENABLED", true, "Whether you get the warning effect that you get for Missioners and Nightmare Stalkers");
         this.NAUGHTINESS_ENABLED = buildBoolean(builder, "NAUGHTINESS_ENABLED", true, "Whether you gain naughtiness from certain actions");
         this.CHILLING_HORROR_ENABLED = buildBoolean(builder, "CHILLING_HORROR_ENABLED", true, "Chilling Horror event enabled");
+        this.CHAOTIC_SPRING_ENABLED = buildBoolean(builder, "CHAOTIC_SPRING_ENABLED", true, "Chaotic Spring event enabled");
         builder.pop();
 
         builder.push("Weapons");
@@ -846,7 +847,6 @@ public class BICServerConfig {
         this.MS_PUMPKIN_SPEED = buildDouble(builder, "MS_PUMPKIN_SPEED", 0.2);
         builder.pop();
         builder.push("Nightmare Stalker");
-        this.NIGHTMARE_EFFECTS_ENABLED = buildBoolean(builder, "NIGHTMARE_EFFECTS_ENABLED", true, "Whether you get effects when hit by a nightmare stalker");
         this.NIGHTMARE_STRENGTH_ENABLED = buildBoolean(builder, "NIGHTMARE_STRENGTH_ENABLED", true, "Whether nightmare stalker, gets stronger the longer the world is");
         this.NIGHTMARE_FREEZE_ENABLED = buildBoolean(builder, "NIGHTMARE_FREEZE_ENABLED", true, "Whether nightmare stalker freezes water");
         this.NIGHTMARE_STALKER_SPAWNING_ENABLED = buildBoolean(builder, "NIGHTMARE_STALKER_SPAWNING_ENABLED", true, ".");

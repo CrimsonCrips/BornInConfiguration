@@ -129,7 +129,7 @@ dependencies {
     runtimeOnly "maven.modrinth:jei:oghFmDkL"
 
     implementation "curse.maven:geckolib-388172:7415496"
-    implementation "curse.maven:born-in-chaos-686437:7366499"
+    implementation "curse.maven:born-in-chaos-686437:7917953"
 
     implementation(jarJar("io.github.llamalad7:mixinextras-neoforge:0.5.0"))
 }
