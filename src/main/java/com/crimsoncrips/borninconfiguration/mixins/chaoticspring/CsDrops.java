@@ -1,4 +1,4 @@
-package com.crimsoncrips.borninconfiguration.mixins.chillingevent;
+package com.crimsoncrips.borninconfiguration.mixins.chaoticspring;
 
 
 import com.crimsoncrips.borninconfiguration.BornInConfiguration;
@@ -7,7 +7,6 @@ import net.mcreator.borninchaosv.init.BornInChaosV1ModGameRules;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModItems;
 import net.mcreator.borninchaosv.init.BornInChaosV1ModParticleTypes;
 import net.mcreator.borninchaosv.procedures.ChillingHorrorEventDropProcedure;
-import net.mcreator.borninchaosv.procedures.ChillingHorrorEventSpawnProcedure;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -31,13 +30,13 @@ import java.util.Calendar;
 
 @Mixin(ChillingHorrorEventDropProcedure.class)
 
-public abstract class ChDrops {
+public abstract class CsDrops {
 
 
     @Inject(method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V", at = @At("HEAD"), cancellable = true,remap = false)
     private static void injected(Event event, LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         ci.cancel();
-        boolean season = ((Calendar.getInstance().get(2) == 11 && Calendar.getInstance().get(5) >= 21 && Calendar.getInstance().get(5) <= 31 || Calendar.getInstance().get(2) == 0 && Calendar.getInstance().get(5) >= 1 && Calendar.getInstance().get(5) <= 10) || BornInConfiguration.COMMON_CONFIG.CHILLING_HORROR_ENABLED.get());
+        boolean season = (Calendar.getInstance().get(2) == 3 && Calendar.getInstance().get(5) >= 10 && Calendar.getInstance().get(5) <= 22 || BornInConfiguration.COMMON_CONFIG.CHAOTIC_SPRING_ENABLED.get());
         if (entity != null) {
             if ((entity instanceof Zombie || entity instanceof Skeleton) && season) {
                 ItemStack var10000;
@@ -48,7 +47,7 @@ public abstract class ChDrops {
                     var10000 = ItemStack.EMPTY;
                 }
 
-                if (var10000.getItem() != ((Block) BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()).asItem()) {
+                if (var10000.getItem() != ((Block)BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()).asItem()) {
                     if (entity instanceof LivingEntity) {
                         LivingEntity _entGetArmor = (LivingEntity)entity;
                         var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
@@ -89,7 +88,7 @@ public abstract class ChDrops {
 
                     if (world instanceof ServerLevel) {
                         ServerLevel _level = (ServerLevel)world;
-                        _level.sendParticles((SimpleParticleType) BornInChaosV1ModParticleTypes.SNOWCLOUD.get(), entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 4, 0.3, 0.3, 0.3, 0.1);
+                        _level.sendParticles((SimpleParticleType)BornInChaosV1ModParticleTypes.SNOWCLOUD.get(), entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 4, 0.3, 0.3, 0.3, 0.1);
                     }
 
                     if (world instanceof ServerLevel) {

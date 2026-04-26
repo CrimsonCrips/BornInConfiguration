@@ -39,9 +39,9 @@ public abstract class ChSpawn {
     @Inject(method = "execute(Lnet/minecraftforge/eventbus/api/Event;Lnet/minecraft/world/level/LevelAccessor;Lnet/minecraft/world/entity/Entity;)V", at = @At("HEAD"), cancellable = true,remap = false)
     private static void injected(Event event, LevelAccessor world, Entity entity, CallbackInfo ci) {
         ci.cancel();
+        boolean season = ((Calendar.getInstance().get(2) == 11 && Calendar.getInstance().get(5) >= 21 && Calendar.getInstance().get(5) <= 31 || Calendar.getInstance().get(2) == 0 && Calendar.getInstance().get(5) >= 1 && Calendar.getInstance().get(5) <= 10) || BornInConfiguration.COMMON_CONFIG.CHILLING_HORROR_ENABLED.get());
         if (entity != null) {
-            if ((entity instanceof Zombie || entity instanceof Skeleton) && world.getLevelData().getGameRules().getBoolean(BornInChaosV1ModGameRules.SEASONAL_EVENTS) && (Calendar.getInstance().get(2) == 11 && Calendar.getInstance().get(5) >= 21 && Calendar.getInstance().get(5) <= 31 || Calendar.getInstance().get(2) == 0 && Calendar.getInstance().get(5) >= 1 && Calendar.getInstance().get(5) <= 10 || BornInConfiguration.COMMON_CONFIG.CHILLING_HORROR_ENABLED.get())) {
-                if (entity instanceof Zombie) {
+            if ((entity instanceof Zombie || entity instanceof Skeleton) && season) {
                     if (Math.random() < 0.35 && !world.isClientSide()) {
                         if (entity instanceof Player) {
                             Player _player = (Player)entity;
@@ -127,7 +127,6 @@ public abstract class ChSpawn {
                             }
                         }
                     }
-                }
             }
 
         }
