@@ -48,7 +48,7 @@ public abstract class ChDrops {
                     var10000 = ItemStack.EMPTY;
                 }
 
-                if (var10000.getItem() != ((Block) BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()).asItem()) {
+                if (var10000.getItem() != ((Block)BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()).asItem()) {
                     if (entity instanceof LivingEntity) {
                         LivingEntity _entGetArmor = (LivingEntity)entity;
                         var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
@@ -89,7 +89,7 @@ public abstract class ChDrops {
 
                     if (world instanceof ServerLevel) {
                         ServerLevel _level = (ServerLevel)world;
-                        _level.sendParticles((SimpleParticleType) BornInChaosV1ModParticleTypes.SNOWCLOUD.get(), entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 4, 0.3, 0.3, 0.3, 0.1);
+                        _level.sendParticles((SimpleParticleType)BornInChaosV1ModParticleTypes.SNOWCLOUD.get(), entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 4, 0.3, 0.3, 0.3, 0.1);
                     }
 
                     if (world instanceof ServerLevel) {

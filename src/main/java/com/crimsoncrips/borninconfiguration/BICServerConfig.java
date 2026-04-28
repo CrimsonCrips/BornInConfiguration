@@ -511,8 +511,8 @@ public class BICServerConfig {
         this.INFESTED_DIAMONDS_ENABLED = buildBoolean(builder, "INFESTED_DIAMONDS_ENABLED", true, "Whether infested diamonds generate");
         this.WARNING_SPAWN_ENABLED = buildBoolean(builder, "WARNING_SPAWN_ENABLED", true, "Whether you get the warning effect that you get for Missioners and Nightmare Stalkers");
         this.NAUGHTINESS_ENABLED = buildBoolean(builder, "NAUGHTINESS_ENABLED", true, "Whether you gain naughtiness from certain actions");
-        this.CHAOTIC_SPRING_ENABLED = buildBoolean(builder, "CHAOTIC_SPRING_ENABLED", true, "Chaotic Spring event enabled");
-        this.CHILLING_HORROR_ENABLED = buildBoolean(builder, "CHILLING_HORROR_ENABLED", true, "Chilling Horror event enabled");
+        this.CHAOTIC_SPRING_ENABLED = buildBoolean(builder, "CHAOTIC_SPRING_ENABLED", false, "Chaotic Spring event enabled");
+        this.CHILLING_HORROR_ENABLED = buildBoolean(builder, "CHILLING_HORROR_ENABLED", false, "Chilling Horror event enabled");
 
         builder.pop();
 

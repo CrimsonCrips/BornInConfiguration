@@ -42,10 +42,11 @@ public abstract class ChSpawn {
         boolean season = ((Calendar.getInstance().get(2) == 11 && Calendar.getInstance().get(5) >= 21 && Calendar.getInstance().get(5) <= 31 || Calendar.getInstance().get(2) == 0 && Calendar.getInstance().get(5) >= 1 && Calendar.getInstance().get(5) <= 10) || BornInConfiguration.COMMON_CONFIG.CHILLING_HORROR_ENABLED.get());
         if (entity != null) {
             if ((entity instanceof Zombie || entity instanceof Skeleton) && season) {
+                if (entity instanceof Zombie) {
                     if (Math.random() < 0.35 && !world.isClientSide()) {
                         if (entity instanceof Player) {
                             Player _player = (Player)entity;
-                            _player.getInventory().armor.set(3, new ItemStack((ItemLike) BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
+                            _player.getInventory().armor.set(3, new ItemStack((ItemLike)BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
                             _player.getInventory().setChanged();
                         } else if (entity instanceof LivingEntity) {
                             LivingEntity _living = (LivingEntity)entity;
@@ -54,7 +55,7 @@ public abstract class ChSpawn {
 
                         if (entity instanceof LivingEntity) {
                             LivingEntity _entity = (LivingEntity)entity;
-                            ItemStack _setstack = (new ItemStack((ItemLike) BornInChaosV1ModItems.NUT_HAMMER.get())).copy();
+                            ItemStack _setstack = (new ItemStack((ItemLike)BornInChaosV1ModItems.NUT_HAMMER.get())).copy();
                             _setstack.setCount(1);
                             _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
                             if (_entity instanceof Player) {
@@ -127,6 +128,7 @@ public abstract class ChSpawn {
                             }
                         }
                     }
+                }
             }
 
         }
