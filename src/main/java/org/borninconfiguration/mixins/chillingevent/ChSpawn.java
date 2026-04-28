@@ -40,41 +40,41 @@ public abstract class ChSpawn {
                 if (entity instanceof Zombie) {
                     if (Math.random() < 0.35 && !world.isClientSide()) {
                         if (entity instanceof Player) {
-                            Player _player = (Player) entity;
-                            _player.getInventory().armor.set(3, new ItemStack((ItemLike) BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
+                            Player _player = (Player)entity;
+                            _player.getInventory().armor.set(3, new ItemStack((ItemLike)BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
                             _player.getInventory().setChanged();
                         } else if (entity instanceof LivingEntity) {
-                            LivingEntity _living = (LivingEntity) entity;
-                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike) BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
+                            LivingEntity _living = (LivingEntity)entity;
+                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike)BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
                         }
 
                         if (entity instanceof LivingEntity) {
-                            LivingEntity _entity = (LivingEntity) entity;
-                            ItemStack _setstack = (new ItemStack((ItemLike) BornInChaosV1ModItems.NUT_HAMMER.get())).copy();
+                            LivingEntity _entity = (LivingEntity)entity;
+                            ItemStack _setstack = (new ItemStack((ItemLike)BornInChaosV1ModItems.NUT_HAMMER.get())).copy();
                             _setstack.setCount(1);
                             _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
                             if (_entity instanceof Player) {
-                                Player _player = (Player) _entity;
+                                Player _player = (Player)_entity;
                                 _player.getInventory().setChanged();
                             }
                         }
                     } else if (Math.random() < 0.35 && !world.isClientSide()) {
                         if (entity instanceof Player) {
-                            Player _player = (Player) entity;
-                            _player.getInventory().armor.set(3, new ItemStack((ItemLike) BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
+                            Player _player = (Player)entity;
+                            _player.getInventory().armor.set(3, new ItemStack((ItemLike)BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
                             _player.getInventory().setChanged();
                         } else if (entity instanceof LivingEntity) {
-                            LivingEntity _living = (LivingEntity) entity;
-                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike) BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
+                            LivingEntity _living = (LivingEntity)entity;
+                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike)BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
                         }
 
                         if (entity instanceof LivingEntity) {
-                            LivingEntity _entity = (LivingEntity) entity;
-                            ItemStack _setstack = (new ItemStack((ItemLike) BornInChaosV1ModItems.ICY_SWEETNESS.get())).copy();
+                            LivingEntity _entity = (LivingEntity)entity;
+                            ItemStack _setstack = (new ItemStack((ItemLike)BornInChaosV1ModItems.ICY_SWEETNESS.get())).copy();
                             _setstack.setCount(1);
                             _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
                             if (_entity instanceof Player) {
-                                Player _player = (Player) _entity;
+                                Player _player = (Player)_entity;
                                 _player.getInventory().setChanged();
                             }
                         }
@@ -82,43 +82,43 @@ public abstract class ChSpawn {
                 }
 
                 if (entity instanceof Skeleton) {
-                    if (Math.random() < (double) 0.25F && !world.isClientSide()) {
+                    if (Math.random() < (double)0.25F && !world.isClientSide()) {
                         if (entity instanceof Player) {
-                            Player _player = (Player) entity;
-                            _player.getInventory().armor.set(3, new ItemStack((ItemLike) BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
+                            Player _player = (Player)entity;
+                            _player.getInventory().armor.set(3, new ItemStack((ItemLike)BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
                             _player.getInventory().setChanged();
                         } else if (entity instanceof LivingEntity) {
-                            LivingEntity _living = (LivingEntity) entity;
-                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike) BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
+                            LivingEntity _living = (LivingEntity)entity;
+                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike)BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()));
                         }
 
                         if (entity instanceof LivingEntity) {
-                            LivingEntity _entity = (LivingEntity) entity;
-                            ItemStack _setstack = (new ItemStack((ItemLike) BornInChaosV1ModItems.NUT_HAMMER.get())).copy();
+                            LivingEntity _entity = (LivingEntity)entity;
+                            ItemStack _setstack = (new ItemStack((ItemLike)BornInChaosV1ModItems.NUT_HAMMER.get())).copy();
                             _setstack.setCount(1);
                             _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
                             if (_entity instanceof Player) {
-                                Player _player = (Player) _entity;
+                                Player _player = (Player)_entity;
                                 _player.getInventory().setChanged();
                             }
                         }
                     } else if (Math.random() < 0.35 && !world.isClientSide()) {
                         if (entity instanceof Player) {
-                            Player _player = (Player) entity;
-                            _player.getInventory().armor.set(3, new ItemStack((ItemLike) BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
+                            Player _player = (Player)entity;
+                            _player.getInventory().armor.set(3, new ItemStack((ItemLike)BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
                             _player.getInventory().setChanged();
                         } else if (entity instanceof LivingEntity) {
-                            LivingEntity _living = (LivingEntity) entity;
-                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike) BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
+                            LivingEntity _living = (LivingEntity)entity;
+                            _living.setItemSlot(EquipmentSlot.HEAD, new ItemStack((ItemLike)BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()));
                         }
 
                         if (entity instanceof LivingEntity) {
-                            LivingEntity _entity = (LivingEntity) entity;
-                            ItemStack _setstack = (new ItemStack((ItemLike) BornInChaosV1ModItems.ICY_SWEETNESS.get())).copy();
+                            LivingEntity _entity = (LivingEntity)entity;
+                            ItemStack _setstack = (new ItemStack((ItemLike)BornInChaosV1ModItems.ICY_SWEETNESS.get())).copy();
                             _setstack.setCount(1);
                             _entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
                             if (_entity instanceof Player) {
-                                Player _player = (Player) _entity;
+                                Player _player = (Player)_entity;
                                 _player.getInventory().setChanged();
                             }
                         }

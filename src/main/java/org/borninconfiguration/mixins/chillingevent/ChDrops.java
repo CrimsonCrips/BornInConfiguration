@@ -43,23 +43,23 @@ public abstract class ChDrops {
             if ((entity instanceof Zombie || entity instanceof Skeleton) && season) {
                 ItemStack var10000;
                 if (entity instanceof LivingEntity) {
-                    LivingEntity _entGetArmor = (LivingEntity) entity;
+                    LivingEntity _entGetArmor = (LivingEntity)entity;
                     var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                 } else {
                     var10000 = ItemStack.EMPTY;
                 }
 
-                if (var10000.getItem() != ((Block) BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()).asItem()) {
+                if (var10000.getItem() != ((Block)BornInChaosV1ModBlocks.SPOOKY_SNOWMAN_HEAD.get()).asItem()) {
                     if (entity instanceof LivingEntity) {
-                        LivingEntity _entGetArmor = (LivingEntity) entity;
+                        LivingEntity _entGetArmor = (LivingEntity)entity;
                         var10000 = _entGetArmor.getItemBySlot(EquipmentSlot.HEAD);
                     } else {
                         var10000 = ItemStack.EMPTY;
                     }
 
-                    if (var10000.getItem() != ((Block) BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()).asItem()) {
+                    if (var10000.getItem() != ((Block)BornInChaosV1ModBlocks.CREEPY_NUTCRACKER.get()).asItem()) {
                         if (entity instanceof LivingEntity) {
-                            LivingEntity _livEnt = (LivingEntity) entity;
+                            LivingEntity _livEnt = (LivingEntity)entity;
                             var10000 = _livEnt.getMainHandItem();
                         } else {
                             var10000 = ItemStack.EMPTY;
@@ -67,7 +67,7 @@ public abstract class ChDrops {
 
                         if (var10000.getItem() != BornInChaosV1ModItems.NUT_HAMMER.get()) {
                             if (entity instanceof LivingEntity) {
-                                LivingEntity _livEnt = (LivingEntity) entity;
+                                LivingEntity _livEnt = (LivingEntity)entity;
                                 var10000 = _livEnt.getMainHandItem();
                             } else {
                                 var10000 = ItemStack.EMPTY;
@@ -80,26 +80,26 @@ public abstract class ChDrops {
                     }
                 }
 
-                if (Math.random() < (double) 0.5F) {
+                if (Math.random() < (double)0.5F) {
                     if (world instanceof ServerLevel) {
-                        ServerLevel _level = (ServerLevel) world;
-                        ItemEntity entityToSpawn = new ItemEntity(_level, entity.getX(), entity.getY() + (double) 0.5F, entity.getZ(), new ItemStack((ItemLike) BornInChaosV1ModItems.CREEPY_GIFT.get()));
+                        ServerLevel _level = (ServerLevel)world;
+                        ItemEntity entityToSpawn = new ItemEntity(_level, entity.getX(), entity.getY() + (double)0.5F, entity.getZ(), new ItemStack((ItemLike)BornInChaosV1ModItems.CREEPY_GIFT.get()));
                         entityToSpawn.setPickUpDelay(10);
                         _level.addFreshEntity(entityToSpawn);
                     }
 
                     if (world instanceof ServerLevel) {
-                        ServerLevel _level = (ServerLevel) world;
-                        _level.sendParticles((SimpleParticleType) BornInChaosV1ModParticleTypes.SNOWCLOUD.get(), entity.getX(), entity.getY() + (double) 1.0F, entity.getZ(), 4, 0.3, 0.3, 0.3, 0.1);
+                        ServerLevel _level = (ServerLevel)world;
+                        _level.sendParticles((SimpleParticleType)BornInChaosV1ModParticleTypes.SNOWCLOUD.get(), entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 4, 0.3, 0.3, 0.3, 0.1);
                     }
 
                     if (world instanceof ServerLevel) {
-                        ServerLevel _level = (ServerLevel) world;
-                        _level.sendParticles((SimpleParticleType) BornInChaosV1ModParticleTypes.WANINGSNOWFLAKE.get(), entity.getX(), entity.getY() + (double) 1.0F, entity.getZ(), 7, 0.3, 0.3, 0.3, 0.2);
+                        ServerLevel _level = (ServerLevel)world;
+                        _level.sendParticles((SimpleParticleType)BornInChaosV1ModParticleTypes.WANINGSNOWFLAKE.get(), entity.getX(), entity.getY() + (double)1.0F, entity.getZ(), 7, 0.3, 0.3, 0.3, 0.2);
                     }
 
                     if (world instanceof ServerLevel) {
-                        ServerLevel _level = (ServerLevel) world;
+                        ServerLevel _level = (ServerLevel)world;
                         _level.addFreshEntity(new ExperienceOrb(_level, x, y, z, 2));
                     }
                 }

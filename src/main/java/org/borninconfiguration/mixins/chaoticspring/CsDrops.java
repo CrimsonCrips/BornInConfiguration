@@ -46,7 +46,7 @@ public abstract class CsDrops {
     @Inject(method = "execute(Lnet/neoforged/bus/api/Event;Lnet/minecraft/world/level/LevelAccessor;DDDLnet/minecraft/world/entity/Entity;)V", at = @At("HEAD"), cancellable = true, remap = false)
     private static void injected(Event event, LevelAccessor world, double x, double y, double z, Entity entity, CallbackInfo ci) {
         ci.cancel();
-        boolean season = (Calendar.getInstance().get(2) == 3 && Calendar.getInstance().get(5) >= 10 && Calendar.getInstance().get(5) <= 22 || BornInConfiguration.COMMON_CONFIG.CHAOTIC_SPRING_ENABLED.get());
+        boolean season = ((Calendar.getInstance().get(2) == 3 && Calendar.getInstance().get(5) >= 10 && Calendar.getInstance().get(5) <= 22) || BornInConfiguration.COMMON_CONFIG.CHAOTIC_SPRING_ENABLED.get());
         if (entity != null) {
             if ((entity instanceof Zombie || entity instanceof Skeleton) && season) {
                 ItemStack var10000;
@@ -73,7 +73,7 @@ public abstract class CsDrops {
                 if (Math.random() < (double)0.5F) {
                     if (world instanceof ServerLevel) {
                         ServerLevel _level = (ServerLevel)world;
-                        ItemEntity entityToSpawn = new ItemEntity(_level, entity.getX(), entity.getY() + (double)0.5F, entity.getZ(), new ItemStack((ItemLike)((Holder) BuiltInRegistries.ITEM.getOrCreateTag(ItemTags.create(ResourceLocation.parse("born_in_chaos_v1:easter_eggs"))).getRandomElement(RandomSource.create()).orElseGet(() -> BuiltInRegistries.ITEM.wrapAsHolder(Items.AIR))).value()));
+                        ItemEntity entityToSpawn = new ItemEntity(_level, entity.getX(), entity.getY() + (double)0.5F, entity.getZ(), new ItemStack((ItemLike)((Holder)BuiltInRegistries.ITEM.getOrCreateTag(ItemTags.create(ResourceLocation.parse("born_in_chaos_v1:easter_eggs"))).getRandomElement(RandomSource.create()).orElseGet(() -> BuiltInRegistries.ITEM.wrapAsHolder(Items.AIR))).value()));
                         entityToSpawn.setPickUpDelay(10);
                         _level.addFreshEntity(entityToSpawn);
                     }
