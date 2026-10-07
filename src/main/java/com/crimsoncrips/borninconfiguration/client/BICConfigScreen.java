@@ -9,6 +9,7 @@ import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
 import net.minecraft.client.gui.screens.Screen;
@@ -33,6 +34,7 @@ import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -66,6 +68,7 @@ public class BICConfigScreen extends Screen {
     private static final int ROW_HEIGHT = 24;
     private static final int ROW_WIDTH = 340;
     private static final int CONTROL_WIDTH = 130;
+    private static final int BUTTON_WIDTH = ROW_WIDTH / 2 - 4;
     private static final int CONTROL_HEIGHT = 18;
     private static final int CYCLE_RANGE_LIMIT = 8;
     private static final int NOTE_COLOR = 0xFFD84A;
@@ -74,14 +77,21 @@ public class BICConfigScreen extends Screen {
 
     private final Screen parent;
     private final boolean remote;
-    private Tab tab = Tab.GENERAL;
+    private final List<String> section;
+    private Tab tab;
     private String filter = "";
     private EditBox search;
     private ConfigList list;
 
     public BICConfigScreen(Screen parent) {
-        super(Component.translatable("misc.borninconfiguration.config_title"));
+        this(parent, Tab.GENERAL, null, Component.translatable("misc.borninconfiguration.config_title"));
+    }
+
+    private BICConfigScreen(Screen parent, Tab tab, List<String> section, Component title) {
+        super(title);
         this.parent = parent;
+        this.tab = tab;
+        this.section = section;
         Minecraft minecraft = Minecraft.getInstance();
         this.remote = minecraft.getConnection() != null && !minecraft.hasSingleplayerServer();
     }
@@ -91,7 +101,7 @@ public class BICConfigScreen extends Screen {
         this.list = new ConfigList(this.minecraft);
         this.addRenderableWidget(this.list);
 
-        Tab[] tabs = Tab.values();
+        Tab[] tabs = this.section == null ? Tab.values() : new Tab[0];
         int tabsLeft = this.width / 2 - (tabs.length * TAB_WIDTH + (tabs.length - 1) * 2) / 2;
         for (int i = 0; i < tabs.length; i++) {
             Tab entry = tabs[i];
@@ -124,34 +134,43 @@ public class BICConfigScreen extends Screen {
         if (this.remote) {
             this.list.addNote(Component.translatable("misc.borninconfiguration.config_note_remote"));
         }
-        Object node = BornInConfiguration.COMMON_CONFIG_SPEC.getValues().get(this.tab.path);
-        if (node instanceof UnmodifiableConfig section) {
-            populate(section, "", this.filter.trim().toLowerCase(Locale.ROOT));
+        List<String> path = this.section == null ? this.tab.path : this.section;
+        Object node = BornInConfiguration.COMMON_CONFIG_SPEC.getValues().get(path);
+        if (node instanceof UnmodifiableConfig values) {
+            populate(values, path, this.filter.trim().toLowerCase(Locale.ROOT));
         }
         this.list.setScrollAmount(0);
     }
 
-    private void populate(UnmodifiableConfig values, String sectionName, String query) {
-        boolean sectionMatches = !query.isEmpty() && sectionName.toLowerCase(Locale.ROOT).contains(query);
-        boolean headerAdded = sectionName.isEmpty();
+    private void populate(UnmodifiableConfig values, List<String> path, String query) {
+        List<Button> buttons = new ArrayList<>();
         for (Map.Entry<String, Object> entry : values.valueMap().entrySet()) {
-            if (entry.getValue() instanceof UnmodifiableConfig section) {
-                if (this.tab != Tab.MOBS && entry.getKey().equals("Mobs")) {
+            if (entry.getValue() instanceof UnmodifiableConfig child) {
+                if (this.section == null && this.tab != Tab.MOBS && entry.getKey().equals("Mobs")) {
                     continue;
                 }
-                populate(section, sectionTitle(entry.getKey()), query);
+                String title = sectionTitle(entry.getKey());
+                if (!query.isEmpty() && !title.toLowerCase(Locale.ROOT).contains(query) && !containsMatch(child, query)) {
+                    continue;
+                }
+                List<String> childPath = new ArrayList<>(path);
+                childPath.add(entry.getKey());
+                Button button = Button.builder(Component.literal(title), b -> this.minecraft.setScreen(
+                        new BICConfigScreen(this, this.tab, List.copyOf(childPath), Component.literal(title))))
+                        .bounds(0, 0, BUTTON_WIDTH, CONTROL_HEIGHT).build();
+                String comment = BornInConfiguration.COMMON_CONFIG_SPEC.getLevelComment(childPath);
+                if (comment != null && !comment.isBlank()) {
+                    button.setTooltip(Tooltip.create(Component.literal(comment)));
+                }
+                buttons.add(button);
             } else if (entry.getValue() instanceof ForgeConfigSpec.ConfigValue<?> value) {
                 Component label = label(value);
-                if (!query.isEmpty() && !sectionMatches && !label.getString().toLowerCase(Locale.ROOT).contains(query)) {
+                if (!query.isEmpty() && !label.getString().toLowerCase(Locale.ROOT).contains(query)) {
                     continue;
                 }
                 AbstractWidget control = control(value);
                 if (control == null) {
                     continue;
-                }
-                if (!headerAdded) {
-                    this.list.addHeader(Component.literal(sectionName));
-                    headerAdded = true;
                 }
                 if (this.remote) {
                     control.active = false;
@@ -162,6 +181,19 @@ public class BICConfigScreen extends Screen {
                 this.list.addRow(label, spec(value).getComment(), control);
             }
         }
+        for (int i = 0; i < buttons.size(); i += 2) {
+            this.list.addButtons(buttons.subList(i, Math.min(i + 2, buttons.size())));
+        }
+    }
+
+    private static boolean containsMatch(UnmodifiableConfig values, String query) {
+        for (Object value : values.valueMap().values()) {
+            if (value instanceof UnmodifiableConfig child ? containsMatch(child, query)
+                    : value instanceof ForgeConfigSpec.ConfigValue<?> configValue && label(configValue).getString().toLowerCase(Locale.ROOT).contains(query)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @SuppressWarnings("unchecked")
@@ -349,16 +381,16 @@ public class BICConfigScreen extends Screen {
             this.clearEntries();
         }
 
-        void addHeader(Component title) {
-            this.addEntry(new HeaderEntry(title, 0xFFD84A, true));
-        }
-
         void addNote(Component text) {
             this.addEntry(new HeaderEntry(text, 0xFF8080, false));
         }
 
         void addRow(Component label, String comment, AbstractWidget control) {
             this.addEntry(new RowEntry(label, comment, control));
+        }
+
+        void addButtons(List<Button> buttons) {
+            this.addEntry(new ButtonEntry(List.copyOf(buttons)));
         }
 
         @Override
@@ -405,6 +437,36 @@ public class BICConfigScreen extends Screen {
             @Override
             public List<? extends NarratableEntry> narratables() {
                 return List.of();
+            }
+        }
+
+        @OnlyIn(Dist.CLIENT)
+        class ButtonEntry extends Entry {
+            private final List<Button> buttons;
+
+            ButtonEntry(List<Button> buttons) {
+                this.buttons = buttons;
+            }
+
+            @Override
+            public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height,
+                               int mouseX, int mouseY, boolean hovering, float partialTick) {
+                for (int i = 0; i < this.buttons.size(); i++) {
+                    Button button = this.buttons.get(i);
+                    button.setX(left + i * (width - BUTTON_WIDTH));
+                    button.setY(top + (height - CONTROL_HEIGHT) / 2);
+                    button.render(guiGraphics, mouseX, mouseY, partialTick);
+                }
+            }
+
+            @Override
+            public List<? extends GuiEventListener> children() {
+                return this.buttons;
+            }
+
+            @Override
+            public List<? extends NarratableEntry> narratables() {
+                return this.buttons;
             }
         }
 
