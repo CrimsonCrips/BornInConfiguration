@@ -26,6 +26,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @OnlyIn(Dist.CLIENT)
@@ -57,6 +58,7 @@ public class BICConfigScreen extends Screen {
     private static final int CONTROL_WIDTH = 130;
     private static final int BUTTON_WIDTH = ROW_WIDTH / 2 - 4;
     private static final int CONTROL_HEIGHT = 18;
+    private static final int RESET_WIDTH = 20;
     private static final int CYCLE_RANGE_LIMIT = 8;
     private static final int NOTE_COLOR = 0xFFD84A;
 
@@ -156,13 +158,14 @@ public class BICConfigScreen extends Screen {
                 if (control == null) {
                     continue;
                 }
+                control.setWidth(CONTROL_WIDTH - RESET_WIDTH - 2);
                 if (this.remote) {
                     control.active = false;
                     if (control instanceof EditBox box) {
                         box.setEditable(false);
                     }
                 }
-                this.list.addRow(label, value.getSpec().getComment(), control);
+                this.list.addRow(label, value.getSpec().getComment(), control, this.resetButton(value), value);
             }
         }
         for (int i = 0; i < buttons.size(); i += 2) {
@@ -224,9 +227,13 @@ public class BICConfigScreen extends Screen {
                 .collect(Collectors.joining(" "));
     }
 
+    private static <T> void put(ModConfigSpec.ConfigValue<T> value, T object) {
+        value.set(object);
+    }
+
     private Button booleanButton(ModConfigSpec.BooleanValue value) {
         return Button.builder(booleanLabel(value.get()), b -> {
-            value.set(!value.get());
+            put(value, !value.get());
             b.setMessage(booleanLabel(value.get()));
         }).bounds(0, 0, CONTROL_WIDTH, CONTROL_HEIGHT).build();
     }
@@ -238,7 +245,7 @@ public class BICConfigScreen extends Screen {
     private Button cycleButton(ModConfigSpec.IntValue value, ModConfigSpec.Range<Integer> range) {
         return Button.builder(Component.literal(String.valueOf(value.get())), b -> {
             int next = value.get() + 1;
-            value.set(next > range.getMax() ? range.getMin() : next);
+            put(value, next > range.getMax() ? range.getMin() : next);
             b.setMessage(Component.literal(String.valueOf(value.get())));
         }).bounds(0, 0, CONTROL_WIDTH, CONTROL_HEIGHT).build();
     }
@@ -246,9 +253,14 @@ public class BICConfigScreen extends Screen {
     private EditBox intBox(ModConfigSpec.IntValue value, ModConfigSpec.Range<Integer> range) {
         EditBox box = numberBox(value);
         box.setResponder(text -> {
+            if (text.isBlank() && usesBicDefault(value)) {
+                put(value, -1);
+                box.setTextColor(EditBox.DEFAULT_TEXT_COLOR);
+                return;
+            }
             try {
                 int parsed = Integer.parseInt(text.trim());
-                value.set(range == null ? parsed : Mth.clamp(parsed, range.getMin(), range.getMax()));
+                put(value, range == null ? parsed : Mth.clamp(parsed, range.getMin(), range.getMax()));
                 box.setTextColor(EditBox.DEFAULT_TEXT_COLOR);
             } catch (NumberFormatException ignored) {
                 box.setTextColor(0xFF5555);
@@ -261,9 +273,14 @@ public class BICConfigScreen extends Screen {
         ModConfigSpec.Range<Double> range = value.getSpec().getRange();
         EditBox box = numberBox(value);
         box.setResponder(text -> {
+            if (text.isBlank() && usesBicDefault(value)) {
+                put(value, -1.0);
+                box.setTextColor(EditBox.DEFAULT_TEXT_COLOR);
+                return;
+            }
             try {
                 double parsed = Double.parseDouble(text.trim());
-                value.set(range == null ? parsed : Mth.clamp(parsed, range.getMin(), range.getMax()));
+                put(value, range == null ? parsed : Mth.clamp(parsed, range.getMin(), range.getMax()));
                 box.setTextColor(EditBox.DEFAULT_TEXT_COLOR);
             } catch (NumberFormatException ignored) {
                 box.setTextColor(0xFF5555);
@@ -272,11 +289,53 @@ public class BICConfigScreen extends Screen {
         return box;
     }
 
-    private EditBox numberBox(ModConfigSpec.ConfigValue<?> value) {
-        EditBox box = new EditBox(this.font, 0, 0, CONTROL_WIDTH, CONTROL_HEIGHT, label(value));
+    private EditBox numberBox(ModConfigSpec.ConfigValue<? extends Number> value) {
+        int width = CONTROL_WIDTH - RESET_WIDTH - 2;
+        EditBox box = new EditBox(this.font, 0, 0, width, CONTROL_HEIGHT, label(value));
         box.setMaxLength(32);
-        box.setValue(String.valueOf(value.get()));
+        if (usesBicDefault(value)) {
+            Component hint = Component.translatable("misc.borninconfiguration.config_default", bicDefault(value.getSpec().getComment()));
+            if (this.font.width(hint) > width - 8) {
+                hint = Component.translatable("misc.borninconfiguration.config_default_short");
+            }
+            box.setHint(hint);
+            box.setValue(value.get().doubleValue() == -1 ? "" : String.valueOf(value.get()));
+        } else {
+            box.setValue(String.valueOf(value.get()));
+        }
         return box;
+    }
+
+    private static boolean usesBicDefault(ModConfigSpec.ConfigValue<? extends Number> value) {
+        return value.getDefault().doubleValue() == -1;
+    }
+
+    private static String bicDefault(String comment) {
+        String prefix = "Born in Chaos default: ";
+        if (comment != null) {
+            for (String line : comment.split("\n")) {
+                if (line.startsWith(prefix)) {
+                    return Arrays.stream(line.substring(prefix.length()).split(",\\s*"))
+                            .map(part -> part.substring(part.lastIndexOf(' ') + 1))
+                            .distinct()
+                            .collect(Collectors.joining(" / "));
+                }
+            }
+        }
+        return "?";
+    }
+
+    private Button resetButton(ModConfigSpec.ConfigValue<?> value) {
+        return Button.builder(Component.literal("\u21BA"), b -> this.reset(value))
+                .tooltip(Tooltip.create(Component.translatable("misc.borninconfiguration.config_reset")))
+                .bounds(0, 0, RESET_WIDTH, CONTROL_HEIGHT).build();
+    }
+
+    private <V> void reset(ModConfigSpec.ConfigValue<V> value) {
+        put(value, value.getDefault());
+        double scroll = this.list.getScrollAmount();
+        this.refill();
+        this.list.setScrollAmount(scroll);
     }
 
     private EditBox stringBox(ModConfigSpec.ConfigValue<String> value) {
@@ -326,8 +385,8 @@ public class BICConfigScreen extends Screen {
             this.addEntry(new HeaderEntry(text, 0xFF8080, false));
         }
 
-        void addRow(Component label, String comment, AbstractWidget control) {
-            this.addEntry(new RowEntry(label, comment, control));
+        void addRow(Component label, String comment, AbstractWidget control, Button reset, ModConfigSpec.ConfigValue<?> value) {
+            this.addEntry(new RowEntry(label, comment, control, reset, value));
         }
 
         void addButtons(List<Button> buttons) {
@@ -416,11 +475,15 @@ public class BICConfigScreen extends Screen {
             private final Component label;
             private final String comment;
             private final AbstractWidget control;
+            private final Button reset;
+            private final ModConfigSpec.ConfigValue<?> value;
 
-            RowEntry(Component label, String comment, AbstractWidget control) {
+            RowEntry(Component label, String comment, AbstractWidget control, Button reset, ModConfigSpec.ConfigValue<?> value) {
                 this.label = label;
                 this.comment = comment;
                 this.control = control;
+                this.reset = reset;
+                this.value = value;
             }
 
             @Override
@@ -444,16 +507,21 @@ public class BICConfigScreen extends Screen {
                 this.control.setX(left + width - CONTROL_WIDTH);
                 this.control.setY(top + (height - CONTROL_HEIGHT) / 2);
                 this.control.render(guiGraphics, mouseX, mouseY, partialTick);
+
+                this.reset.active = !BICConfigScreen.this.remote && !Objects.equals(this.value.get(), this.value.getDefault());
+                this.reset.setX(left + width - RESET_WIDTH);
+                this.reset.setY(top + (height - CONTROL_HEIGHT) / 2);
+                this.reset.render(guiGraphics, mouseX, mouseY, partialTick);
             }
 
             @Override
             public List<? extends GuiEventListener> children() {
-                return List.of(this.control);
+                return List.of(this.control, this.reset);
             }
 
             @Override
             public List<? extends NarratableEntry> narratables() {
-                return List.of(this.control);
+                return List.of(this.control, this.reset);
             }
         }
     }

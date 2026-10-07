@@ -7,5 +7,8 @@
   "misc.borninconfiguration.config_search": "Search...",
   "misc.borninconfiguration.config_can_spawn": "Can Spawn",
   "misc.borninconfiguration.config_note_remote": "You are connected to a server, so its config can only be changed on the server itself.",
-  "misc.borninconfiguration.config_note_restart": "Most changes apply right away, but restarting the game after changing the config is recommended."
+  "misc.borninconfiguration.config_note_restart": "Most changes apply right away, but restarting the game after changing the config is recommended.",
+  "misc.borninconfiguration.config_default": "Default (%s)",
+  "misc.borninconfiguration.config_default_short": "Default",
+  "misc.borninconfiguration.config_reset": "Reset to default"
 }
