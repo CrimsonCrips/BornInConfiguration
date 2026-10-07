@@ -1,0 +1,40 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.crimsoncrips.borninconfiguration.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "borninconfiguration.refmap.json",
+  "mixins": [
+    "AxeAttackMixin",
+    "CursedMarkAttack",
+    "HenchmanAttackMixin",
+    "InfestedDiamonds",
+    "MissionerRain",
+    "RottenConsumption",
+    "SoulStratisfaction",
+    "SpiritsDissapearInSun",
+    "StalkerEffects",
+    "StalkerEffects2",
+    "StalkerImmunity",
+    "chaoticspring.CsDrops",
+    "chaoticspring.CsSpawn",
+    "chillingevent.ChDrops",
+    "chillingevent.ChSpawn",
+    "spawning.LifestealerOverride",
+    "spawning.MissionerOverride",
+    "spawning.NightmareOveride",
+    "spawning.ScarletProsecuterSpawning",
+    "spawning.WarningConfig",
+    "weapon.PhantomBomb",
+    "weapon.PumpkinPIstolMixin",
+    "weapon.PumpkinStaffMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "mixinextras": {
+    "minVersion": "0.5.4"
+  }
+}

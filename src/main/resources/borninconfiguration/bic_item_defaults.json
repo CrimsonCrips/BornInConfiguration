@@ -1,0 +1,235 @@
+{
+  "birch_branches": {
+    "ATTACK_DAMAGE": 3.0,
+    "ATTACK_SPEED": 1.6,
+    "DURABILITY": 300
+  },
+  "bonescaller_staff": {
+    "DURABILITY": 150
+  },
+  "carrot_sword": {
+    "ATTACK_DAMAGE": 6.5,
+    "ATTACK_SPEED": 1.6,
+    "DURABILITY": 600
+  },
+  "charmof_endurance": {
+    "DURABILITY": 5
+  },
+  "charmof_fury": {
+    "DURABILITY": 5
+  },
+  "charmof_power": {
+    "DURABILITY": 5
+  },
+  "charmof_resistance": {
+    "DURABILITY": 5
+  },
+  "charmof_stealth": {
+    "DURABILITY": 5
+  },
+  "damned_demomans_hat_helmet": {
+    "ARMOR": 2.0,
+    "ARMOR_TOUGHNESS": 0.0,
+    "DURABILITY": 330,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "dark_metal_armor_boots": {
+    "ARMOR": 3.0,
+    "ARMOR_TOUGHNESS": 5.0,
+    "DURABILITY": 650,
+    "KNOCKBACK_RESISTANCE": 0.1
+  },
+  "dark_metal_armor_chestplate": {
+    "ARMOR": 10.0,
+    "ARMOR_TOUGHNESS": 5.0,
+    "DURABILITY": 800,
+    "KNOCKBACK_RESISTANCE": 0.1
+  },
+  "dark_metal_armor_helmet": {
+    "ARMOR": 4.0,
+    "ARMOR_TOUGHNESS": 5.0,
+    "DURABILITY": 550,
+    "KNOCKBACK_RESISTANCE": 0.1
+  },
+  "dark_metal_armor_leggings": {
+    "ARMOR": 7.0,
+    "ARMOR_TOUGHNESS": 5.0,
+    "DURABILITY": 750,
+    "KNOCKBACK_RESISTANCE": 0.1
+  },
+  "dark_ritual_dagger": {
+    "ATTACK_DAMAGE": 6.0,
+    "ATTACK_SPEED": 2.0,
+    "DURABILITY": 700
+  },
+  "darkwarblade": {
+    "ATTACK_DAMAGE": 20.0,
+    "ATTACK_SPEED": 0.8,
+    "DURABILITY": 4000
+  },
+  "frostbitten_blade": {
+    "ATTACK_DAMAGE": 6.0,
+    "ATTACK_SPEED": 1.4,
+    "DURABILITY": 1100
+  },
+  "great_reaper_axe": {
+    "ATTACK_DAMAGE": 10.0,
+    "ATTACK_SPEED": 1.0,
+    "DURABILITY": 1100
+  },
+  "icy_sweetness": {
+    "ATTACK_DAMAGE": 6.0,
+    "ATTACK_SPEED": 1.4,
+    "DURABILITY": 2000
+  },
+  "intoxicating_dagger": {
+    "ATTACK_DAMAGE": 6.0,
+    "ATTACK_SPEED": 2.0,
+    "DURABILITY": 1100
+  },
+  "killer_rabbit_ears_helmet": {
+    "ARMOR": 2.0,
+    "ARMOR_TOUGHNESS": 0.0,
+    "DURABILITY": 220,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "lord_pumpkinheads_hat_helmet": {
+    "ARMOR": 3.0,
+    "ARMOR_TOUGHNESS": 1.5,
+    "DURABILITY": 3300,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "missionary_hat_helmet": {
+    "ARMOR": 3.0,
+    "ARMOR_TOUGHNESS": 0.5,
+    "DURABILITY": 440,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "nightmare_mantleofthe_night_boots": {
+    "ARMOR": 2.0,
+    "ARMOR_TOUGHNESS": 1.0,
+    "DURABILITY": 390,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "nightmare_mantleofthe_night_chestplate": {
+    "ARMOR": 7.0,
+    "ARMOR_TOUGHNESS": 1.0,
+    "DURABILITY": 480,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "nightmare_mantleofthe_night_helmet": {
+    "ARMOR": 4.0,
+    "ARMOR_TOUGHNESS": 1.0,
+    "DURABILITY": 330,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "nightmare_mantleofthe_night_leggings": {
+    "ARMOR": 6.0,
+    "ARMOR_TOUGHNESS": 1.0,
+    "DURABILITY": 450,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "nightmare_scythe": {
+    "ATTACK_DAMAGE": 9.0,
+    "ATTACK_SPEED": 1.1,
+    "DURABILITY": 700
+  },
+  "nut_hammer": {
+    "ATTACK_DAMAGE": 5.0,
+    "ATTACK_SPEED": 1.3,
+    "DURABILITY": 250
+  },
+  "pumpkinhandgun": {
+    "DURABILITY": 3000
+  },
+  "pumpkinstaffa": {
+    "DURABILITY": 360
+  },
+  "sharpened_dark_metal_sword": {
+    "ATTACK_DAMAGE": 7.0,
+    "ATTACK_SPEED": 1.7,
+    "DURABILITY": 1100
+  },
+  "shell_mace": {
+    "ATTACK_DAMAGE": 8.0,
+    "ATTACK_SPEED": 1.4,
+    "DURABILITY": 400
+  },
+  "skullbreaker_hammer": {
+    "ATTACK_DAMAGE": 11.0,
+    "ATTACK_SPEED": 0.9,
+    "DURABILITY": 1700
+  },
+  "soul_cutlass": {
+    "ATTACK_DAMAGE": 6.0,
+    "ATTACK_SPEED": 1.8,
+    "DURABILITY": 700
+  },
+  "soulbane": {
+    "ATTACK_DAMAGE": 12.0,
+    "ATTACK_SPEED": 1.7,
+    "DURABILITY": 3000
+  },
+  "spider_bite_sword": {
+    "ATTACK_DAMAGE": 6.0,
+    "ATTACK_SPEED": 1.6,
+    "DURABILITY": 1100
+  },
+  "spiny_shell_armor_chestplate": {
+    "ARMOR": 7.0,
+    "ARMOR_TOUGHNESS": 1.0,
+    "DURABILITY": 320,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "spiny_shell_armor_helmet": {
+    "ARMOR": 3.0,
+    "ARMOR_TOUGHNESS": 1.0,
+    "DURABILITY": 220,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "spiritual_guide_sombrero_helmet": {
+    "ARMOR": 3.0,
+    "ARMOR_TOUGHNESS": 0.5,
+    "DURABILITY": 385,
+    "KNOCKBACK_RESISTANCE": 0.0
+  },
+  "spiritual_sword": {
+    "ATTACK_DAMAGE": 5.0,
+    "ATTACK_SPEED": 1.8,
+    "DURABILITY": 500
+  },
+  "staff_of_magic_arrows": {
+    "DURABILITY": 150
+  },
+  "staffof_blindness": {
+    "DURABILITY": 100
+  },
+  "stormcallers_horn": {
+    "DURABILITY": 150
+  },
+  "supreme_measure": {
+    "ATTACK_DAMAGE": 5000.0,
+    "ATTACK_SPEED": 1.0,
+    "DURABILITY": 0
+  },
+  "sweet_axe": {
+    "ATTACK_DAMAGE": 9.0,
+    "ATTACK_SPEED": 0.9,
+    "DURABILITY": 600
+  },
+  "sweet_sword": {
+    "ATTACK_DAMAGE": 6.5,
+    "ATTACK_SPEED": 1.6,
+    "DURABILITY": 600
+  },
+  "trident_hayfork": {
+    "ATTACK_DAMAGE": 9.0,
+    "ATTACK_SPEED": 1.3,
+    "DURABILITY": 270
+  },
+  "wood_splitter_axe": {
+    "ATTACK_DAMAGE": 10.0,
+    "ATTACK_SPEED": 1.0,
+    "DURABILITY": 270
+  }
+}
