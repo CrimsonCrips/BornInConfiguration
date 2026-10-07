@@ -24,6 +24,7 @@
     "spawning.NightmareOveride",
     "spawning.ScarletProsecuterSpawning",
     "spawning.WarningConfig",
+    "spawning.WarningMessage",
     "weapon.PhantomBomb",
     "weapon.PumpkinPIstolMixin",
     "weapon.PumpkinStaffMixin"
