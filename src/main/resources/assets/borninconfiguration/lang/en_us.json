@@ -1,0 +1,11 @@
+{
+  "misc.borninconfiguration.config_title": "Born in Configuration",
+  "misc.borninconfiguration.config_tab_general": "General",
+  "misc.borninconfiguration.config_tab_weapons": "Weapons",
+  "misc.borninconfiguration.config_tab_armor": "Armor",
+  "misc.borninconfiguration.config_tab_mobs": "Mobs",
+  "misc.borninconfiguration.config_search": "Search...",
+  "misc.borninconfiguration.config_can_spawn": "Can Spawn",
+  "misc.borninconfiguration.config_note_remote": "You are connected to a server, so its config can only be changed on the server itself.",
+  "misc.borninconfiguration.config_note_restart": "Most changes apply right away, but restarting the game after changing the config is recommended."
+}

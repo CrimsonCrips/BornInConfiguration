@@ -1,0 +1,36 @@
+
+modLoader = "javafml" #mandatory
+loaderVersion = "${loader_version_range}"
+license = "${mod_license}"
+[[mods]] #mandatory
+modId = "${mod_id}" #mandatory
+version = "${mod_version}" #mandatory
+displayName = "${mod_name}"
+authors = "${mod_authors}" #optional
+description = '''${mod_description}'''
+
+# The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
+[[mixins]]
+config = "${mod_id}.mixins.json"
+
+[[dependencies."${mod_id}"]]
+modId = "neoforge"
+type = "required"
+versionRange = "${neo_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "minecraft"
+type = "required"
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId="born_in_chaos_v1"
+type = "required"
+versionRange="[1.7.6,)"
+ordering="BEFORE"
+side="BOTH"
+
