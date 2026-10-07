@@ -18,12 +18,14 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.event.ItemAttributeModifierEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -35,8 +37,8 @@ public class BICEvent {
 
     private static final String STATS_APPLIED = BornInConfiguration.MODID + ":stats_applied";
 
-    private static final UUID BASE_ATTACK_DAMAGE = UUID.fromString("CB3F55D3-645C-4F38-A497-9C13A33DB5CF");
-    private static final UUID BASE_ATTACK_SPEED = UUID.fromString("FA233E1C-4180-4865-B01B-BCCE9785ACA3");
+    private static final UUID BASE_ATTACK_DAMAGE = ObfuscationReflectionHelper.getPrivateValue(Item.class, null, "f_41374_");
+    private static final UUID BASE_ATTACK_SPEED = ObfuscationReflectionHelper.getPrivateValue(Item.class, null, "f_41375_");
     private static final Map<ArmorItem.Type, UUID> ARMOR_MODIFIERS = new EnumMap<>(Map.of(
             ArmorItem.Type.BOOTS, UUID.fromString("845DB27C-C624-495F-8C9F-6020A9A58B6B"),
             ArmorItem.Type.LEGGINGS, UUID.fromString("D8499B04-0E66-4726-AB29-64469D734E0D"),
